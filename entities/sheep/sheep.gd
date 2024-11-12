@@ -9,6 +9,7 @@ extends CharacterBody3D
 var _destination = Vector3.ZERO
 var _is_walking = false
 var _is_running_away = false
+var _vertical_velocity: float = 0.0
 
 @onready var timer: Timer = $Timer
 @onready var navigation_agent_3d: NavigationAgent3D = $NavigationAgent3D
@@ -25,7 +26,7 @@ func dump_first_physics_frame() -> void:
 	set_physics_process(true)
 
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	var current_location = global_transform.origin
 	var next_location = navigation_agent_3d.get_next_path_position()
 	var new_velocity
@@ -33,7 +34,10 @@ func _physics_process(_delta: float) -> void:
 		new_velocity = (next_location - current_location).normalized() * running_speed
 	else:
 		new_velocity = (next_location - current_location).normalized() * walking_speed
-		
+	if not is_on_floor():
+		_vertical_velocity += get_gravity().y * delta
+	else:
+		_vertical_velocity = 0
 	navigation_agent_3d.set_velocity_forced(new_velocity)
 
 
@@ -44,7 +48,7 @@ func update_target_location(target_location) -> void:
 	if distance < sheep_distance_run:
 		var dir_to_player = global_transform.origin - target_location
 		
-		new_position = global_transform.origin + dir_to_player
+		new_position = global_transform.origin + Vector3(dir_to_player.x, 0, dir_to_player.z)
 		_is_walking = false
 		_is_running_away = true
 	else:
@@ -69,5 +73,6 @@ func _on_timer_timeout() -> void:
 
 
 func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
-	velocity = velocity.move_toward(safe_velocity, 0.25)
+	velocity = velocity.move_toward(safe_velocity, 0.3)
+	velocity += Vector3(0, _vertical_velocity * 0.4, 0)
 	move_and_slide()

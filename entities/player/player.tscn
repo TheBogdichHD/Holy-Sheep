@@ -1,6 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://ug4cqscs1mdr"]
+[gd_scene load_steps=8 format=3 uid="uid://ug4cqscs1mdr"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_5mt8k"]
+[ext_resource type="Texture2D" uid="uid://ca4qyqd7wst5y" path="res://entities/player/empty.png" id="2_msnmn"]
+[ext_resource type="Texture2D" uid="uid://cm6pggjkemv0" path="res://entities/player/with_sheep.png" id="3_tvpsb"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_et56s"]
 
@@ -8,6 +10,25 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oxr6w"]
 height = 1.2
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d4iqy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_msnmn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_tvpsb")
+}],
+"loop": true,
+"name": &"with_sheep",
+"speed": 5.0
+}]
 
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -37,7 +58,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 [node name="DirectionRay" type="RayCast3D" parent="Head"]
 target_position = Vector3(0, 0, -2)
 
-[node name="PickupPoint" type="Node3D" parent="Head"]
+[node name="HandsSprite" type="AnimatedSprite3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, -0.8)
+sprite_frames = SubResource("SpriteFrames_d4iqy")
+
+[node name="SpawnPoint" type="Node3D" parent="Head"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
 
 [node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="."]

@@ -25,7 +25,8 @@ var _direction = Vector3.ZERO
 @onready var ray_cast_3d: RayCast3D = $RayCast3D
 
 @onready var direction_ray: RayCast3D = $Head/DirectionRay
-@onready var pickup_point: Node3D = $Head/PickupPoint
+@onready var hands_sprite: AnimatedSprite3D = $Head/HandsSprite
+@onready var spawn_point: Node3D = $Head/SpawnPoint
 
 var held_object = null
 var is_holding_object: bool = false
@@ -44,8 +45,6 @@ func _unhandled_input(event: InputEvent) -> void:
 			_interact()
 
 func _physics_process(delta: float) -> void:
-	if is_holding_object:
-		held_object.global_position = pickup_point.global_position
 	if Input.is_action_pressed("crouch"):
 		standing_collision_shape.disabled = true
 		crouching_collision_shape.disabled = false
@@ -84,6 +83,9 @@ func _physics_process(delta: float) -> void:
 	
 func _interact():
 	if is_holding_object:
+		hands_sprite.play("default")
+		held_object.global_transform = spawn_point.global_transform
+		get_tree().get_root().add_child(held_object)
 		held_object = null
 		is_holding_object = false
 		return
@@ -91,6 +93,8 @@ func _interact():
 		return
 	var obj = direction_ray.get_collider()
 	if obj.is_in_group("pickable"):
-		held_object = obj
+		held_object = obj.duplicate()
+		hands_sprite.play("with_sheep")
 		is_holding_object = true
+		obj.queue_free()
 	pass
