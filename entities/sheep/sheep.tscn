@@ -6,7 +6,7 @@
 
 [sub_resource type="SphereMesh" id="SphereMesh_havdw"]
 
-[node name="Sheep" type="CharacterBody3D" groups=["sheep"]]
+[node name="Sheep" type="CharacterBody3D" groups=["pickable", "sheep"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 script = ExtResource("1_ku847")
 sheep_distance_run = 15

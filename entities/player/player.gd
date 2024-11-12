@@ -24,6 +24,12 @@ var _direction = Vector3.ZERO
 @onready var crouching_collision_shape: CollisionShape3D = $CrouchingCollisionShape
 @onready var ray_cast_3d: RayCast3D = $RayCast3D
 
+@onready var direction_ray: RayCast3D = $Head/DirectionRay
+@onready var pickup_point: Node3D = $Head/PickupPoint
+
+var held_object = null
+var is_holding_object: bool = false
+
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
@@ -33,9 +39,13 @@ func _unhandled_input(event: InputEvent) -> void:
 		rotate_y(deg_to_rad(-event.relative.x * mouse_sensitivity))
 		head.rotate_x(deg_to_rad(-event.relative.y * mouse_sensitivity))
 		head.rotation.x = clamp(head.rotation.x, deg_to_rad(-89), deg_to_rad(89))
-
+	elif event is InputEvent:
+		if event.is_action_pressed("interact"):
+			_interact()
 
 func _physics_process(delta: float) -> void:
+	if is_holding_object:
+		held_object.global_position = pickup_point.global_position
 	if Input.is_action_pressed("crouch"):
 		standing_collision_shape.disabled = true
 		crouching_collision_shape.disabled = false
@@ -71,3 +81,16 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, _current_speed)
 
 	move_and_slide()
+	
+func _interact():
+	if is_holding_object:
+		held_object = null
+		is_holding_object = false
+		return
+	if not direction_ray.is_colliding():
+		return
+	var obj = direction_ray.get_collider()
+	if obj.is_in_group("pickable"):
+		held_object = obj
+		is_holding_object = true
+	pass
