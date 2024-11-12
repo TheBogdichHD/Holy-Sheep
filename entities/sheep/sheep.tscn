@@ -1,13 +1,27 @@
-[gd_scene load_steps=3 format=3 uid="uid://dm2130l2l8ctp"]
+[gd_scene load_steps=5 format=3 uid="uid://dm2130l2l8ctp"]
+
+[ext_resource type="Script" path="res://entities/sheep/sheep.gd" id="1_ku847"]
+[ext_resource type="Texture2D" uid="uid://c2e8ofpakp36d" path="res://entities/sheep/noFilter.png" id="2_wteju"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_enxiq"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_cai4n"]
 
-[node name="Sheep" type="CharacterBody3D"]
+[node name="Sheep" type="CharacterBody3D" groups=["sheep"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+script = ExtResource("1_ku847")
+speed = 7.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_enxiq")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_cai4n")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+path_height_offset = 0.1
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+visible = false
+billboard = 1
+texture = ExtResource("2_wteju")
