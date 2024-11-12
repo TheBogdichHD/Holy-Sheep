@@ -7,8 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://ylejm10xlofe" path="res://environment/env/kloofendal_48d_partly_cloudy_puresky_2k.hdr" id="5_3dc0k"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_cchlk"]
-vertices = PackedVector3Array(-0.25, 0.5, 4, 0.25, 0.5, 4, 0.25, 0.5, 3.25, -0.5, 0.5, 3, -9.5, 0.5, 4, -6, 0.5, 4, -5.75, 0.5, 3, 0.75, 0.5, 3, 0.75, 0.75, 0.75, 0.5, 0.75, 0.75, -0.75, 0.5, -1.5, -0.25, 0.5, -2, -0.25, 0.5, -9.5, -9.5, 0.5, -9.5, -0.75, 0.5, 0.5, 1, 1, -0.25, 2, 0.75, -0.25, 2, 0.75, -0.5, 0.75, 1, -0.75, 0.75, 0.75, -2, 1.5, 0.5, -2, 1.5, 0.5, -9.5, 0.625, 1.25, 0, 0.5, 0.75, -2, 2, 0.5, 0.75, 5.75, 0.5, 3, 6, 0.5, 4, 9.5, 0.5, 4, 9.5, 0.5, -9.5, 0.5, 0.5, 5.25, -0.5, 0.5, 5.25, -5.75, 0.5, 5.25, -9.5, 0.5, 9.5, 5.75, 0.5, 5.25, 9.5, 0.5, 9.5)
-polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(6, 5, 4), PackedInt32Array(2, 3, 7), PackedInt32Array(7, 3, 9), PackedInt32Array(7, 9, 8), PackedInt32Array(10, 6, 11), PackedInt32Array(11, 6, 4), PackedInt32Array(11, 4, 12), PackedInt32Array(12, 4, 13), PackedInt32Array(10, 14, 6), PackedInt32Array(9, 3, 14), PackedInt32Array(14, 3, 6), PackedInt32Array(16, 15, 17), PackedInt32Array(17, 15, 18), PackedInt32Array(21, 20, 19), PackedInt32Array(18, 15, 22), PackedInt32Array(22, 15, 8), PackedInt32Array(22, 8, 9), PackedInt32Array(23, 11, 12), PackedInt32Array(19, 18, 23), PackedInt32Array(23, 18, 22), PackedInt32Array(23, 22, 9), PackedInt32Array(23, 12, 19), PackedInt32Array(19, 12, 21), PackedInt32Array(8, 24, 7), PackedInt32Array(7, 24, 25), PackedInt32Array(27, 26, 25), PackedInt32Array(17, 20, 25), PackedInt32Array(25, 20, 27), PackedInt32Array(27, 20, 21), PackedInt32Array(27, 21, 28), PackedInt32Array(25, 24, 16), PackedInt32Array(25, 16, 17), PackedInt32Array(1, 29, 0), PackedInt32Array(0, 29, 30), PackedInt32Array(32, 31, 30), PackedInt32Array(26, 27, 33), PackedInt32Array(33, 27, 34), PackedInt32Array(5, 31, 4), PackedInt32Array(4, 31, 32), PackedInt32Array(29, 33, 34), PackedInt32Array(29, 34, 30), PackedInt32Array(30, 34, 32)]
+vertices = PackedVector3Array(-0.5, 0.5, 3, -0.25, 0.5, 4, 0.25, 0.5, 4, 0.5, 0.5, 3, 0.25, 0.75, 0.75, -0.75, 0.5, 0.75, -5.75, 0.5, 3, -0.75, 0.75, -0.5, -0.25, 0.5, -2, -0.25, 0.5, -28.5, -0.75, 0.75, -0.25, -6, 0.5, 3.5, -38.5, 0.5, -28.5, -38.5, 0.5, 3.5, 0.25, 1.25, -0.25, 0.5, 1, -0.75, 0.75, 0.75, -2, 1.5, 0.5, -2, 1.5, 0.5, -28.5, 1, 1, -0.25, 2, 0.75, -0.25, 2, 0.75, -0.5, 0.75, 1, -0.75, 0.5, 0.75, -2, 0.5, 0.75, 0.75, 0.75, 0.75, 0.75, 2, 0.5, 0.75, 5.75, 0.5, 3, 6, 0.5, 4, 18.5, 0.5, 4, 18.5, 0.5, -28.5, -4.5, 0.5, 22.5, -4.25, 0.5, 5.25, -6, 0.5, 5, -38.5, 0.5, 22.5, 0.5, 0.5, 5.25, -0.5, 0.5, 5.25, 4.5, 0.5, 22.5, 4.25, 0.5, 5.25, 5.75, 0.5, 5.25, 18.5, 0.5, 22.5)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(3, 0, 4), PackedInt32Array(4, 0, 5), PackedInt32Array(7, 6, 8), PackedInt32Array(8, 6, 9), PackedInt32Array(7, 10, 6), PackedInt32Array(6, 11, 9), PackedInt32Array(9, 11, 13), PackedInt32Array(9, 13, 12), PackedInt32Array(5, 0, 6), PackedInt32Array(10, 5, 6), PackedInt32Array(10, 7, 14), PackedInt32Array(14, 7, 15), PackedInt32Array(18, 17, 16), PackedInt32Array(20, 19, 21), PackedInt32Array(21, 19, 22), PackedInt32Array(23, 9, 16), PackedInt32Array(16, 9, 18), PackedInt32Array(22, 19, 15), PackedInt32Array(15, 19, 14), PackedInt32Array(14, 19, 25), PackedInt32Array(14, 25, 24), PackedInt32Array(23, 8, 9), PackedInt32Array(16, 22, 23), PackedInt32Array(23, 22, 15), PackedInt32Array(3, 4, 24), PackedInt32Array(3, 24, 25), PackedInt32Array(25, 26, 3), PackedInt32Array(3, 26, 27), PackedInt32Array(27, 29, 28), PackedInt32Array(27, 26, 20), PackedInt32Array(27, 20, 21), PackedInt32Array(21, 17, 27), PackedInt32Array(27, 17, 29), PackedInt32Array(29, 17, 18), PackedInt32Array(29, 18, 30), PackedInt32Array(32, 31, 33), PackedInt32Array(33, 31, 34), PackedInt32Array(33, 34, 13), PackedInt32Array(13, 11, 33), PackedInt32Array(2, 35, 1), PackedInt32Array(1, 35, 36), PackedInt32Array(36, 35, 31), PackedInt32Array(31, 35, 37), PackedInt32Array(35, 38, 37), PackedInt32Array(31, 32, 36), PackedInt32Array(28, 29, 39), PackedInt32Array(39, 29, 40), PackedInt32Array(39, 40, 37), PackedInt32Array(37, 38, 39)]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_2sfmx"]
 panorama = ExtResource("5_3dc0k")
@@ -30,7 +30,16 @@ script = ExtResource("1_2o0p0")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 2.31763)
 
 [node name="Sheep" parent="Stage" instance=ExtResource("3_pvcdo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.08704, 0.577042, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.1582, 0.5, -13.307)
+
+[node name="Sheep2" parent="Stage" instance=ExtResource("3_pvcdo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.1582, 0.5, -16.711)
+
+[node name="Sheep3" parent="Stage" instance=ExtResource("3_pvcdo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.203, 0.5, -15.5672)
+
+[node name="Sheep4" parent="Stage" instance=ExtResource("3_pvcdo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.679, 0.5, -13.307)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="Stage"]
 navigation_mesh = SubResource("NavigationMesh_cchlk")
