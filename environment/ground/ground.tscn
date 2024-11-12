@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://rcedcl2ogjsn"]
+
+[ext_resource type="Texture2D" uid="uid://4i6grgmknfne" path="res://environment/ground/dark_texture.png" id="1_wi6na"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_par21"]
+albedo_texture = ExtResource("1_wi6na")
+uv1_triplanar = true
+
+[node name="Ground" type="CSGBox3D"]
+use_collision = true
+size = Vector3(20, 1, 20)
+material = SubResource("StandardMaterial3D_par21")
