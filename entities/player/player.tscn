@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ug4cqscs1mdr"]
+[gd_scene load_steps=9 format=3 uid="uid://ug4cqscs1mdr"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_5mt8k"]
 [ext_resource type="Texture2D" uid="uid://ca4qyqd7wst5y" path="res://entities/player/empty.png" id="2_msnmn"]
@@ -11,24 +11,11 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oxr6w"]
 height = 1.2
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_d4iqy"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_msnmn")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("3_tvpsb")
-}],
-"loop": true,
-"name": &"with_sheep",
-"speed": 5.0
-}]
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_t7mlv"]
+frame_0/texture = ExtResource("2_msnmn")
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_dprfa"]
+frame_0/texture = ExtResource("3_tvpsb")
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -58,11 +45,39 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 [node name="DirectionRay" type="RayCast3D" parent="Head"]
 target_position = Vector3(0, 0, -2)
 
-[node name="HandsSprite" type="AnimatedSprite3D" parent="Head"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, -0.8)
-sprite_frames = SubResource("SpriteFrames_d4iqy")
-
 [node name="SpawnPoint" type="Node3D" parent="Head"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
 
 [node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="HandsSprite" type="TextureRect" parent="CanvasLayer/Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AnimatedTexture_t7mlv")
+
+[node name="SheepSprite" type="TextureRect" parent="CanvasLayer/Control"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AnimatedTexture_dprfa")

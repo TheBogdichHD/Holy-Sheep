@@ -25,8 +25,10 @@ var _direction = Vector3.ZERO
 @onready var ray_cast_3d: RayCast3D = $RayCast3D
 
 @onready var direction_ray: RayCast3D = $Head/DirectionRay
-@onready var hands_sprite: AnimatedSprite3D = $Head/HandsSprite
 @onready var spawn_point: Node3D = $Head/SpawnPoint
+@onready var hands_sprite: TextureRect = %HandsSprite
+@onready var sheep_sprite: TextureRect = %SheepSprite
+
 
 var held_object = null
 var is_holding_object: bool = false
@@ -83,7 +85,7 @@ func _physics_process(delta: float) -> void:
 	
 func _interact():
 	if is_holding_object:
-		hands_sprite.play("default")
+		sheep_sprite.visible = not sheep_sprite.visible
 		held_object.global_transform = spawn_point.global_transform
 		get_tree().get_root().add_child(held_object)
 		held_object = null
@@ -94,7 +96,7 @@ func _interact():
 	var obj = direction_ray.get_collider()
 	if obj.is_in_group("pickable"):
 		held_object = obj.duplicate()
-		hands_sprite.play("with_sheep")
+		sheep_sprite.visible = not sheep_sprite.visible
 		is_holding_object = true
 		obj.queue_free()
 	pass
