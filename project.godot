@@ -15,6 +15,10 @@ run/main_scene="res://environment/world/world.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+OrderManager="*res://environment/env/orders/order_manager.gd"
+
 [display]
 
 window/stretch/mode="viewport"
@@ -33,6 +37,7 @@ folder_colors={
 
 sheep=""
 pickable="objects that you can pick"
+player=""
 
 [input]
 

@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://p1toojqobh2a"]
+
+[ext_resource type="Script" path="res://environment/env/orders/order_giver.gd" id="1_1qj7p"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_samb0"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_e1llt"]
+
+[node name="OrderGiver" type="StaticBody3D"]
+script = ExtResource("1_1qj7p")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_samb0")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
+shape = SubResource("SphereShape3D_e1llt")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
