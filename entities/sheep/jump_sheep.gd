@@ -1,10 +1,11 @@
-class_name Sheep
+class_name JumpSheep
 extends CharacterBody3D
 
 
 @export var sheep_distance_run = 10
 @export var walking_speed = 5.0
 @export var running_speed = 15.0
+@export var jump_height = 50
 
 var _destination = Vector3.ZERO
 var _is_walking = false
@@ -43,9 +44,9 @@ func _physics_process(delta: float) -> void:
 
 
 func update_target_location(target_location) -> void:
-	var distance = global_transform.origin.distance_to(target_location)
+	var distance = (global_transform.origin - Vector3(0, global_transform.origin.y, 0)).distance_to(target_location - Vector3(0, target_location.y, 0))
 	var new_position = global_transform.origin
-	
+	print(distance)
 	if distance < sheep_distance_run:
 		var dir_to_player = global_transform.origin - target_location
 		
@@ -75,8 +76,10 @@ func _on_timer_timeout() -> void:
 
 func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
 	velocity = velocity.move_toward(safe_velocity, 0.3)
-	velocity += Vector3(0, _vertical_velocity * 0.4, 0)
-	
+	if not is_on_floor():
+		velocity += Vector3(0, _vertical_velocity * 0.4, 0)
+	elif _is_running_away:
+		velocity += Vector3(0, jump_height * 0.4, 0)
 	if velocity.length() > 0.1:
 		var target_rotation_y = atan2(-velocity.x, -velocity.z) + deg_to_rad(90)
 		

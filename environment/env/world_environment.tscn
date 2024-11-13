@@ -1,18 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://ca4p4824lt66u"]
+[gd_scene load_steps=2 format=3 uid="uid://ca4p4824lt66u"]
 
-[ext_resource type="Texture2D" uid="uid://ylejm10xlofe" path="res://environment/env/kloofendal_48d_partly_cloudy_puresky_2k.hdr" id="1_t1jvh"]
-
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_2sfmx"]
-panorama = ExtResource("1_t1jvh")
-
-[sub_resource type="Sky" id="Sky_wa7wn"]
-sky_material = SubResource("PanoramaSkyMaterial_2sfmx")
-
-[sub_resource type="Environment" id="Environment_yugwf"]
-background_mode = 2
-sky = SubResource("Sky_wa7wn")
-tonemap_mode = 2
-glow_enabled = true
+[ext_resource type="Environment" uid="uid://bes28w70u3g6s" path="res://environment/env/world_environment.tres" id="1_8jgee"]
 
 [node name="WorldEnvironment" type="WorldEnvironment"]
-environment = SubResource("Environment_yugwf")
+environment = ExtResource("1_8jgee")
