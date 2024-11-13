@@ -29,6 +29,7 @@ func dump_first_physics_frame() -> void:
 func _physics_process(delta: float) -> void:
 	var current_location = global_transform.origin
 	var next_location = navigation_agent_3d.get_next_path_position()
+	
 	var new_velocity
 	if _is_running_away:
 		new_velocity = (next_location - current_location).normalized() * running_speed
@@ -65,9 +66,9 @@ func update_target_location(target_location) -> void:
 
 func _on_timer_timeout() -> void:
 	_destination = Vector3(
-			global_transform.origin.x + randi_range(-20, 20), 
+			global_transform.origin.x + randi_range(-50, 50), 
 			global_transform.origin.y,
-			global_transform.origin.z + randi_range(-20, 20))
+			global_transform.origin.z + randi_range(-50, 50))
 	
 	_is_walking = true
 
@@ -75,4 +76,10 @@ func _on_timer_timeout() -> void:
 func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
 	velocity = velocity.move_toward(safe_velocity, 0.3)
 	velocity += Vector3(0, _vertical_velocity * 0.4, 0)
+	
+	if velocity.length() > 0.1:
+		var target_rotation_y = atan2(-velocity.x, -velocity.z) + deg_to_rad(90)
+		
+		rotation.y = lerp_angle(rotation.y, target_rotation_y, 0.1)
+	
 	move_and_slide()

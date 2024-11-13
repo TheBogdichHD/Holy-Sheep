@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dm2130l2l8ctp"]
 
 [ext_resource type="Script" path="res://entities/sheep/sheep.gd" id="1_ku847"]
-[ext_resource type="PackedScene" uid="uid://b45v06eorspg0" path="res://entities/sheep/sheep.glb" id="2_rqx21"]
+[ext_resource type="PackedScene" uid="uid://b7cvq3gfnkvmo" path="res://entities/sheep/sheep.blend" id="2_cduut"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_5w0s4"]
 radius = 1.0
@@ -10,9 +10,7 @@ radius = 1.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 script = ExtResource("1_ku847")
 sheep_distance_run = 15
-
-[node name="sheep" parent="." instance=ExtResource("2_rqx21")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.5, 0)
+running_speed = 20.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0.5, 0)
@@ -21,10 +19,14 @@ shape = SubResource("SphereShape3D_5w0s4")
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 path_height_offset = 0.1
 avoidance_enabled = true
-radius = 1.0
+height = 5.0
+radius = 5.0
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
+
+[node name="sheep" parent="." instance=ExtResource("2_cduut")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

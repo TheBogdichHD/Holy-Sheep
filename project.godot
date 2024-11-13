@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-OrderManager="*res://environment/env/orders/order_manager.gd"
+OrderManager="*res://environment/orders/order_manager.gd"
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 
 [display]

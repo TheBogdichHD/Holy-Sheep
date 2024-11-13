@@ -1,0 +1,16 @@
+[gd_resource type="Environment" load_steps=3 format=3 uid="uid://bes28w70u3g6s"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3jluy"]
+sky_top_color = Color(0.703085, 0.755284, 0.828106, 1)
+sky_horizon_color = Color(0.547828, 0.557984, 0.57402, 1)
+sun_angle_max = 57.46
+sun_curve = 0.409812
+
+[sub_resource type="Sky" id="Sky_f6lms"]
+sky_material = SubResource("ProceduralSkyMaterial_3jluy")
+
+[resource]
+background_mode = 2
+sky = SubResource("Sky_f6lms")
+tonemap_mode = 2
+glow_enabled = true
