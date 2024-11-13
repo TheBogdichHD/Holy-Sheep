@@ -1,6 +1,6 @@
 extends Node
 
-var _sheep_colors = ["white", "black", "red"]
+var _sheep_colors = ["белый", "чёрный", "красный"]
 var _current_order = {}
 
 var _order_taken = false
@@ -18,9 +18,12 @@ func generate_order():
 	var sheep_in_order = 0
 	while sheep_in_order == 0:
 		for color in _sheep_colors:
-			var sheep_to_add = randi_range(0, _orders_completed + 2)
+			#var sheep_to_add = randi_range(0, _orders_completed + 2)
+			var sheep_to_add = randi_range(0, 1)
 			_current_order[color] += min(sheep_to_add, _max_sheep_in_order - sheep_in_order)
 			sheep_in_order += _current_order[color]
+			if sheep_in_order > _max_sheep_in_order:
+				break
 
 
 func is_order_completed(collected_sheep):
@@ -36,7 +39,8 @@ func reset_order():
 		_current_order[color] = 0
 	randomize()
 	_sheep_colors.shuffle() # чтоб оно не выдавало все заказы с овцами из начала списка
-	_max_sheep_in_order = _orders_completed * 2 + 1
+	#_max_sheep_in_order = _orders_completed * 2 + 1
+	_max_sheep_in_order = 1 # упрощение
 
 
 func get_order():
