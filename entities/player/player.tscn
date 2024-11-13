@@ -1,7 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://ug4cqscs1mdr"]
+[gd_scene load_steps=6 format=3 uid="uid://ug4cqscs1mdr"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_5mt8k"]
-[ext_resource type="Environment" uid="uid://bes28w70u3g6s" path="res://environment/env/world_environment.tres" id="2_vvyrk"]
+[ext_resource type="PackedScene" uid="uid://b7cvq3gfnkvmo" path="res://entities/sheep/sheep.blend" id="2_hfgkk"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_et56s"]
 
@@ -9,12 +9,6 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oxr6w"]
 height = 1.2
-
-[sub_resource type="World3D" id="World3D_31h6p"]
-environment = ExtResource("2_vvyrk")
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_fc73w"]
-viewport_path = NodePath("SubViewport")
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -39,6 +33,10 @@ target_position = Vector3(0, 2, 0)
 [node name="Head" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 
+[node name="SheepModel" parent="Head" instance=ExtResource("2_hfgkk")]
+unique_name_in_owner = true
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, -1.51507, -1.78937)
+
 [node name="Camera3D" type="Camera3D" parent="Head"]
 
 [node name="DirectionRay" type="RayCast3D" parent="Head"]
@@ -48,33 +46,3 @@ target_position = Vector3(0, 0, -2)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
 
 [node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="."]
-
-[node name="SubViewport" type="SubViewport" parent="."]
-own_world_3d = true
-world_3d = SubResource("World3D_31h6p")
-transparent_bg = true
-size = Vector2i(1024, 512)
-size_2d_override_stretch = true
-
-[node name="Camera3D2" type="Camera3D" parent="SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9, 1.19209e-07)
-
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="TextureRect" type="TextureRect" parent="Control"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("ViewportTexture_fc73w")
-expand_mode = 3
-stretch_mode = 3
