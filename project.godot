@@ -24,9 +24,14 @@ OrderManager="*res://environment/env/orders/order_manager.gd"
 window/stretch/mode="viewport"
 window/vsync/vsync_mode=0
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg", "res://addons/phantom_camera/plugin.cfg")
+
 [file_customization]
 
 folder_colors={
+"res://addons/": "gray",
 "res://common/": "red",
 "res://entities/": "orange",
 "res://environment/": "purple",
