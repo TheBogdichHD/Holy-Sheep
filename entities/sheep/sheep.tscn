@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dm2130l2l8ctp"]
+[gd_scene load_steps=5 format=3 uid="uid://dm2130l2l8ctp"]
 
 [ext_resource type="Script" path="res://entities/sheep/sheep.gd" id="1_ku847"]
 [ext_resource type="PackedScene" uid="uid://b7cvq3gfnkvmo" path="res://entities/sheep/sheep.blend" id="2_y2fuv"]
+[ext_resource type="Script" path="res://entities/sheep/sheep_color.gd" id="3_wvbfr"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_5w0s4"]
 radius = 1.0
@@ -26,6 +27,9 @@ autostart = true
 
 [node name="SheepModel" parent="." instance=ExtResource("2_y2fuv")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="SheepColor" type="Node3D" parent="."]
+script = ExtResource("3_wvbfr")
 
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
