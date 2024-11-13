@@ -85,11 +85,12 @@ func _physics_process(delta: float) -> void:
 
 func _interact():
 	if is_holding_object:
-		sheep_model.visible = false
 		held_object.global_transform = spawn_point.global_transform
+		held_object.rotation = Vector3.ZERO
 		get_tree().get_root().add_child(held_object)
 		held_object = null
 		is_holding_object = false
+		sheep_model.visible = false
 		return
 	if not direction_ray.is_colliding():
 		return

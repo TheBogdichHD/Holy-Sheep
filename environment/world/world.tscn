@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://dxtm06w2siy8t"]
+[gd_scene load_steps=12 format=3 uid="uid://dxtm06w2siy8t"]
 
 [ext_resource type="Script" path="res://environment/world/world.gd" id="1_2o0p0"]
 [ext_resource type="PackedScene" uid="uid://rcedcl2ogjsn" path="res://environment/ground/ground.tscn" id="1_gl6qs"]
 [ext_resource type="PackedScene" uid="uid://ug4cqscs1mdr" path="res://entities/player/player.tscn" id="2_kj2fg"]
 [ext_resource type="PackedScene" uid="uid://dm2130l2l8ctp" path="res://entities/sheep/sheep.tscn" id="3_pvcdo"]
 [ext_resource type="Texture2D" uid="uid://ylejm10xlofe" path="res://environment/env/kloofendal_48d_partly_cloudy_puresky_2k.hdr" id="5_3dc0k"]
+[ext_resource type="PackedScene" uid="uid://ds434eutphawg" path="res://entities/sheep/jump_sheep.tscn" id="5_jjmy7"]
 [ext_resource type="PackedScene" uid="uid://p1toojqobh2a" path="res://environment/orders/order_giver.tscn" id="6_oq6ml"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_cchlk"]
@@ -30,6 +31,7 @@ script = ExtResource("1_2o0p0")
 
 [node name="Player" parent="Stage" instance=ExtResource("2_kj2fg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 2.31763)
+sprinting_speed = 10.0
 
 [node name="Sheep" parent="Stage" instance=ExtResource("3_pvcdo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.1582, 0.5, -13.307)
@@ -47,6 +49,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.2742, 0.5, 1.7082)
 navigation_mesh = SubResource("NavigationMesh_cchlk")
 
 [node name="Ground" parent="Stage/NavigationRegion3D" instance=ExtResource("1_gl6qs")]
+
+[node name="Sheep5" parent="Stage" instance=ExtResource("5_jjmy7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.0689, 0.5, -10.7083)
 
 [node name="Environment" type="Node3D" parent="."]
 
