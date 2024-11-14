@@ -16,9 +16,11 @@ extends CharacterBody3D
 
 var _current_speed = 5.0
 var _direction = Vector3.ZERO
+var _fov = 75
 
 @onready var head: Node3D = $Head
 @onready var head_start_position: float = head.position.y
+@onready var camera_3d: Camera3D = $Head/Camera3D
 
 @onready var standing_collision_shape: CollisionShape3D = $StandingCollisionShape
 @onready var crouching_collision_shape: CollisionShape3D = $CrouchingCollisionShape
@@ -36,7 +38,6 @@ var is_crouching = false
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
-
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		rotate_y(deg_to_rad(-event.relative.x * mouse_sensitivity))
@@ -45,7 +46,10 @@ func _unhandled_input(event: InputEvent) -> void:
 	elif event is InputEvent:
 		if event.is_action_pressed("interact"):
 			_interact()
-
+	if Input.is_action_pressed("zoom"):
+		camera_3d.fov -= 40
+	if Input.is_action_just_released("zoom"):
+		camera_3d.fov += 40
 func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("crouch"):
 		standing_collision_shape.disabled = true
@@ -62,7 +66,6 @@ func _physics_process(delta: float) -> void:
 			_current_speed = sprinting_speed
 		else:
 			_current_speed = walking_speed
-
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta

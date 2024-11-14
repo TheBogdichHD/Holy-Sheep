@@ -19,7 +19,6 @@ shape = SubResource("SphereShape3D_5w0s4")
 path_height_offset = 0.1
 avoidance_enabled = true
 height = 5.0
-radius = 2.0
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
