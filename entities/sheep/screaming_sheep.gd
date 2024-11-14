@@ -5,6 +5,7 @@ extends CharacterBody3D
 @export var sheep_distance_run = 10
 @export var walking_speed = 5.0
 @export var running_speed = 15.0
+@export var sheep_color: Color = Color(1, 0, 0)
 
 var _destination = Vector3.ZERO
 var _is_walking = false
@@ -18,6 +19,14 @@ var _vertical_velocity: float = 0.0
 
 
 func _ready() -> void:
+	var cube: MeshInstance3D = sheep_model.get_child(0)
+	var surface_material: StandardMaterial3D = cube.mesh.surface_get_material(0)
+	var dup_surface_material = surface_material.duplicate(true)
+	
+	dup_surface_material.albedo_color = sheep_color
+
+	cube.set_surface_override_material(0, dup_surface_material)
+	
 	navigation_agent_3d.target_position = global_transform.origin
 	set_physics_process(false)
 	call_deferred("dump_first_physics_frame")
@@ -111,7 +120,9 @@ func enable_outline():
 	var dup_shader = shader.duplicate(true)
 	
 	dup_shader.set_shader_parameter("size", 1.05)
+	dup_shader.set_shader_parameter("color", sheep_color)
 	
+	dup_surface_material.albedo_color = sheep_color
 	dup_surface_material.next_pass = dup_shader
 	cube.set_surface_override_material(0, dup_surface_material)
 
@@ -126,7 +137,9 @@ func disable_outline():
 	var dup_shader = shader.duplicate(true)
 	
 	dup_shader.set_shader_parameter("size", 1.0)
+
 	
+	dup_surface_material.albedo_color = sheep_color
 	dup_surface_material.next_pass = dup_shader
 	cube.set_surface_override_material(0, dup_surface_material)
 

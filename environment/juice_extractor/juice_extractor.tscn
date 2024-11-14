@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://xsyntxurh6u4"]
 
-[ext_resource type="PackedScene" uid="uid://btqgntxiq72mn" path="res://environment/juice_extractor/big_bottle.blend" id="1_pu0jr"]
+[ext_resource type="PackedScene" uid="uid://dk33tm03otx54" path="res://environment/juice_extractor/big_bottle.blend" id="1_pu0jr"]
 
 [node name="JuiceExtractor" type="Node3D"]
 

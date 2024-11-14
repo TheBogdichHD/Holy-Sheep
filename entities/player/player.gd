@@ -101,10 +101,19 @@ func _interact():
 		return
 	var obj = direction_ray.get_collider()
 	if obj.is_in_group("pickable"):
+		var cube: MeshInstance3D = sheep_model.get_child(0)
+		var surface_material: ShaderMaterial = cube.mesh.surface_get_material(0)
+		var dup_surface_material: ShaderMaterial = surface_material.duplicate(true)
+		
+		dup_surface_material.set_shader_parameter("albedo", obj.sheep_color)
+		
+		cube.set_surface_override_material(0, dup_surface_material)
+		
 		if obj is JumpSheep:
 			var parent = obj.get_parent()
 			obj.global_position = parent.global_position
-			obj = parent 
+			obj = parent
+		
 		held_object = obj.duplicate()
 		sheep_model.visible = true
 		is_holding_object = true
