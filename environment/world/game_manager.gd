@@ -4,6 +4,7 @@ extends Node
 @onready var timer_text: RichTextLabel = $MarginContainer/TimerLabel
 @onready var score_label: Label = $MarginContainer/ScoreLabel
 @onready var max_time: float = 60
+@onready var order_manager = $"../OrderManager"
 const TIME_STEP: float = 30
 
 # Called when the node enters the scene tree for the first time.
@@ -17,11 +18,13 @@ func _process(_delta: float) -> void:
 	update_timer_label()
 
 func start_cycle():
+	order_manager.set_give_order(true)
 	timer.start(max_time)
 	max_time += TIME_STEP
 
 func _on_cycle_timer_timeout() -> void:
 	timer.stop()
+	order_manager.reset_order()
 	score_label.text = "Time left!\nYour score: *your_score*"
 
 func update_timer_label():

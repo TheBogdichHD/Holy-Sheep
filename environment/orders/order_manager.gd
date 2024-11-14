@@ -8,6 +8,7 @@ var _order_taken = false
 var _orders_completed = 0
 var _max_sheep_in_order
 
+var give_order: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -38,6 +39,7 @@ func is_order_completed() -> bool:
 
 ## Сбросить состояние заказа
 func reset_order() -> void:
+	give_order = false
 	_order_taken = false
 	for color in _sheep_colors:
 		_current_order[color] = 0
@@ -68,7 +70,12 @@ func complete_order() -> void:
 	_orders_completed += 1
 	generate_order()
 
-
 ## Собрать овцу
 func collect_sheep(sheep_color: String) -> void:
 	_collected_sheep[sheep_color] += 1
+
+func set_give_order(b: bool):
+	give_order = b
+
+func get_give_order():
+	return give_order
