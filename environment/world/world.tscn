@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dxtm06w2siy8t"]
+[gd_scene load_steps=16 format=3 uid="uid://dxtm06w2siy8t"]
 
 [ext_resource type="Script" path="res://environment/world/world.gd" id="1_2o0p0"]
 [ext_resource type="PackedScene" uid="uid://rcedcl2ogjsn" path="res://environment/ground/ground.tscn" id="1_gl6qs"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://p1toojqobh2a" path="res://environment/orders/order_giver.tscn" id="6_oq6ml"]
 [ext_resource type="PackedScene" uid="uid://bv8dj2g6xdagj" path="res://entities/sheep/jump_sheep_remote_transform.tscn" id="7_x2a2w"]
 [ext_resource type="PackedScene" uid="uid://xtlfpuie10jt" path="res://environment/orders/order_reciever.tscn" id="9_yiewd"]
+[ext_resource type="PackedScene" uid="uid://dkylkr32w7fjn" path="res://entities/sheep/screaming_sheep.tscn" id="11_trqbb"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_cchlk"]
 vertices = PackedVector3Array(-0.5, 0.5, 3, -0.25, 0.5, 4, 0.25, 0.5, 4, 0.5, 0.5, 3, 0.25, 0.75, 0.75, -0.75, 0.5, 0.75, -37.5, 0.5, 21.5, -6, 0.5, 5, -6, 0.5, 3.5, -5.75, 0.5, 3, -0.75, 0.75, -0.25, -0.75, 0.75, -0.5, -0.25, 0.5, -2, 17.5, 0.5, -27.5, -37.5, 0.5, -27.5, 0.25, 1.25, -0.25, 0.5, 1, -0.75, 5.75, 0.5, 3, 6, 0.5, 4, 17.5, 0.5, 21.5, 1, 1, -0.25, 2, 0.75, -0.25, 2, 0.75, -0.5, 0.75, 1, -0.75, 0.5, 0.75, 0.75, 0.75, 0.75, 0.75, 0.5, 0.75, -2, 0.75, 0.75, -2, 2, 0.5, 0.75, 0.5, 0.5, 5.25, -0.5, 0.5, 5.25, 1.5, 0.5, -2, 5.75, 0.5, 5.25, 4.25, 0.5, 5.25, -4.25, 0.5, 5.25)
@@ -77,3 +78,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0.5, -5.5)
 
 [node name="OrderReciever" parent="OrderManager" instance=ExtResource("9_yiewd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0, -5.5)
+
+[node name="Sheep" parent="." instance=ExtResource("11_trqbb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.6993, -4.76837e-07, 4.9074)

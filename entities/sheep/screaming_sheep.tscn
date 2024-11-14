@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dkylkr32w7fjn"]
 
-[ext_resource type="Script" path="res://entities/sheep/sheep.gd" id="1_ihhyv"]
+[ext_resource type="Script" path="res://entities/sheep/screaming_sheep.gd" id="1_msb6r"]
 [ext_resource type="PackedScene" uid="uid://b7cvq3gfnkvmo" path="res://entities/sheep/sheep.blend" id="2_trsw0"]
 [ext_resource type="Script" path="res://entities/sheep/sheep_color.gd" id="3_fitst"]
 
@@ -11,9 +11,8 @@ radius = 1.0
 points = PackedVector3Array(0, 0, 5, 0, 10, 5, 0, 10, -5, 0, 0, -5, 30, 0, 20, 30, 20, 20, 30, 20, -20, 30, 0, -20)
 
 [node name="Sheep" type="CharacterBody3D" groups=["pickable", "sheep"]]
-script = ExtResource("1_ihhyv")
-sheep_distance_run = 15
-running_speed = 10.0
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 0, 0)
+script = ExtResource("1_msb6r")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 1, 0)
@@ -47,7 +46,13 @@ shape = SubResource("SphereShape3D_5w0s4")
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_fu2pm")
 
+[node name="RotationTimer" type="Timer" parent="."]
+
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
 [connection signal="area_exited" from="Area3D" to="." method="_on_area_3d_area_exited"]
+[connection signal="area_entered" from="ScreamRange" to="." method="_on_scream_range_area_entered"]
+[connection signal="body_entered" from="ScreamRange" to="." method="_on_scream_range_body_entered"]
+[connection signal="body_exited" from="ScreamRange" to="." method="_on_scream_range_body_exited"]
+[connection signal="timeout" from="RotationTimer" to="." method="_on_rotation_timer_timeout"]
