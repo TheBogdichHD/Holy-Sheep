@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=3 uid="uid://dkylkr32w7fjn"]
+
+[ext_resource type="Script" path="res://entities/sheep/sheep.gd" id="1_ihhyv"]
+[ext_resource type="PackedScene" uid="uid://b7cvq3gfnkvmo" path="res://entities/sheep/sheep.blend" id="2_trsw0"]
+[ext_resource type="Script" path="res://entities/sheep/sheep_color.gd" id="3_fitst"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_5w0s4"]
+radius = 1.0
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_fu2pm"]
+points = PackedVector3Array(0, 0, 5, 0, 10, 5, 0, 10, -5, 0, 0, -5, 30, 0, 20, 30, 20, 20, 30, 20, -20, 30, 0, -20)
+
+[node name="Sheep" type="CharacterBody3D" groups=["pickable", "sheep"]]
+script = ExtResource("1_ihhyv")
+sheep_distance_run = 15
+running_speed = 10.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("SphereShape3D_5w0s4")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+path_height_offset = 0.1
+avoidance_enabled = true
+height = 5.0
+radius = 2.0
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="SheepModel" parent="." instance=ExtResource("2_trsw0")]
+unique_name_in_owner = true
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="SheepColor" type="Node3D" parent="."]
+script = ExtResource("3_fitst")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("SphereShape3D_5w0s4")
+
+[node name="ScreamRange" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ScreamRange"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_fu2pm")
+
+[connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
+[connection signal="area_exited" from="Area3D" to="." method="_on_area_3d_area_exited"]
