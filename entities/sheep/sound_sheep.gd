@@ -14,6 +14,7 @@ var is_player_crouching = false
 
 @onready var timer: Timer = $Timer
 @onready var navigation_agent_3d: NavigationAgent3D = $NavigationAgent3D
+@onready var sheep_model: Node3D = $SheepModel
 
 
 func _ready() -> void:
@@ -86,3 +87,40 @@ func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
 		rotation.y = lerp_angle(rotation.y, target_rotation_y, 0.1)
 	
 	move_and_slide()
+
+# HACK: very bad, i dont know how to do better
+func enable_outline():
+	var cube: MeshInstance3D = sheep_model.get_child(0)
+	var surface_material: StandardMaterial3D = cube.mesh.surface_get_material(0)
+	var dup_surface_material = surface_material.duplicate(true)
+	
+	var shader: ShaderMaterial = surface_material.next_pass
+	var dup_shader = shader.duplicate(true)
+	
+	dup_shader.set_shader_parameter("size", 1.05)
+	
+	dup_surface_material.next_pass = dup_shader
+	cube.set_surface_override_material(0, dup_surface_material)
+
+func disable_outline():
+	var cube: MeshInstance3D = sheep_model.get_child(0)
+	var surface_material: StandardMaterial3D = cube.mesh.surface_get_material(0)
+	var dup_surface_material = surface_material.duplicate(true)
+	
+	var shader: ShaderMaterial = surface_material.next_pass
+	var dup_shader = shader.duplicate(true)
+	
+	dup_shader.set_shader_parameter("size", 1.0)
+	
+	dup_surface_material.next_pass = dup_shader
+	cube.set_surface_override_material(0, dup_surface_material)
+
+
+func _on_area_3d_area_entered(area: Area3D) -> void:
+	if area.is_in_group("player"):
+		enable_outline()
+
+
+func _on_area_3d_area_exited(area: Area3D) -> void:
+	if area.is_in_group("player"):
+		disable_outline()
