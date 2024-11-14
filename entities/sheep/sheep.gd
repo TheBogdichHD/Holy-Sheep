@@ -5,7 +5,7 @@ extends CharacterBody3D
 @export var sheep_distance_run = 10
 @export var walking_speed = 5.0
 @export var running_speed = 15.0
-
+@export var sheep_color = Color(1, 1, 1)
 var _destination = Vector3.ZERO
 var _is_walking = false
 var _is_running_away = false
@@ -57,7 +57,7 @@ func update_target_location(target_location) -> void:
 	else:
 		_is_running_away = false
 		if _destination.distance_to(global_transform.origin) < 0.05 and not _is_walking:
-			_is_walking = false
+			_is_walking = true
 			timer.wait_time = randi_range(3, 5)
 			timer.start()
 		else:
