@@ -86,7 +86,7 @@ func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
 	
 	move_and_slide()
 
-
+# HACK: very bad, i dont know how to do better
 func enable_outline():
 	var cube: MeshInstance3D = sheep_model.get_child(0)
 	var surface_material: StandardMaterial3D = cube.mesh.surface_get_material(0)
@@ -99,6 +99,7 @@ func enable_outline():
 	
 	dup_surface_material.next_pass = dup_shader
 	cube.set_surface_override_material(0, dup_surface_material)
+
 
 
 func disable_outline():
