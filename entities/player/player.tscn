@@ -1,8 +1,9 @@
-[gd_scene load_steps=20 format=4 uid="uid://ug4cqscs1mdr"]
+[gd_scene load_steps=23 format=4 uid="uid://ug4cqscs1mdr"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_5mt8k"]
 [ext_resource type="PackedScene" uid="uid://b7cvq3gfnkvmo" path="res://entities/sheep/sheep.blend" id="2_hfgkk"]
 [ext_resource type="Texture2D" uid="uid://di4v8q182ht2f" path="res://entities/sheep/textures/sheep_texture.png" id="3_cxfcg"]
+[ext_resource type="Shader" path="res://entities/player/psx_camera.gdshader" id="4_tw752"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_et56s"]
 
@@ -215,6 +216,25 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_2yey1")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mowpu"]
+render_priority = 0
+shader = ExtResource("4_tw752")
+shader_parameter/enable_fog = false
+shader_parameter/fog_color = Color(0.729412, 0.729412, 0.729412, 1)
+shader_parameter/noise_color = null
+shader_parameter/fog_distance = 100.0
+shader_parameter/fog_fade_range = 50.0
+shader_parameter/enable_noise = false
+shader_parameter/noise_time_fac = 4.0
+shader_parameter/enable_color_limitation = true
+shader_parameter/color_levels = 32
+shader_parameter/enable_dithering = true
+shader_parameter/dither_strength = 0.3
+
+[sub_resource type="QuadMesh" id="QuadMesh_wq5wl"]
+material = SubResource("ShaderMaterial_mowpu")
+size = Vector2(2, 2)
+
 [sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_1j4da"]
 length = 2.0
 
@@ -256,6 +276,10 @@ mesh = SubResource("ArrayMesh_wbncw")
 mesh = SubResource("ArrayMesh_srjlh")
 
 [node name="Camera3D" type="Camera3D" parent="Head"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Head/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+mesh = SubResource("QuadMesh_wq5wl")
 
 [node name="Area3D" type="Area3D" parent="Head" groups=["player"]]
 

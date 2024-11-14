@@ -4,7 +4,7 @@
 [ext_resource type="Shader" path="res://entities/sheep/sheep_outline.gdshader" id="2_gjhr1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ny0jn"]
-render_priority = 0
+render_priority = 1
 shader = ExtResource("2_gjhr1")
 shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/size = 1.0
