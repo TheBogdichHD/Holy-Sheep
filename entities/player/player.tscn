@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://ug4cqscs1mdr"]
+[gd_scene load_steps=7 format=3 uid="uid://ug4cqscs1mdr"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_5mt8k"]
 [ext_resource type="PackedScene" uid="uid://b7cvq3gfnkvmo" path="res://entities/sheep/sheep.blend" id="2_hfgkk"]
@@ -9,6 +9,9 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oxr6w"]
 height = 1.2
+
+[sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_1j4da"]
+length = 2.0
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -40,8 +43,15 @@ visible = false
 
 [node name="Camera3D" type="Camera3D" parent="Head"]
 
+[node name="Area3D" type="Area3D" parent="Head" groups=["player"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Head/Area3D"]
+transform = Transform3D(-1, 0, 0, 0, -1, 0, 0, 0, -1, 0, 0, 0)
+shape = SubResource("SeparationRayShape3D_1j4da")
+
 [node name="DirectionRay" type="RayCast3D" parent="Head"]
 target_position = Vector3(0, 0, -2)
+collide_with_areas = true
 
 [node name="SpawnPoint" type="Node3D" parent="Head"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
