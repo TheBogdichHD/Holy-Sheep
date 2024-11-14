@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://lw3javo88mpe"]
+
+[ext_resource type="Script" path="res://entities/sheep/sound_sheep.gd" id="1_0q1f3"]
+[ext_resource type="PackedScene" uid="uid://b7cvq3gfnkvmo" path="res://entities/sheep/sheep.blend" id="2_al2fa"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_5w0s4"]
+radius = 1.0
+
+[node name="Sheep" type="CharacterBody3D" groups=["pickable", "sheep", "sound_sheep"]]
+script = ExtResource("1_0q1f3")
+sheep_distance_run = 15
+running_speed = 50.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("SphereShape3D_5w0s4")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+path_height_offset = 0.1
+avoidance_enabled = true
+height = 5.0
+radius = 2.0
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="SheepModel" parent="." instance=ExtResource("2_al2fa")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

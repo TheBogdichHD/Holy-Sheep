@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://bv8dj2g6xdagj"]
+
+[ext_resource type="Script" path="res://entities/sheep/jump_sheep.gd" id="1_xaixe"]
+[ext_resource type="PackedScene" uid="uid://b7cvq3gfnkvmo" path="res://entities/sheep/sheep.blend" id="2_p2ghg"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_5w0s4"]
+radius = 1.0
+
+[node name="JumpSheepFixedNav" type="Node3D"]
+
+[node name="Sheep" type="CharacterBody3D" parent="." groups=["pickable", "sheep"]]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.5, 0)
+script = ExtResource("1_xaixe")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sheep"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("SphereShape3D_5w0s4")
+
+[node name="Timer" type="Timer" parent="Sheep"]
+autostart = true
+
+[node name="sheep" parent="Sheep" instance=ExtResource("2_p2ghg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="FixedNavPoint" type="Node3D" parent="."]
+
+[node name="JumpSheepAgent" type="NavigationAgent3D" parent="FixedNavPoint"]
+unique_name_in_owner = true
+path_height_offset = 0.1
+avoidance_enabled = true
+height = 4.0
+radius = 1.0
+
+[connection signal="timeout" from="Sheep/Timer" to="Sheep" method="_on_timer_timeout"]
+[connection signal="velocity_computed" from="FixedNavPoint/JumpSheepAgent" to="Sheep" method="_on_navigation_agent_3d_velocity_computed"]

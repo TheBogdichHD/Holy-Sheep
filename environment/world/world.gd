@@ -5,3 +5,4 @@ extends Node3D
 
 func _physics_process(_delta: float) -> void:
 	get_tree().call_group("sheep", "update_target_location", player.global_transform.origin)
+	get_tree().call_group("sound_sheep", "update_crouching", player.is_crouching)

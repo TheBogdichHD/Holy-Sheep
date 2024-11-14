@@ -31,6 +31,7 @@ var _direction = Vector3.ZERO
 
 var held_object = null
 var is_holding_object: bool = false
+var is_crouching = false
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -49,12 +50,13 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("crouch"):
 		standing_collision_shape.disabled = true
 		crouching_collision_shape.disabled = false
+		is_crouching = true
 		_current_speed = crouching_speed
 		head.position.y = lerp(head.position.y, head_start_position + crouch_depth, delta*lerp_speed)
 	elif not ray_cast_3d.is_colliding():
 		standing_collision_shape.disabled = false
 		crouching_collision_shape.disabled = true
-		
+		is_crouching = false
 		head.position.y = lerp(head.position.y, head_start_position, delta*lerp_speed)
 		if Input.is_action_pressed("sprint"):
 			_current_speed = sprinting_speed
@@ -96,6 +98,10 @@ func _interact():
 		return
 	var obj = direction_ray.get_collider()
 	if obj.is_in_group("pickable"):
+		if obj is JumpSheep:
+			var parent = obj.get_parent()
+			obj.global_position = parent.global_position
+			obj = parent 
 		held_object = obj.duplicate()
 		sheep_model.visible = true
 		is_holding_object = true

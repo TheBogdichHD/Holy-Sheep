@@ -1,19 +1,19 @@
-class_name JumpSheep
+class_name SoundSheep
 extends CharacterBody3D
 
 
 @export var sheep_distance_run = 10
 @export var walking_speed = 5.0
-@export var running_speed = 20.0
-@export var jump_height = 7
+@export var running_speed = 25.0
 
 var _destination = Vector3.ZERO
 var _is_walking = false
 var _is_running_away = false
 var _vertical_velocity: float = 0.0
+var is_player_crouching = false
 
 @onready var timer: Timer = $Timer
-@onready var navigation_agent_3d: NavigationAgent3D = %JumpSheepAgent
+@onready var navigation_agent_3d: NavigationAgent3D = $NavigationAgent3D
 
 
 func _ready() -> void:
@@ -30,6 +30,7 @@ func dump_first_physics_frame() -> void:
 func _physics_process(delta: float) -> void:
 	var current_location = global_transform.origin
 	var next_location = navigation_agent_3d.get_next_path_position()
+	
 	var new_velocity
 	if _is_running_away:
 		new_velocity = (next_location - current_location).normalized() * running_speed
@@ -41,12 +42,16 @@ func _physics_process(delta: float) -> void:
 		_vertical_velocity = 0
 	navigation_agent_3d.set_velocity_forced(new_velocity)
 
+func update_crouching(value):
+	is_player_crouching = value
 
 func update_target_location(target_location) -> void:
-	var distance = (global_transform.origin - Vector3(0, global_transform.origin.y, 0)).distance_to(target_location - Vector3(0, target_location.y, 0))
+	var distance = global_transform.origin.distance_to(target_location)
 	var new_position = global_transform.origin
-	if distance < sheep_distance_run:
+	
+	if distance < sheep_distance_run and !is_player_crouching:
 		var dir_to_player = global_transform.origin - target_location
+		
 		new_position = global_transform.origin + Vector3(dir_to_player.x, 0, dir_to_player.z)
 		_is_walking = false
 		_is_running_away = true
@@ -58,6 +63,7 @@ func update_target_location(target_location) -> void:
 			timer.start()
 		else:
 			new_position = _destination
+	
 	navigation_agent_3d.target_position = new_position
 
 
@@ -66,17 +72,17 @@ func _on_timer_timeout() -> void:
 			global_transform.origin.x + randi_range(-50, 50), 
 			global_transform.origin.y,
 			global_transform.origin.z + randi_range(-50, 50))
+	
 	_is_walking = true
 
 
 func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
 	velocity = velocity.move_toward(safe_velocity, 0.3)
-	if _is_running_away and is_on_floor():
-		_vertical_velocity = sqrt(2 * -get_gravity().y * jump_height)
-		velocity.y = _vertical_velocity
-	elif not is_on_floor():
-		velocity.y = _vertical_velocity
+	velocity += Vector3(0, _vertical_velocity * 0.4, 0)
+	
 	if velocity.length() > 0.1:
 		var target_rotation_y = atan2(-velocity.x, -velocity.z) + deg_to_rad(90)
+		
 		rotation.y = lerp_angle(rotation.y, target_rotation_y, 0.1)
+	
 	move_and_slide()

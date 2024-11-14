@@ -44,6 +44,7 @@ folder_colors={
 sheep=""
 pickable="objects that you can pick"
 player=""
+sound_sheep=""
 
 [input]
 
