@@ -12,6 +12,7 @@ var _is_walking = false
 var _is_running_away = false
 var _vertical_velocity: float = 0.0
 
+@onready var player_location = global_position
 @onready var timer: Timer = $Timer
 @onready var navigation_agent_3d: NavigationAgent3D = $NavigationAgent3D
 @onready var sheep_model: Node3D = %SheepModel
@@ -31,12 +32,9 @@ func _ready() -> void:
 	set_physics_process(false)
 	call_deferred("dump_first_physics_frame")
 
-
-
 func dump_first_physics_frame() -> void:
 	await get_tree().physics_frame
 	set_physics_process(true)
-
 
 func _physics_process(delta: float) -> void:
 	if _screaming and _player != null:
@@ -55,25 +53,14 @@ func _physics_process(delta: float) -> void:
 		_vertical_velocity = 0
 	navigation_agent_3d.set_velocity_forced(new_velocity)
 
-var player_location
-
 func update_target_location(target_location) -> void:
-	var distance = global_transform.origin.distance_to(target_location)
+	await get_tree().create_timer(0.4).timeout
 	player_location = target_location
-	if rotation_timer.is_stopped():
-		rotation_timer.start(randi_range(0, 2))
-		
+	var distance = global_transform.origin.distance_to(target_location)
 	var new_position = global_transform.origin
-	if _destination.distance_to(global_transform.origin) < 0.05:
-		timer.wait_time = randi_range(3, 5)
-		timer.start()
-	else:
-		new_position = _destination
-	navigation_agent_3d.target_position = new_position
 	
-	'''
-	if distance < sheep_distance_run:
-		var dir_to_player = global_transform.origin - target_location
+	if distance * 2 >= sheep_distance_run:
+		var dir_to_player = -(global_transform.origin - target_location)
 		
 		new_position = global_transform.origin + Vector3(dir_to_player.x, 0, dir_to_player.z)
 		_is_walking = false
@@ -81,21 +68,20 @@ func update_target_location(target_location) -> void:
 	else:
 		_is_running_away = false
 		if _destination.distance_to(global_transform.origin) < 0.05 and not _is_walking:
-			_is_walking = false
-			timer.wait_time = randi_range(3, 5)
+			_is_walking = true
+			timer.wait_time = randi_range(4, 7)
 			timer.start()
 		else:
 			new_position = _destination
 	
 	navigation_agent_3d.target_position = new_position
-'''
+
 
 func _on_timer_timeout() -> void:
 	_destination = Vector3(
 			global_transform.origin.x + randi_range(-50, 50), 
 			global_transform.origin.y,
 			global_transform.origin.z + randi_range(-50, 50))
-	
 	_is_walking = true
 
 
@@ -103,13 +89,12 @@ func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
 	velocity = velocity.move_toward(safe_velocity, 0.3)
 	velocity += Vector3(0, _vertical_velocity * 0.4, 0)
 	
+	var _direction = player_location - global_position
 	if velocity.length() > 0.1:
-		pass
-		#var target_rotation_y = atan2(-velocity.x, -velocity.z) + deg_to_rad(90)
-		
-		#rotation.y = lerp_angle(rotation.y, target_rotation_y, 0.1)
+		var target_rotation_y = atan2(-_direction.x, -_direction.z) + deg_to_rad(90)
+		rotation.y = lerp_angle(rotation.y, target_rotation_y, 0.1)
+	
 	move_and_slide()
-
 # HACK: very bad, i dont know how to do better
 func enable_outline():
 	var cube: MeshInstance3D = sheep_model.get_child(0)
@@ -180,7 +165,8 @@ func _on_scream_range_body_exited(body: Node3D) -> void:
 
 
 func _on_rotation_timer_timeout() -> void:
-	var direction = player_location - global_position 
+	pass
+	'''var direction = player_location - global_position 
 	var target_rotation_y = atan2(-direction.x, -direction.z) + deg_to_rad(90)
 	rotation.y = lerp_angle(rotation.y, target_rotation_y, 0.5)
-	move_and_slide()
+	move_and_slide()'''

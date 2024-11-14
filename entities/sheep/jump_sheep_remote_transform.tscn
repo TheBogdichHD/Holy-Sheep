@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bwe2vtvavxcb0"]
+[gd_scene load_steps=6 format=3 uid="uid://bv8dj2g6xdagj"]
 
 [ext_resource type="Script" path="res://entities/sheep/jump_sheep.gd" id="1_xaixe"]
 [ext_resource type="PackedScene" uid="uid://b7cvq3gfnkvmo" path="res://entities/sheep/sheep.blend" id="2_p2ghg"]

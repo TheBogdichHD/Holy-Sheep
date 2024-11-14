@@ -21,8 +21,6 @@ func _ready() -> void:
 	set_physics_process(false)
 	call_deferred("dump_first_physics_frame")
 
-
-
 func dump_first_physics_frame() -> void:
 	await get_tree().physics_frame
 	set_physics_process(true)

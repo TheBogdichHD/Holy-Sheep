@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://qiabkshrh4dy"]
+[gd_scene load_steps=6 format=3 uid="uid://lw3javo88mpe"]
 
 [ext_resource type="Script" path="res://entities/sheep/sound_sheep.gd" id="1_0q1f3"]
 [ext_resource type="PackedScene" uid="uid://b7cvq3gfnkvmo" path="res://entities/sheep/sheep.blend" id="2_al2fa"]
@@ -10,7 +10,7 @@ radius = 1.0
 [sub_resource type="SphereShape3D" id="SphereShape3D_rwdvh"]
 radius = 1.0
 
-[node name="Sheep" type="CharacterBody3D" groups=["pickable", "sheep", "sound_sheep"]]
+[node name="Sheep2" type="CharacterBody3D" groups=["pickable", "sheep", "sound_sheep"]]
 script = ExtResource("1_0q1f3")
 sheep_distance_run = 15
 running_speed = 50.0

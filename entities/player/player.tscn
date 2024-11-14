@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://ug4cqscs1mdr"]
+[gd_scene load_steps=23 format=4 uid="uid://ug4cqscs1mdr"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_5mt8k"]
 [ext_resource type="PackedScene" uid="uid://b7cvq3gfnkvmo" path="res://entities/sheep/sheep.blend" id="2_hfgkk"]
@@ -216,74 +216,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_2yey1")
 
-[sub_resource type="Shader" id="Shader_or28s"]
-code = "// NOTE: Shader automatically converted from Godot Engine 4.3.stable.mono's StandardMaterial3D.
-
-shader_type spatial;
-render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_burley, specular_schlick_ggx;
-
-uniform vec4 albedo : source_color;
-uniform sampler2D texture_albedo : source_color, filter_linear_mipmap, repeat_enable;
-
-uniform float FOV : hint_range(20, 120) = 75;
-
-void vertex() {
-    float scale = 1.0 / tan(FOV * 0.5 * PI / -180.0);
-    
-    PROJECTION_MATRIX[0][0] = scale / (-VIEWPORT_SIZE.x / VIEWPORT_SIZE.y);
-    PROJECTION_MATRIX[1][1] = scale;
-}
-
-void fragment() {
-	vec2 base_uv = UV;
-
-	vec4 albedo_tex = texture(texture_albedo, base_uv);
-	ALBEDO = albedo.rgb * albedo_tex.rgb;
-
-	DEPTH = 1.0 - (1.0 - FRAGCOORD.z) * 0.7;
-}
-"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ynm0n"]
-resource_name = "Material.001"
-render_priority = 0
-shader = SubResource("Shader_or28s")
-shader_parameter/albedo = Color(1, 1, 1, 1)
-shader_parameter/FOV = 75.0
-shader_parameter/texture_albedo = ExtResource("3_cxfcg")
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_t84py"]
-_surfaces = [{
-"aabb": AABB(2.94708, 0.48456, -0.405387, 0.669333, 0.796741, 0.810775),
-"format": 34896613377,
-"index_count": 36,
-"index_data": PackedByteArray("AwACAAAAAwAFAAIABgAEAAEABgAHAAQAAgAHAAYAAgAFAAcAAwAKAAUAAwAIAAoACwAEAAcACwAJAAQACgAHAAUACgALAAcA"),
-"name": "Material.001",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 12,
-"vertex_data": PackedByteArray("AAAAACA2AACwIg2/OEEAAAwkHiz0FAAAJHzcKv9/AABaQ////38AAFfsSlL/fwAAAxfacQAAAAD//3J//38AAAAAAADeyQAAsCINv8a+AAAMJB4sCusAAAMX2nH//wAA")
-}]
-blend_shape_mode = 0
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_5i6fa"]
-resource_name = "sheep_Cube_001"
-_surfaces = [{
-"aabb": AABB(2.94708, 0.48456, -0.405387, 0.669333, 0.796741, 0.810775),
-"attribute_data": PackedByteArray("t+EtPj3W+BTY4+E21eMGNm/6hD9v+oQ/T95qDE/eagzu/Kk67vypOrn88T25/PE9ZN6YJCHVZh777PYZ++z2GWf+pjFn/qYxt+EtPj3W+BTY4+E21eMGNmTemCQh1WYe"),
-"format": 34896613399,
-"index_count": 36,
-"index_data": PackedByteArray("BQACAAAABQAJAAIADAAHAAEADAAPAAcAAwARAA0AAwALABEABAAUAAgABAASABQAFgAGAA4AFgATAAYAFQAQAAoAFQAXABAA"),
-"material": SubResource("ShaderMaterial_ynm0n"),
-"name": "Material.001",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 24,
-"vertex_data": PackedByteArray("AAAAACA2NiuwIg2/OEF8GAwkHiz0FGArDCQeLPQUrgokfNwq/3+HsiR83Cr/f8UrWkP///9/X59aQ////38HGFfsSlL/f4qyV+xKUv9/5CtX7EpS/3+Hm1fsSlL/f6gKAxfacQAA2BgDF9pxAACuCv//cn//f1uf//9yf/9/bhj//3J//3+Jm///cn//f6oKAAAAAN7JgbKwIg2/xr5cnwwkHiwK64KyDCQeLArrjZsDF9px//9unwMX2nH//46bEwBPobLlBn+CAKJezAu2WdEri1HqAT1ewMfNRMzkWoFKK3lRWgIdXvtCXh+4C8RZr+Qsfc0LtVnhxmpI2OVMf+9CXh+/C79ZRi7UUbrG10iGLcRR1kJfH6vFtUvSQl8f")
-}]
-blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_t84py")
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mowpu"]
 render_priority = 0
 shader = ExtResource("4_tw752")
@@ -342,9 +274,6 @@ mesh = SubResource("ArrayMesh_wbncw")
 
 [node name="Цилиндр_004" parent="Head/SheepModel" index="2"]
 mesh = SubResource("ArrayMesh_srjlh")
-
-[node name="Cube_001" parent="Head/SheepModel" index="3"]
-mesh = SubResource("ArrayMesh_5i6fa")
 
 [node name="Camera3D" type="Camera3D" parent="Head"]
 
