@@ -49,7 +49,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if Input.is_action_pressed("zoom"):
 		camera_3d.fov = _fov - 40
 	if Input.is_action_just_released("zoom"):
-		camera_3d.fov = _fov + 40
+		camera_3d.fov = _fov
 func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("crouch"):
 		standing_collision_shape.disabled = true
