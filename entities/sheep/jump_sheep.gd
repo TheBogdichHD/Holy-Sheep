@@ -45,6 +45,7 @@ func _physics_process(delta: float) -> void:
 func update_target_location(target_location) -> void:
 	var distance = (global_transform.origin - Vector3(0, global_transform.origin.y, 0)).distance_to(target_location - Vector3(0, target_location.y, 0))
 	var new_position = global_transform.origin
+
 	if distance < sheep_distance_run:
 		var dir_to_player = global_transform.origin - target_location
 		new_position = global_transform.origin + Vector3(dir_to_player.x, 0, dir_to_player.z)
@@ -63,7 +64,7 @@ func update_target_location(target_location) -> void:
 
 func _on_timer_timeout() -> void:
 	_destination = Vector3(
-			global_transform.origin.x + randi_range(-50, 50), 
+			global_transform.origin.x + randi_range(-50, 50),
 			global_transform.origin.y,
 			global_transform.origin.z + randi_range(-50, 50))
 	_is_walking = true
