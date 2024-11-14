@@ -7,9 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://by84k0dstw0hp" path="res://ui/game_manager.tscn" id="2_yr1ku"]
 [ext_resource type="PackedScene" uid="uid://dm2130l2l8ctp" path="res://entities/sheep/sheep.tscn" id="3_pvcdo"]
 [ext_resource type="Texture2D" uid="uid://ylejm10xlofe" path="res://environment/env/kloofendal_48d_partly_cloudy_puresky_2k.hdr" id="5_3dc0k"]
-[ext_resource type="PackedScene" uid="uid://lw3javo88mpe" path="res://entities/sheep/sound_sheep.tscn" id="5_y68gl"]
+[ext_resource type="PackedScene" path="res://entities/sheep/sound_sheep.tscn" id="5_y68gl"]
 [ext_resource type="PackedScene" uid="uid://p1toojqobh2a" path="res://environment/orders/order_giver.tscn" id="6_oq6ml"]
-[ext_resource type="PackedScene" uid="uid://bv8dj2g6xdagj" path="res://entities/sheep/jump_sheep_remote_transform.tscn" id="7_x2a2w"]
+[ext_resource type="PackedScene" path="res://entities/sheep/jump_sheep_remote_transform.tscn" id="7_x2a2w"]
 [ext_resource type="PackedScene" uid="uid://xtlfpuie10jt" path="res://environment/orders/order_reciever.tscn" id="9_yiewd"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_cchlk"]

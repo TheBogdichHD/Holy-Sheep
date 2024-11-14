@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://qrxkpjr8dr63"]
+
+[ext_resource type="Texture2D" uid="uid://t60jqqjgyri5" path="res://environment/juice_extractor/textures/шершавая попытка.jpg" id="1_y7sk3"]
+
+[resource]
+resource_name = "Material.002"
+transparency = 1
+blend_mode = 4
+cull_mode = 2
+diffuse_mode = 3
+albedo_color = Color(0.784314, 0.913725, 0.913725, 0.498039)
+albedo_texture = ExtResource("1_y7sk3")
+rim = 0.58
+rim_tint = 0.76
+grow = true
