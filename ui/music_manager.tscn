@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bmoow8iy7x2ec"]
+
+[ext_resource type="Script" path="res://ui/audio_stream_player_2d.gd" id="1_i2xb2"]
+
+[node name="MusicManager" type="AudioStreamPlayer2D"]
+autoplay = true
+script = ExtResource("1_i2xb2")
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]

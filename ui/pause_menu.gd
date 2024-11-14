@@ -23,9 +23,10 @@ func _on_resume_button_pressed() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _on_sound_button_pressed() -> void:
-	pass # Replace with function body.
+	MusicManager.stream_paused = not MusicManager.stream_paused
 
 
 func _on_menu_button_pressed() -> void:
 	Engine.time_scale = 1
+	MusicManager.play_menu_music()
 	get_tree().change_scene_to_file("res://ui/main_menu.tscn")
