@@ -77,14 +77,14 @@ func _physics_process(delta: float) -> void:
 
 	# Get the input direction and handle the movement/deceleration.
 	var input_dir := Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
-	_direction = lerp(_direction, (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized(), delta*lerp_speed)
+	_direction = lerp(_direction, (transform.basis * Vector3(input_dir.x, 0, input_dir.y) + additional_velocity).normalized(), delta*lerp_speed)
 	if _direction:
 		velocity.x = _direction.x * _current_speed
 		velocity.z = _direction.z * _current_speed
 	else:
 		velocity.x = move_toward(velocity.x, 0, _current_speed)
 		velocity.z = move_toward(velocity.z, 0, _current_speed)
-	_direction += additional_velocity
+	#velocity += additional_velocity
 	move_and_slide()
 
 

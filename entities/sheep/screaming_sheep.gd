@@ -52,7 +52,7 @@ func update_target_location(target_location) -> void:
 	var distance = global_transform.origin.distance_to(target_location)
 	player_location = target_location
 	if rotation_timer.is_stopped():
-		rotation_timer.start(randi_range(4, 7))
+		rotation_timer.start(randi_range(0, 2))
 		
 	var new_position = global_transform.origin
 	if _destination.distance_to(global_transform.origin) < 0.05:
@@ -145,21 +145,23 @@ func _on_area_3d_area_exited(area: Area3D) -> void:
 var _screaming = false
 func scream(player):
 	var direction = player_location - global_transform.origin
-	player.additional_velocity = direction * 0.5
-
+	direction.y *= 0.2
+	direction.x *= 3
+	direction.z *= 3
+	player.additional_velocity = direction
 
 
 func _on_scream_range_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
-		await get_tree().create_timer(randf_range(0, 0.4)).timeout
 		_player = body
+		await get_tree().create_timer(randf_range(0, 0.4)).timeout
 		_screaming = true
 
 
 func _on_scream_range_body_exited(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		_screaming = false
-		body.additional_velocity = Vector3.ZERO
+		_player.additional_velocity = Vector3.ZERO
 		_player = null
 		
 
