@@ -17,9 +17,11 @@ var _vertical_velocity: float = 0.0
 @onready var navigation_agent_3d: NavigationAgent3D = $NavigationAgent3D
 @onready var sheep_model: Node3D = %SheepModel
 @onready var rotation_timer: Timer = $RotationTimer
+@onready var sound_wave_effect: GPUParticles3D = $SoundWave.get_child(0)
 
 
 func _ready() -> void:
+	sound_wave_effect.emitting = false
 	var cube: MeshInstance3D = sheep_model.get_child(0)
 	var surface_material: StandardMaterial3D = cube.mesh.surface_get_material(0)
 	var dup_surface_material = surface_material.duplicate(true)
@@ -154,6 +156,7 @@ func _on_scream_range_body_entered(body: Node3D) -> void:
 		_player = body
 		await get_tree().create_timer(randf_range(0, 0.4)).timeout
 		_screaming = true
+		sound_wave_effect.emitting = true
 
 
 func _on_scream_range_body_exited(body: Node3D) -> void:
@@ -161,6 +164,7 @@ func _on_scream_range_body_exited(body: Node3D) -> void:
 		_screaming = false
 		_player.additional_velocity = Vector3.ZERO
 		_player = null
+		sound_wave_effect.emitting = false
 		
 
 

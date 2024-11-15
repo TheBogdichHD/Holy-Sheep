@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://7uk6q28bro1m" path="res://environment/world/box_with_sheep.tscn" id="7_d5ywq"]
 [ext_resource type="PackedScene" uid="uid://bv8dj2g6xdagj" path="res://entities/sheep/jump_sheep_remote_transform.tscn" id="7_x2a2w"]
 [ext_resource type="PackedScene" uid="uid://xtlfpuie10jt" path="res://environment/orders/order_reciever.tscn" id="9_yiewd"]
-[ext_resource type="PackedScene" path="res://entities/sheep/screaming_sheep.tscn" id="11_trqbb"]
+[ext_resource type="PackedScene" uid="uid://dlqdwk8pp24i7" path="res://entities/sheep/screaming_sheep.tscn" id="11_trqbb"]
 [ext_resource type="Shader" path="res://environment/world/retro_pixel.gdshader" id="15_hth1x"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_cchlk"]
