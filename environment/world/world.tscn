@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dxtm06w2siy8t"]
+[gd_scene load_steps=21 format=3 uid="uid://dxtm06w2siy8t"]
 
 [ext_resource type="Script" path="res://environment/world/world.gd" id="1_2o0p0"]
 [ext_resource type="PackedScene" uid="uid://rcedcl2ogjsn" path="res://environment/ground/ground.tscn" id="1_gl6qs"]
@@ -13,7 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://7uk6q28bro1m" path="res://environment/world/box_with_sheep.tscn" id="7_d5ywq"]
 [ext_resource type="PackedScene" uid="uid://bv8dj2g6xdagj" path="res://entities/sheep/jump_sheep_remote_transform.tscn" id="7_x2a2w"]
 [ext_resource type="PackedScene" uid="uid://xtlfpuie10jt" path="res://environment/orders/order_reciever.tscn" id="9_yiewd"]
-[ext_resource type="PackedScene" path="res://entities/sheep/screaming_sheep.tscn" id="11_trqbb"]
+[ext_resource type="PackedScene" uid="uid://dkylkr32w7fjn" path="res://entities/sheep/screaming_sheep.tscn" id="11_trqbb"]
+[ext_resource type="Shader" path="res://environment/world/retro_pixel.gdshader" id="15_hth1x"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_cchlk"]
 vertices = PackedVector3Array(-0.5, 0.5, 3, -0.25, 0.5, 4, 0.25, 0.5, 4, 0.5, 0.5, 3, 0.25, 0.75, 0.75, -0.75, 0.5, 0.75, -37.5, 0.5, 21.5, -6, 0.5, 5, -6, 0.5, 3.5, -5.75, 0.5, 3, -0.75, 0.75, -0.25, -0.75, 0.75, -0.5, -0.25, 0.5, -2, 17.5, 0.5, -27.5, -37.5, 0.5, -27.5, 0.25, 1.25, -0.25, 0.5, 1, -0.75, 5.75, 0.5, 3, 6, 0.5, 4, 17.5, 0.5, 21.5, 1, 1, -0.25, 2, 0.75, -0.25, 2, 0.75, -0.5, 0.75, 1, -0.75, 0.5, 0.75, 0.75, 0.75, 0.75, 0.75, 0.5, 0.75, -2, 0.75, 0.75, -2, 2, 0.5, 0.75, 0.5, 0.5, 5.25, -0.5, 0.5, 5.25, 1.5, 0.5, -2, 5.75, 0.5, 5.25, 4.25, 0.5, 5.25, -4.25, 0.5, 5.25)
@@ -30,6 +31,20 @@ sky_material = SubResource("PanoramaSkyMaterial_2sfmx")
 background_mode = 2
 sky = SubResource("Sky_wa7wn")
 tonemap_mode = 3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a7270"]
+shader = ExtResource("15_hth1x")
+shader_parameter/shake = 0.015
+shader_parameter/noiseQuality = 108.1
+shader_parameter/noiseIntensity = 0.001
+shader_parameter/offsetIntensity = 0.0045
+shader_parameter/colorOffsetIntensity = 0.2
+shader_parameter/pixelSize = 493.685
+shader_parameter/grainIntensity = 0.015
+shader_parameter/use_overlay = true
+shader_parameter/use_lens_distortion = true
+shader_parameter/overlay_color = Color(1, 1, 1, 10)
+shader_parameter/lens_distortion_strength = 0.009
 
 [node name="World" type="Node3D"]
 script = ExtResource("1_2o0p0")
@@ -98,3 +113,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.948, 0, -6.343)
 
 [node name="Sheep" parent="." instance=ExtResource("11_trqbb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.6993, -4.76837e-07, 4.9074)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_a7270")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

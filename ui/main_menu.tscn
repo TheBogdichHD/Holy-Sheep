@@ -1,6 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://d0t1qwpsnupmf"]
+[gd_scene load_steps=4 format=3 uid="uid://d0t1qwpsnupmf"]
 
 [ext_resource type="Script" path="res://ui/button_manager.gd" id="1_8sc5e"]
+[ext_resource type="Shader" path="res://environment/world/retro_pixel.gdshader" id="2_na5sy"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8x4xo"]
+shader = ExtResource("2_na5sy")
+shader_parameter/shake = 0.015
+shader_parameter/noiseQuality = 115.0
+shader_parameter/noiseIntensity = 0.001
+shader_parameter/offsetIntensity = 0.0045
+shader_parameter/colorOffsetIntensity = 0.122
+shader_parameter/pixelSize = 730.444
+shader_parameter/grainIntensity = 0.009
+shader_parameter/use_overlay = true
+shader_parameter/use_lens_distortion = false
+shader_parameter/overlay_color = Color(1, 1, 1, 10)
+shader_parameter/lens_distortion_strength = 0.009
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -41,6 +56,16 @@ text = "Sound on/off"
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
 text = "Quit"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_8x4xo")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [connection signal="pressed" from="VBoxContainer/PlayButton" to="ButtonManager" method="_on_play_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/SoundButton" to="ButtonManager" method="_on_sound_button_pressed"]
