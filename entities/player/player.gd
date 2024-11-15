@@ -44,9 +44,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		rotate_y(deg_to_rad(-event.relative.x * mouse_sensitivity))
 		head.rotate_x(deg_to_rad(-event.relative.y * mouse_sensitivity))
 		head.rotation.x = clamp(head.rotation.x, deg_to_rad(-89), deg_to_rad(89))
-	elif event is InputEvent:
-		if event.is_action_pressed("interact"):
-			_interact()
+	if event.is_action_pressed("interact"):
+		_interact()
 	if Input.is_action_pressed("zoom"):
 		camera_3d.fov = _fov - 40
 	if Input.is_action_just_released("zoom"):
@@ -100,7 +99,7 @@ func _interact():
 	if not direction_ray.is_colliding():
 		return
 	var obj = direction_ray.get_collider()
-	if obj.is_in_group("pickable"):
+	if obj.is_in_group("pickable") or obj.is_in_group("sheep"):
 		var cube: MeshInstance3D = sheep_model.get_child(0)
 		var surface_material: ShaderMaterial = cube.mesh.surface_get_material(0)
 		var dup_surface_material: ShaderMaterial = surface_material.duplicate(true)

@@ -198,6 +198,9 @@ length = 2.0
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 script = ExtResource("1_5mt8k")
+walking_speed = 6.0
+sprinting_speed = 10.0
+crouching_speed = 4.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 visible = false
@@ -239,6 +242,7 @@ mesh = SubResource("ArrayMesh_n44p7")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Head/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+visible = false
 mesh = SubResource("QuadMesh_wq5wl")
 
 [node name="Area3D" type="Area3D" parent="Head" groups=["player"]]
@@ -249,7 +253,6 @@ shape = SubResource("SeparationRayShape3D_1j4da")
 
 [node name="DirectionRay" type="RayCast3D" parent="Head"]
 target_position = Vector3(0, 0, -2.5)
-collide_with_areas = true
 
 [node name="SpawnPoint" type="Node3D" parent="Head"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)

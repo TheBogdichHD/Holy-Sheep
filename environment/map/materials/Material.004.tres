@@ -6,4 +6,4 @@
 resource_name = "Material.004"
 cull_mode = 2
 albedo_texture = ExtResource("1_m6poy")
-roughness = 0.5
+grow = true
