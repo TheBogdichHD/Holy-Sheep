@@ -3,7 +3,7 @@ extends StaticBody3D
 var _is_player_near = false
 var _player_interacted = false
 
-@export var sheep_path: String = "res://entities/sheep/sheep.tscn"
+@export var sheep_path: String = "res://entities/sheep/sheep_from_box.tscn"
 
 @onready var player: Player
 @onready var sliders_control: Control = $Control
@@ -11,13 +11,19 @@ var _player_interacted = false
 @onready var slider_green: HSlider = $Control/HSliderG
 @onready var slider_blue: HSlider = $Control/HSliderB
 @onready var color_to_adjust = $ColorToAdjust
-@onready var base_color = $MeshInstance3D
-var sheep
+@onready var base_color_mesh = $MeshInstance3D
 
+var sheep
+var _base_color: Color
+var _adjustable_color: Color
 
 func _ready() -> void:
-	var surface_material: StandardMaterial3D = base_color.mesh.surface_get_material(0)
-	surface_material.albedo_color = Color(randf(), randf(), randf())
+	randomize()
+	_base_color = Color(randf(), randf(), randf())
+	var surface_material: StandardMaterial3D = base_color_mesh.mesh.surface_get_material(0)
+	var duplicate_material: StandardMaterial3D = surface_material.duplicate(0)
+	duplicate_material.albedo_color = _base_color
+	base_color_mesh.set_surface_override_material(0, duplicate_material)
 	sheep = load(sheep_path)
 
 
@@ -65,10 +71,13 @@ func _set_player_enabled(value: bool):
 
 
 func _adjust_color():
+	_adjustable_color = Color(slider_red.value/255, slider_green.value/255, slider_blue.value/255)
 	var surface_material: StandardMaterial3D = color_to_adjust.mesh.surface_get_material(0)
-	surface_material.albedo_color = Color(slider_red.value/255, slider_green.value/255, slider_blue.value/255)
+	var duplicate_material: StandardMaterial3D = surface_material.duplicate(0)
+	duplicate_material.albedo_color = _adjustable_color
+	color_to_adjust.set_surface_override_material(0, duplicate_material)
 	if _is_solved():
-		solve()
+		_solve()
 
 
 func _on_h_slider_r_value_changed(value: float) -> void:
@@ -84,24 +93,29 @@ func _on_h_slider_b_value_changed(value: float) -> void:
 	
 	
 func _is_solved() -> bool:
-	var m1: StandardMaterial3D = base_color.mesh.surface_get_material(0)
-	var m2: StandardMaterial3D = color_to_adjust.mesh.surface_get_material(0)
-	var c1: Color = m1.albedo_color
-	var c2: Color = m2.albedo_color
 	var eps = 0.08
-	return color_distance(c1, c2) < eps
+	return _color_distance(_adjustable_color, _base_color) < eps
 
 
-func color_distance(c1: Color, c2: Color) -> float:
+func _color_distance(c1: Color, c2: Color) -> float:
 	var r = c1.r - c2.r
 	var g = c1.g - c2.g
 	var b = c1.b - c2.b
 	return sqrt(r*r + g*g + b*b)
 
 
-func solve():
+func _solve():
 	_stop_interaction()
 	var instance: Node3D = sheep.instantiate()
 	get_parent_node_3d().add_child(instance)
 	instance.global_transform = global_transform
+	_repaint_sheep(instance)
 	queue_free()
+
+func _repaint_sheep(instance):
+	instance.sheep_color = _base_color
+	var sheep_model = instance.get_node("SheepModel").get_child(0)
+	var surface_material: StandardMaterial3D = sheep_model.mesh.surface_get_material(0)
+	var duplicate_material: StandardMaterial3D = surface_material.duplicate(0)
+	duplicate_material.albedo_color = _base_color
+	sheep_model.set_surface_override_material(0, duplicate_material)
