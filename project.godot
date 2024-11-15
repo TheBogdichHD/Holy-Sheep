@@ -36,6 +36,7 @@ folder_colors={
 "res://common/": "red",
 "res://entities/": "orange",
 "res://environment/": "purple",
+"res://particles/": "yellow",
 "res://ui/": "teal"
 }
 

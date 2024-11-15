@@ -4,6 +4,7 @@ var _is_player_near = false
 var _player_interacted = false
 
 @export var sheep_path: String = "res://entities/sheep/sheep_from_box.tscn"
+var explosion_path = "res://particles/explosion.tscn"
 
 @onready var player: Player
 @onready var sliders_control: Control = $Control
@@ -14,6 +15,7 @@ var _player_interacted = false
 @onready var base_color_mesh = $MeshInstance3D
 
 var sheep
+var explosion
 var _base_color: Color
 var _adjustable_color: Color
 
@@ -25,6 +27,7 @@ func _ready() -> void:
 	duplicate_material.albedo_color = _base_color
 	base_color_mesh.set_surface_override_material(0, duplicate_material)
 	sheep = load(sheep_path)
+	explosion = load(explosion_path)
 
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
@@ -110,6 +113,9 @@ func _solve():
 	get_parent_node_3d().add_child(instance)
 	instance.global_transform = global_transform
 	_repaint_sheep(instance)
+	var explosion_instance: Node3D = explosion.instantiate()
+	instance.add_child(explosion_instance)
+	explosion_instance.get_child(0).emitting = true
 	queue_free()
 
 func _repaint_sheep(instance):
