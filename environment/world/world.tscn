@@ -24,12 +24,12 @@ border_size = 1.5
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_2sfmx"]
 panorama = ExtResource("5_3dc0k")
 
-[sub_resource type="Sky" id="Sky_wa7wn"]
+[sub_resource type="Sky" id="Sky_haa8d"]
 sky_material = SubResource("PanoramaSkyMaterial_2sfmx")
 
 [sub_resource type="Environment" id="Environment_yffun"]
 background_mode = 2
-sky = SubResource("Sky_wa7wn")
+sky = SubResource("Sky_haa8d")
 tonemap_mode = 3
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a7270"]

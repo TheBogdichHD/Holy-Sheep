@@ -4,7 +4,7 @@ extends Node
 @onready var timer_text: RichTextLabel = $MarginContainer/TimerLabel
 @onready var score_label: Label = $MarginContainer/ScoreLabel
 @onready var max_time: float = 60
-@onready var order_manager = $"../OrderManager"
+@onready var order_manager = %OrderManager
 const TIME_STEP: float = 30
 
 # Called when the node enters the scene tree for the first time.

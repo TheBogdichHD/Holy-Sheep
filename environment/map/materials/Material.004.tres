@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://c8nm07ensm5cg"]
+
+[ext_resource type="Texture2D" uid="uid://xcfev8wklndr" path="res://environment/map/textures/покрытиеФИНАЛ.png" id="1_m6poy"]
+
+[resource]
+resource_name = "Material.004"
+cull_mode = 2
+albedo_texture = ExtResource("1_m6poy")
+roughness = 0.5
