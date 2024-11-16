@@ -14,6 +14,7 @@ var _vertical_velocity: float = 0.0
 @onready var timer: Timer = $Timer
 @onready var navigation_agent_3d: NavigationAgent3D = $NavigationAgent3D
 @onready var sheep_model: Node3D = %SheepModel
+@onready var dust: GPUParticles3D = $Dust.get_child(0)
 
 
 func _ready() -> void:
@@ -55,6 +56,7 @@ func update_target_location(target_location) -> void:
 		sheep_model.set_speed(2.5)
 	else:
 		_is_running_away = false
+		
 		if _destination.distance_to(global_transform.origin) < 0.05 and not _is_walking:
 			sheep_model.set_speed(1)
 			_is_walking = true
@@ -82,8 +84,10 @@ func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
 		var target_rotation_y = atan2(-velocity.x, -velocity.z) + deg_to_rad(90)
 		rotation.y = lerp_angle(rotation.y, target_rotation_y, 0.1)
 		sheep_model.walk()
+		dust.emitting = true
 	else:
 		sheep_model.stop()
+		dust.emitting = false
 	move_and_slide()
 
 # HACK: very bad, i dont know how to do better

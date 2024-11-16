@@ -17,6 +17,7 @@ var is_player_crouching = false
 @onready var navigation_agent_3d: NavigationAgent3D = $NavigationAgent3D
 @onready var sheep_model: Node3D = $SheepModel
 @onready var warning_sign: GPUParticles3D = $Warning.get_child(0)
+@onready var dust: GPUParticles3D = $Dust.get_child(0)
 
 
 func _ready() -> void:
@@ -100,8 +101,10 @@ func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
 		rotation.y = lerp_angle(rotation.y, target_rotation_y, 0.1)
 		if !sheep_model.is_playing():
 			sheep_model.walk()
+			dust.emitting = true
 	else:
 		sheep_model.stop()
+		dust.emitting = false
 	move_and_slide()
 
 # HACK: very bad, i dont know how to do better
