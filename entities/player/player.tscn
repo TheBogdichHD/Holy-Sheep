@@ -186,7 +186,7 @@ shader_parameter/noise_time_fac = 4.0
 shader_parameter/enable_color_limitation = true
 shader_parameter/color_levels = 32
 shader_parameter/enable_dithering = true
-shader_parameter/dither_strength = 0.3
+shader_parameter/dither_strength = 0.105
 
 [sub_resource type="QuadMesh" id="QuadMesh_wq5wl"]
 material = SubResource("ShaderMaterial_mowpu")
@@ -242,7 +242,6 @@ mesh = SubResource("ArrayMesh_n44p7")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Head/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
-visible = false
 mesh = SubResource("QuadMesh_wq5wl")
 
 [node name="Area3D" type="Area3D" parent="Head" groups=["player"]]
