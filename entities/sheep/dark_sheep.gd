@@ -16,7 +16,6 @@ var _vertical_velocity: float = 0.0
 @onready var timer: Timer = $Timer
 @onready var navigation_agent_3d: NavigationAgent3D = $NavigationAgent3D
 @onready var sheep_model: Node3D = %SheepModel
-@onready var rotation_timer: Timer = $RotationTimer
 @onready var lifetimer: Timer = $LifeTimer
 
 

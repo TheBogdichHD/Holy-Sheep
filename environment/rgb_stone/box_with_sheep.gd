@@ -11,8 +11,8 @@ var explosion_path = "res://particles/explosion.tscn"
 @onready var slider_red: HSlider = $Control/HSliderR
 @onready var slider_green: HSlider = $Control/HSliderG
 @onready var slider_blue: HSlider = $Control/HSliderB
-@onready var color_to_adjust = $ColorToAdjust
-@onready var base_color_mesh = $MeshInstance3D
+@onready var color_to_adjust: MeshInstance3D = $Crystal
+@onready var base_color_mesh = $Crystal
 
 var sheep
 var explosion
@@ -28,6 +28,7 @@ func _ready() -> void:
 	base_color_mesh.set_surface_override_material(0, duplicate_material)
 	sheep = load(sheep_path)
 	explosion = load(explosion_path)
+
 
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
@@ -51,6 +52,11 @@ func _unhandled_input(event: InputEvent) -> void:
 				_stop_interaction()
 			else:
 				_interact()
+	
+	if event is InputEvent:
+		if event.is_action_pressed("Pause"):
+			_stop_interaction()
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 
 func _interact():
@@ -96,7 +102,7 @@ func _on_h_slider_b_value_changed(value: float) -> void:
 	
 	
 func _is_solved() -> bool:
-	var eps = 0.08
+	var eps = 0.2
 	return _color_distance(_adjustable_color, _base_color) < eps
 
 
@@ -115,6 +121,7 @@ func _solve():
 	_repaint_sheep(instance)
 	var explosion_instance: Node3D = explosion.instantiate()
 	instance.add_child(explosion_instance)
+	explosion_instance.global_position += Vector3(0, 1.5, 0)
 	explosion_instance.get_child(0).emitting = true
 	queue_free()
 
