@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://dlqdwk8pp24i7"]
 
 [ext_resource type="Script" path="res://entities/sheep/screaming_sheep.gd" id="1_msb6r"]
-[ext_resource type="PackedScene" uid="uid://b7cvq3gfnkvmo" path="res://entities/sheep/sheep.blend" id="2_trsw0"]
 [ext_resource type="Script" path="res://entities/sheep/sheep_color.gd" id="3_fitst"]
+[ext_resource type="PackedScene" uid="uid://croqabxpl1bsp" path="res://entities/models/sheep_anim.tscn" id="4_hxr2l"]
 [ext_resource type="PackedScene" uid="uid://8moakbfkwvx3" path="res://particles/sound_wave.tscn" id="4_iy2rh"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_5w0s4"]
@@ -28,7 +28,7 @@ radius = 2.0
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
-[node name="SheepModel" parent="." instance=ExtResource("2_trsw0")]
+[node name="SheepModel" parent="." instance=ExtResource("4_hxr2l")]
 unique_name_in_owner = true
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
@@ -50,7 +50,7 @@ shape = SubResource("ConvexPolygonShape3D_fu2pm")
 [node name="RotationTimer" type="Timer" parent="."]
 
 [node name="SoundWave" parent="." instance=ExtResource("4_iy2rh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.72846, 1.75425, 3.02214e-07)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.85, 1.35, 0)
 
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
