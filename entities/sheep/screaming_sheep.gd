@@ -18,6 +18,7 @@ var _vertical_velocity: float = 0.0
 @onready var sheep_model: Node3D = %SheepModel
 @onready var rotation_timer: Timer = $RotationTimer
 @onready var sound_wave_effect: GPUParticles3D = $SoundWave.get_child(0)
+@onready var dust: GPUParticles3D = $Dust.get_child(0)
 
 
 func _ready() -> void:
@@ -95,8 +96,10 @@ func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
 		sheep_model.walk()
 		var target_rotation_y = atan2(-_direction.x, -_direction.z) + deg_to_rad(90)
 		rotation.y = lerp_angle(rotation.y, target_rotation_y, 0.1)
+		dust.emitting = true
 	elif not _screaming:
 		sheep_model.stop()
+		dust.emitting = false
 	move_and_slide()
 # HACK: very bad, i dont know how to do better
 func enable_outline():
@@ -158,6 +161,7 @@ func _on_scream_range_body_entered(body: Node3D) -> void:
 		sound_wave_effect.emitting = true
 		_screaming = true
 		sheep_model.scream()
+		dust.emitting = false
 		await get_tree().create_timer(.6).timeout
 
 
@@ -169,6 +173,7 @@ func _on_scream_range_body_exited(body: Node3D) -> void:
 		_player.additional_velocity = Vector3.ZERO
 		_player = null
 		sound_wave_effect.emitting = false
+		dust.emitting = false
 		
 
 

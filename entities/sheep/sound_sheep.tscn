@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://lw3javo88mpe"]
+[gd_scene load_steps=8 format=3 uid="uid://lw3javo88mpe"]
 
 [ext_resource type="Script" path="res://entities/sheep/sound_sheep.gd" id="1_0q1f3"]
 [ext_resource type="Script" path="res://entities/sheep/sheep_color.gd" id="3_tldyy"]
-[ext_resource type="PackedScene" path="res://particles/warning.tscn" id="4_hiebo"]
+[ext_resource type="PackedScene" uid="uid://bq8ynxrb15p1t" path="res://particles/warning.tscn" id="4_hiebo"]
 [ext_resource type="PackedScene" uid="uid://croqabxpl1bsp" path="res://entities/models/sheep_anim.tscn" id="4_hua3k"]
+[ext_resource type="PackedScene" uid="uid://cf1xgv7607aam" path="res://particles/dust.tscn" id="5_ta5u1"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_5w0s4"]
 radius = 1.0
@@ -42,6 +43,9 @@ shape = SubResource("SphereShape3D_rwdvh")
 
 [node name="Warning" parent="." instance=ExtResource("4_hiebo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.19312, 1.99607, 0)
+
+[node name="Dust" parent="." instance=ExtResource("5_ta5u1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
 
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
