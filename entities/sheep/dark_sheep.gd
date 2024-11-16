@@ -166,8 +166,6 @@ func _on_scream_range_body_exited(body: Node3D) -> void:
 		_player.additional_velocity = Vector3.ZERO
 		_player = null
 
-		
-
 
 func _on_rotation_timer_timeout() -> void:
 	pass
