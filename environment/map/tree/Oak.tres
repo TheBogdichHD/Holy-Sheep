@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dsue83ixr0dij"]
+
+[ext_resource type="Texture2D" uid="uid://cjk162aid6b5a" path="res://environment/juice_extractor/textures/wood.png" id="1_t14ua"]
+
+[resource]
+resource_name = "Oak"
+cull_mode = 2
+albedo_color = Color(0.483761, 0.386239, 0.317356, 1)
+albedo_texture = ExtResource("1_t14ua")
+roughness = 0.615942
+uv1_triplanar = true

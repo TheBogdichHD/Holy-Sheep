@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bpwmoue2i1iwi"]
+
+[ext_resource type="Texture2D" uid="uid://dvuc8ywrdsvgb" path="res://environment/map/textures/листтики.jpg" id="1_jv0cp"]
+
+[resource]
+resource_name = "Leaves"
+albedo_color = Color(0.231392, 0.482343, 0.223521, 1)
+albedo_texture = ExtResource("1_jv0cp")
+roughness = 0.702899
+uv1_scale = Vector3(0.3, 0.3, 0.3)
+uv1_triplanar = true
