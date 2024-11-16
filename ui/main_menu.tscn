@@ -5,9 +5,9 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8x4xo"]
 shader = ExtResource("2_na5sy")
-shader_parameter/shake = 0.015
-shader_parameter/noiseQuality = 115.0
-shader_parameter/noiseIntensity = 0.001
+shader_parameter/shake = 0.0
+shader_parameter/noiseQuality = 145.1
+shader_parameter/noiseIntensity = 0.0
 shader_parameter/offsetIntensity = 0.0045
 shader_parameter/colorOffsetIntensity = 0.122
 shader_parameter/pixelSize = 730.444
