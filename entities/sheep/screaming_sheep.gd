@@ -62,9 +62,9 @@ func update_target_location(target_location) -> void:
 	var new_position = global_transform.origin
 	
 	if distance * 2 >= sheep_distance_run:
-		var dir_to_player = -(global_transform.origin - target_location)
+		var dir_to_player = target_location - global_transform.origin
 		
-		new_position = global_transform.origin + Vector3(dir_to_player.x, 0, dir_to_player.z)
+		new_position = target_location
 		_is_walking = false
 		_is_running_away = true
 	else:

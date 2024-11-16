@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://dm2130l2l8ctp"]
 
 [ext_resource type="Script" path="res://entities/sheep/sheep.gd" id="1_ku847"]
-[ext_resource type="PackedScene" uid="uid://b7cvq3gfnkvmo" path="res://entities/sheep/sheep.blend" id="2_y2fuv"]
 [ext_resource type="Script" path="res://entities/sheep/sheep_color.gd" id="3_wvbfr"]
+[ext_resource type="PackedScene" uid="uid://croqabxpl1bsp" path="res://entities/models/sheep_anim.tscn" id="4_76jmj"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_5w0s4"]
 radius = 1.0
@@ -25,10 +25,6 @@ radius = 2.0
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
-[node name="SheepModel" parent="." instance=ExtResource("2_y2fuv")]
-unique_name_in_owner = true
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
-
 [node name="SheepColor" type="Node3D" parent="."]
 script = ExtResource("3_wvbfr")
 
@@ -37,6 +33,10 @@ script = ExtResource("3_wvbfr")
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("SphereShape3D_5w0s4")
+
+[node name="SheepModel" parent="." instance=ExtResource("4_76jmj")]
+unique_name_in_owner = true
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

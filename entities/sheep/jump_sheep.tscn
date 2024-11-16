@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://ds434eutphawg"]
 
 [ext_resource type="Script" path="res://entities/sheep/jump_sheep.gd" id="1_03x7t"]
-[ext_resource type="PackedScene" uid="uid://b7cvq3gfnkvmo" path="res://entities/sheep/sheep.blend" id="2_xkxex"]
 [ext_resource type="Script" path="res://entities/sheep/sheep_color.gd" id="3_ruaxm"]
+[ext_resource type="PackedScene" uid="uid://ch2iauopk047j" path="res://entities/models/jump_sheep_anim.tscn" id="4_0etb3"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_5w0s4"]
 radius = 1.0
@@ -27,8 +27,8 @@ radius = 1.0
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
-[node name="sheep" parent="." instance=ExtResource("2_xkxex")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.5, 0)
+[node name="SheepModel" parent="." instance=ExtResource("4_0etb3")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
 [node name="SheepColor" type="Node3D" parent="."]
 script = ExtResource("3_ruaxm")
