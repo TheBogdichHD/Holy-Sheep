@@ -24,3 +24,6 @@ func fall():
 
 func fear():
 	animation_player.play("sheep_animations/fear")
+
+func is_playing():
+	return animation_player.is_playing()

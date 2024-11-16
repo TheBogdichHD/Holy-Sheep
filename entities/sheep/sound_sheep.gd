@@ -65,10 +65,11 @@ func update_target_location(target_location) -> void:
 		var dir_to_player = global_transform.origin - target_location
 		new_position = global_transform.origin + Vector3(dir_to_player.x, 0, dir_to_player.z)
 		warning_sign.emitting = true
+		if not _is_running_away:
+			sheep_model.fear()
 		_is_walking = false
 		_is_running_away = true
 		sheep_model.set_speed(2)
-			
 	else:
 		_is_running_away = false
 		if _destination.distance_to(global_transform.origin) < 0.05 and not _is_walking:
@@ -97,7 +98,8 @@ func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
 	if velocity.length() > 0.1:
 		var target_rotation_y = atan2(-velocity.x, -velocity.z) + deg_to_rad(90)
 		rotation.y = lerp_angle(rotation.y, target_rotation_y, 0.1)
-		sheep_model.walk()
+		if !sheep_model.is_playing():
+			sheep_model.walk()
 	else:
 		sheep_model.stop()
 	move_and_slide()
