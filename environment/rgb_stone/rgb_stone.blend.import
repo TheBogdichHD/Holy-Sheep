@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cpqm5o0x5xb58"
+uid="uid://kgrmprwxvi8"
 path="res://.godot/imported/rgb_stone.blend-0e28dca4ec3422a8c6b86f15b6199206.scn"
 
 [deps]
@@ -31,7 +31,18 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
-_subresources={}
+_subresources={
+"materials": {
+"base_color": {
+"use_external/enabled": true,
+"use_external/path": "res://environment/rgb_stone/materials/base_color.tres"
+},
+"e_color": {
+"use_external/enabled": true,
+"use_external/path": "res://environment/rgb_stone/materials/e_color.tres"
+}
+}
+}
 blender/nodes/visible=0
 blender/nodes/active_collection_only=false
 blender/nodes/punctual_lights=true
