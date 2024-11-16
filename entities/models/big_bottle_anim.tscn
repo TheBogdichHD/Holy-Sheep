@@ -1075,14 +1075,11 @@ tracks/5/path = NodePath(".")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(2.06667, 5.3),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(2.06667),
+"transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
 "method": &"decolor_sheep"
-}, {
-"args": [],
-"method": &"jump_sheep"
 }]
 }
 tracks/6/type = "value"
