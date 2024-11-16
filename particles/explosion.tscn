@@ -60,6 +60,8 @@ curve = SubResource("Curve_7sm4u")
 [node name="Explosion" type="Node3D"]
 
 [node name="BlastParticles" type="GPUParticles3D" parent="."]
+process_priority = 1
+sorting_offset = 15.0
 emitting = false
 amount = 150
 lifetime = 0.5

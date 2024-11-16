@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://bq8ynxrb15p1t"]
+
+[ext_resource type="Texture2D" uid="uid://biu4p5g8dyaa2" path="res://particles/warning.png" id="1_dsjey"]
+
+[sub_resource type="Gradient" id="Gradient_oyao1"]
+offsets = PackedFloat32Array(0, 0.393939, 0.813853, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_qf828"]
+gradient = SubResource("Gradient_oyao1")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1yfod"]
+particle_flag_rotate_y = true
+angle_min = -90.0
+angle_max = 90.0
+direction = Vector3(0, 1, 0)
+spread = 0.0
+initial_velocity_min = 10.0
+initial_velocity_max = 10.0
+gravity = Vector3(0, -30, 0)
+color_ramp = SubResource("GradientTexture1D_qf828")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_us3i0"]
+transparency = 1
+blend_mode = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_is_srgb = true
+albedo_color = Color(1, 0, 0, 1)
+albedo_texture = ExtResource("1_dsjey")
+albedo_texture_force_srgb = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_ic5ha"]
+material = SubResource("StandardMaterial3D_us3i0")
+size = Vector2(2, 2)
+
+[node name="Warning" type="Node3D"]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+process_priority = 1
+sorting_offset = 15.0
+emitting = false
+amount = 5
+lifetime = 0.6
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_1yfod")
+draw_pass_1 = SubResource("QuadMesh_ic5ha")

@@ -16,6 +16,7 @@ var is_player_crouching = false
 @onready var timer: Timer = $Timer
 @onready var navigation_agent_3d: NavigationAgent3D = $NavigationAgent3D
 @onready var sheep_model: Node3D = $SheepModel
+@onready var warning_sign: GPUParticles3D = $Warning.get_child(0)
 
 
 func _ready() -> void:
@@ -66,6 +67,8 @@ func update_target_location(target_location) -> void:
 		new_position = global_transform.origin + Vector3(dir_to_player.x, 0, dir_to_player.z)
 		_is_walking = false
 		_is_running_away = true
+		warning_sign.emitting = true
+		print("emit")
 	else:
 		_is_running_away = false
 		if _destination.distance_to(global_transform.origin) < 0.05 and not _is_walking:
