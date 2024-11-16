@@ -258,4 +258,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
 
 [node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="."]
 
+[node name="DarkSheepSpawnPoint" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 3, 0)
+
+[node name="DarkSheepSpawnTimer" type="Timer" parent="DarkSheepSpawnPoint"]
+wait_time = 60.0
+
+[connection signal="timeout" from="DarkSheepSpawnPoint/DarkSheepSpawnTimer" to="." method="_on_dark_sheep_spawn_timer_timeout"]
+
 [editable path="Head/SheepModel"]
