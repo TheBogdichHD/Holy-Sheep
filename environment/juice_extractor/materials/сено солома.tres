@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://qnxchvo7ch4v"]
+
+[ext_resource type="Texture2D" uid="uid://b0m8xbwysvbal" path="res://environment/juice_extractor/textures/солома.png" id="1_i6iu3"]
+
+[resource]
+resource_name = "сено солома"
+cull_mode = 2
+albedo_texture = ExtResource("1_i6iu3")

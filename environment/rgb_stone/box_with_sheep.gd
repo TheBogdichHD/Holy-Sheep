@@ -75,10 +75,10 @@ func _set_player_enabled(value: bool):
 
 func _adjust_color():
 	_adjustable_color = Color(slider_red.value/255, slider_green.value/255, slider_blue.value/255)
-	var surface_material: StandardMaterial3D = color_to_adjust.mesh.surface_get_material(0)
+	var surface_material: StandardMaterial3D = color_to_adjust.mesh.surface_get_material(1)
 	var duplicate_material: StandardMaterial3D = surface_material.duplicate(0)
 	duplicate_material.albedo_color = _adjustable_color
-	color_to_adjust.set_surface_override_material(0, duplicate_material)
+	color_to_adjust.set_surface_override_material(1, duplicate_material)
 	if _is_solved():
 		_solve()
 

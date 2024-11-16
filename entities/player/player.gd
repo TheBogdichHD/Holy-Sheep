@@ -130,5 +130,6 @@ func _on_dark_sheep_spawn_timer_timeout() -> void:
 	get_parent_node_3d().add_child(instance)
 	instance.global_transform = dark_sheep_spawn_point.global_transform
 	
+
 	dark_sheep_spawn_timer.wait_time = randi_range(20, 30)
 	dark_sheep_spawn_timer.start()

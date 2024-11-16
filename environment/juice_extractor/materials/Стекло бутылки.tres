@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://ckhlo5sbdhpp7"]
+
+[ext_resource type="Texture2D" uid="uid://bqvfb46supdai" path="res://environment/juice_extractor/textures/шершавая попытка.jpg" id="1_6uguw"]
+
+[resource]
+resource_name = "Стекло бутылки"
+render_priority = 1
+blend_mode = 1
+cull_mode = 2
+depth_draw_mode = 1
+albedo_color = Color(0.858824, 1, 1, 1)
+albedo_texture = ExtResource("1_6uguw")
