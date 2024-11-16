@@ -63,16 +63,17 @@ func update_target_location(target_location) -> void:
 	
 	if distance < sheep_distance_run and !is_player_crouching:
 		var dir_to_player = global_transform.origin - target_location
-		
 		new_position = global_transform.origin + Vector3(dir_to_player.x, 0, dir_to_player.z)
+		warning_sign.emitting = true
 		_is_walking = false
 		_is_running_away = true
-		warning_sign.emitting = true
-		print("emit")
+		sheep_model.set_speed(2)
+			
 	else:
 		_is_running_away = false
 		if _destination.distance_to(global_transform.origin) < 0.05 and not _is_walking:
 			_is_walking = true
+			sheep_model.set_speed(1)
 			timer.wait_time = randi_range(3, 5)
 			timer.start()
 		else:
@@ -93,12 +94,12 @@ func _on_timer_timeout() -> void:
 func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
 	velocity = velocity.move_toward(safe_velocity, 0.3)
 	velocity += Vector3(0, _vertical_velocity * 0.4, 0)
-	
 	if velocity.length() > 0.1:
 		var target_rotation_y = atan2(-velocity.x, -velocity.z) + deg_to_rad(90)
-		
 		rotation.y = lerp_angle(rotation.y, target_rotation_y, 0.1)
-	
+		sheep_model.walk()
+	else:
+		sheep_model.stop()
 	move_and_slide()
 
 # HACK: very bad, i dont know how to do better

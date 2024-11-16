@@ -12,7 +12,6 @@ func walk():
 	
 func stop():
 	animation_player.play("RESET")
-	animation_player.stop()
 	
 func jump():
 	animation_player.play("sheep_animations/jump")
@@ -22,3 +21,6 @@ func scream():
 
 func fall():
 	animation_player.play("sheep_animations/fall")
+
+func fear():
+	animation_player.play("sheep_animations/fear")

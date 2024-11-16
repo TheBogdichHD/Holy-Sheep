@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://lw3javo88mpe"]
 
 [ext_resource type="Script" path="res://entities/sheep/sound_sheep.gd" id="1_0q1f3"]
-[ext_resource type="PackedScene" uid="uid://b7cvq3gfnkvmo" path="res://entities/sheep/sheep.blend" id="2_al2fa"]
 [ext_resource type="Script" path="res://entities/sheep/sheep_color.gd" id="3_tldyy"]
-[ext_resource type="PackedScene" uid="uid://bq8ynxrb15p1t" path="res://particles/warning.tscn" id="4_hiebo"]
+[ext_resource type="PackedScene" path="res://particles/warning.tscn" id="4_hiebo"]
+[ext_resource type="PackedScene" uid="uid://croqabxpl1bsp" path="res://entities/models/sheep_anim.tscn" id="4_hua3k"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_5w0s4"]
 radius = 1.0
@@ -28,11 +28,11 @@ height = 5.0
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
-[node name="SheepModel" parent="." instance=ExtResource("2_al2fa")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
-
 [node name="SheepColor" type="Node3D" parent="."]
 script = ExtResource("3_tldyy")
+
+[node name="SheepModel" parent="." instance=ExtResource("4_hua3k")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
 [node name="Area3D" type="Area3D" parent="."]
 
