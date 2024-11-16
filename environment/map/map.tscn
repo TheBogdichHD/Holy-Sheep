@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://xtlfpuie10jt" path="res://environment/orders/order_reciever.tscn" id="6_ug40f"]
 [ext_resource type="PackedScene" uid="uid://bv8dj2g6xdagj" path="res://entities/sheep/jump_sheep_remote_transform.tscn" id="7_25jip"]
 [ext_resource type="Shader" path="res://environment/world/retro_pixel.gdshader" id="9_uen51"]
-[ext_resource type="PackedScene" uid="uid://dkylkr32w7fjn" path="res://entities/sheep/screaming_sheep.tscn" id="10_ui0tk"]
+[ext_resource type="PackedScene" uid="uid://dlqdwk8pp24i7" path="res://entities/sheep/screaming_sheep.tscn" id="10_ui0tk"]
 [ext_resource type="Material" uid="uid://x650qfpl7g5f" path="res://environment/graas_shader/grass_blade_shade_mat.tres" id="15_0vau7"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_5g4g6"]

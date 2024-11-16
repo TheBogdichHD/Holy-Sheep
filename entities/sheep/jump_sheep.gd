@@ -12,10 +12,11 @@ var _destination = Vector3.ZERO
 var _is_walking = false
 var _is_running_away = false
 var _vertical_velocity: float = 0.0
+var _is_falling = false
 
 @onready var timer: Timer = $Timer
 @onready var navigation_agent_3d: NavigationAgent3D = %JumpSheepAgent
-@onready var sheep_model: Node3D = $sheep
+@onready var sheep_model: Node3D = $SheepModel
 
 
 func _ready() -> void:
@@ -60,9 +61,11 @@ func update_target_location(target_location) -> void:
 		new_position = global_transform.origin + Vector3(dir_to_player.x, 0, dir_to_player.z)
 		_is_walking = false
 		_is_running_away = true
+		sheep_model.set_speed(2)
 	else:
 		_is_running_away = false
 		if _destination.distance_to(global_transform.origin) < 0.05 and not _is_walking:
+			sheep_model.set_speed(1)
 			_is_walking = true
 			timer.wait_time = randi_range(3, 5)
 			timer.start()
@@ -82,13 +85,23 @@ func _on_timer_timeout() -> void:
 func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
 	velocity = velocity.move_toward(safe_velocity, 0.3)
 	if _is_running_away and is_on_floor():
+		sheep_model.jump()
+		await get_tree().create_timer(.5).timeout
 		_vertical_velocity = sqrt(2 * -get_gravity().y * jump_height)
 		velocity.y = _vertical_velocity
 	elif not is_on_floor():
 		velocity.y = _vertical_velocity
+		if not _is_falling:
+			sheep_model.fall()
+			_is_falling = true
+	if is_on_floor():
+		sheep_model.stop()
+		_is_falling = false
 	if velocity.length() > 0.1:
 		var target_rotation_y = atan2(-velocity.x, -velocity.z) + deg_to_rad(90)
 		rotation.y = lerp_angle(rotation.y, target_rotation_y, 0.1)
+		if is_on_floor():
+			sheep_model.stop()
 	move_and_slide()
 	
 # HACK: very bad, i dont know how to do better
