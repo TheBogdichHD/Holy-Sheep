@@ -539,7 +539,7 @@ mesh = SubResource("ArrayMesh_7tbmy")
 skeleton = NodePath("")
 
 [node name="подкрадули" type="MeshInstance3D" parent="."]
-transform = Transform3D(-1.41799e-08, 0, 0.324399, 0, 0.324399, 0, -0.324399, 0, -1.41799e-08, 1.41212, 0.44462, 0)
+transform = Transform3D(-1.17432e-06, 0, 0.324399, 0, 0.324399, 0, -0.324399, 0, -1.17432e-06, 1.41212, 0.44462, 0)
 mesh = SubResource("ArrayMesh_tmnah")
 skeleton = NodePath("")
 
@@ -564,7 +564,7 @@ mesh = SubResource("ArrayMesh_1ru6e")
 skeleton = NodePath("")
 
 [node name="подкрадули_001" type="MeshInstance3D" parent="."]
-transform = Transform3D(-1.41799e-08, 0, 0.324399, 0, 0.324399, 0, -0.324399, 0, -1.41799e-08, 1.41212, 0.44462, 0)
+transform = Transform3D(-1.17432e-06, 0, 0.324399, 0, 0.324399, 0, -0.324399, 0, -1.17432e-06, 1.41212, 0.44462, 0)
 mesh = SubResource("ArrayMesh_voq4x")
 skeleton = NodePath("")
 
