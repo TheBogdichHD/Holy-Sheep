@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dxtm06w2siy8t"]
+[gd_scene load_steps=22 format=3 uid="uid://dxtm06w2siy8t"]
 
 [ext_resource type="Script" path="res://environment/world/world.gd" id="1_2o0p0"]
 [ext_resource type="PackedScene" uid="uid://rcedcl2ogjsn" path="res://environment/ground/ground.tscn" id="1_gl6qs"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://bv8dj2g6xdagj" path="res://entities/sheep/jump_sheep_remote_transform.tscn" id="7_x2a2w"]
 [ext_resource type="PackedScene" uid="uid://xtlfpuie10jt" path="res://environment/orders/order_reciever.tscn" id="9_yiewd"]
 [ext_resource type="PackedScene" uid="uid://dlqdwk8pp24i7" path="res://entities/sheep/screaming_sheep.tscn" id="11_trqbb"]
+[ext_resource type="PackedScene" uid="uid://dno7yl347ne2j" path="res://entities/sheep/dark_sheep.tscn" id="12_k3alc"]
 [ext_resource type="Shader" path="res://environment/world/retro_pixel.gdshader" id="15_hth1x"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_cchlk"]
@@ -74,6 +75,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0, -5.5)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 2.31763)
 walking_speed = 5.0
 crouching_speed = 3.0
+jump_velocity = 4.5
+crouch_depth = -0.5
+mouse_sensitivity = 0.25
+lerp_speed = 10.0
 
 [node name="Sheep" parent="Stage" instance=ExtResource("3_pvcdo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.1582, 0.5, -13.307)
@@ -100,6 +105,9 @@ transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, 
 
 [node name="BoxWithSheep2" parent="Stage" instance=ExtResource("7_d5ywq")]
 transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, 7, 1, -10)
+
+[node name="DarkSheep" parent="Stage" instance=ExtResource("12_k3alc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
 
 [node name="Environment" type="Node3D" parent="."]
 

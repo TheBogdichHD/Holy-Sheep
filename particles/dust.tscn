@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://cf1xgv7607aam"]
+
+[node name="Dust" type="Node3D"]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+process_priority = 1
+sorting_offset = 15.0

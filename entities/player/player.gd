@@ -31,12 +31,18 @@ var additional_velocity = Vector3.ZERO
 @onready var spawn_point: Node3D = $Head/SpawnPoint
 @onready var sheep_model: Node3D = %SheepModel
 
+@onready var dark_sheep_spawn_point: Node3D = $DarkSheepSpawnPoint
+@onready var dark_sheep_spawn_timer = $DarkSheepSpawnPoint/DarkSheepSpawnTimer
+var dark_sheep_path = "res://entities/sheep/dark_sheep.tscn"
+var dark_sheep
 
 var held_object = null
 var is_holding_object: bool = false
 var is_crouching = false
 
 func _ready() -> void:
+	dark_sheep_spawn_timer.start()
+	dark_sheep = load(dark_sheep_path)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -117,3 +123,12 @@ func _interact():
 		sheep_model.visible = true
 		is_holding_object = true
 		obj.queue_free()
+
+
+func _on_dark_sheep_spawn_timer_timeout() -> void:
+	var instance: Node3D = dark_sheep.instantiate()
+	get_parent_node_3d().add_child(instance)
+	instance.global_transform = dark_sheep_spawn_point.global_transform
+	
+	dark_sheep_spawn_timer.wait_time = randi_range(120, 300)
+	dark_sheep_spawn_timer.start()
