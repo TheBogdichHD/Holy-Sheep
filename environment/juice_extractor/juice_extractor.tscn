@@ -1,7 +1,24 @@
-[gd_scene load_steps=2 format=3 uid="uid://xsyntxurh6u4"]
+[gd_scene load_steps=3 format=3 uid="uid://xsyntxurh6u4"]
 
-[ext_resource type="PackedScene" uid="uid://dk33tm03otx54" path="res://environment/juice_extractor/big_bottle.blend" id="1_pu0jr"]
+[ext_resource type="PackedScene" uid="uid://dlhbav6fqiojr" path="res://entities/models/big_bottle_anim.tscn" id="1_ec87b"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fg836"]
+size = Vector3(8.39764, 5.87805, 8.30322)
 
 [node name="JuiceExtractor" type="Node3D"]
 
-[node name="big_bottle" parent="." instance=ExtResource("1_pu0jr")]
+[node name="big_bottle" parent="." instance=ExtResource("1_ec87b")]
+
+[node name="sheep" parent="big_bottle" index="14"]
+visible = false
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.83563, 2.43903, 0.149761)
+shape = SubResource("BoxShape3D_fg836")
+
+[connection signal="body_entered" from="Area3D" to="big_bottle" method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="big_bottle" method="_on_area_3d_body_exited"]
+
+[editable path="big_bottle"]
