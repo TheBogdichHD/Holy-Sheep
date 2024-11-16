@@ -56,7 +56,7 @@ func _physics_process(delta: float) -> void:
 	navigation_agent_3d.set_velocity_forced(new_velocity)
 
 func update_target_location(target_location) -> void:
-	await get_tree().create_timer(0.4).timeout
+	await get_tree().create_timer(0.7).timeout
 	player_location = target_location
 	var distance = global_transform.origin.distance_to(target_location)
 	var new_position = global_transform.origin
@@ -90,12 +90,13 @@ func _on_timer_timeout() -> void:
 func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
 	velocity = velocity.move_toward(safe_velocity, 0.3)
 	velocity += Vector3(0, _vertical_velocity * 0.4, 0)
-	
 	var _direction = player_location - global_position
 	if velocity.length() > 0.1:
+		sheep_model.walk()
 		var target_rotation_y = atan2(-_direction.x, -_direction.z) + deg_to_rad(90)
 		rotation.y = lerp_angle(rotation.y, target_rotation_y, 0.1)
-	
+	elif not _screaming:
+		sheep_model.stop()
 	move_and_slide()
 # HACK: very bad, i dont know how to do better
 func enable_outline():
@@ -154,13 +155,16 @@ func scream(player):
 func _on_scream_range_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		_player = body
-		await get_tree().create_timer(randf_range(0, 0.4)).timeout
-		_screaming = true
 		sound_wave_effect.emitting = true
+		_screaming = true
+		sheep_model.scream()
+		await get_tree().create_timer(.6).timeout
 
 
 func _on_scream_range_body_exited(body: Node3D) -> void:
 	if body.is_in_group("player"):
+		await get_tree().create_timer(.6).timeout
+		sheep_model.stop()
 		_screaming = false
 		_player.additional_velocity = Vector3.ZERO
 		_player = null
