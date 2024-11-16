@@ -31,7 +31,46 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
-_subresources={}
+_subresources={
+"materials": {
+"Black_ass_hole": {
+"use_external/enabled": true,
+"use_external/path": "res://environment/juice_extractor/materials/Black_ass_hole.tres"
+},
+"Material.004": {
+"use_external/enabled": true,
+"use_external/path": "res://environment/juice_extractor/materials/Material.004.tres"
+},
+"Material.007": {
+"use_external/enabled": true,
+"use_external/path": "res://environment/juice_extractor/materials/Material.007.tres"
+},
+"Material.010": {
+"use_external/enabled": true,
+"use_external/path": "res://environment/juice_extractor/materials/Material.010.tres"
+},
+"Деревяшка": {
+"use_external/enabled": true,
+"use_external/path": "res://environment/juice_extractor/materials/Деревяшка.tres"
+},
+"Металл нормальный": {
+"use_external/enabled": true,
+"use_external/path": "res://environment/juice_extractor/materials/Металл нормальный.tres"
+},
+"Ржавый металл": {
+"use_external/enabled": true,
+"use_external/path": "res://environment/juice_extractor/materials/Ржавый металл.tres"
+},
+"Стекло бутылки": {
+"use_external/enabled": true,
+"use_external/path": "res://environment/juice_extractor/materials/Стекло бутылки.tres"
+},
+"сено солома": {
+"use_external/enabled": true,
+"use_external/path": "res://environment/juice_extractor/materials/сено солома.tres"
+}
+}
+}
 blender/nodes/visible=0
 blender/nodes/active_collection_only=false
 blender/nodes/punctual_lights=true

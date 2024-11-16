@@ -1,6 +1,6 @@
-[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bixqk7qnlcx5e"]
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://c4ttgmjlef1hc"]
 
-[ext_resource type="Texture2D" uid="uid://dlcfxrtp2q7oi" path="res://environment/juice_extractor/textures/i01_cork-texture (1).jpg" id="1_5np05"]
+[ext_resource type="Texture2D" uid="uid://bsu6teujyes60" path="res://environment/juice_extractor/textures/i01_cork-texture (1).jpg" id="1_5np05"]
 
 [resource]
 resource_name = "Material.004"
