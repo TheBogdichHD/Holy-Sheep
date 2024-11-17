@@ -45,11 +45,12 @@ func spawn_sheep() -> void:
 			continue
 		if order_manager.all_ever_requested_sheep[s] == 0:
 			continue
-		var instance: Node3D = load(sheep_dict[s]).instantiate()
-		add_child(instance)
-		var index = sheep_spawned % len(spawn_points)
-		instance.global_transform = spawn_points[index].global_transform
-		sheep_spawned += 1
+		for i in range(order_manager.all_ever_requested_sheep[s]):
+			var instance: Node3D = load(sheep_dict[s]).instantiate()
+			add_child(instance)
+			var index = sheep_spawned % len(spawn_points)
+			instance.global_transform = spawn_points[index].global_transform
+			sheep_spawned += 1
 	order_manager.reset_all_requested_sheep()
  
 
