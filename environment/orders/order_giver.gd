@@ -1,8 +1,8 @@
 extends StaticBody3D
 
 @onready var area = $Area3D
-@onready var hint = $Sprite3D
-@onready var hint_text = $Sprite3D/SubViewport/Label
+@onready var hint = $Label3D
+@onready var hint_text = $Label3D
 @onready var order_manager = $".."
 
 func _on_area_3d_body_entered(body: Node3D) -> void:

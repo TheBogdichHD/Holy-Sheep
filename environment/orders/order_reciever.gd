@@ -1,8 +1,8 @@
 extends Node3D
 
 var _is_player_near = false
-@onready var hint = $Sprite3D
-@onready var hint_text = $Sprite3D/SubViewport/Label
+@onready var hint = $Label3D
+@onready var hint_text = $Label3D
 @onready var order_manager = $".."
 @onready var juice_extractor = $"../../JuiceExtractor/big_bottle"
 @onready var player = $"../../Player"
