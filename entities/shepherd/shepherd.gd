@@ -4,7 +4,7 @@ extends Node3D
 
 func _process(delta: float) -> void:
 	if timer.is_stopped():
-		timer.start(randf_range(0, 2))
+		timer.start(randf_range(5, 9))
 		
 func _on_timer_timeout() -> void:
 	if not model.is_playing():
