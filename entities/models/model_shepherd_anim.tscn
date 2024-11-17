@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=4 uid="uid://cryv6bl2p8ve2"]
+[gd_scene load_steps=12 format=4 uid="uid://cryv6bl2p8ve2"]
 
 [ext_resource type="Material" uid="uid://b11e8q8oy5vk0" path="res://entities/shepherd/Material.tres" id="1_83sie"]
+[ext_resource type="Script" path="res://entities/models/model_shepherd_anim.gd" id="1_pjav7"]
 [ext_resource type="AnimationLibrary" uid="uid://c6qjlier8jctf" path="res://entities/models/animations/shepherd_animations.res" id="2_3ecck"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_4weho"]
@@ -220,6 +221,7 @@ _data = {
 }
 
 [node name="model_shepherd" type="Node3D"]
+script = ExtResource("1_pjav7")
 
 [node name="Body" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1.02279, 0, 0, 0, -1.02279, 0, 0, 0, -1.02279, 0, 2.23981, 0)
@@ -241,3 +243,5 @@ libraries = {
 "": SubResource("AnimationLibrary_lq3vt"),
 "shepherd_animations": ExtResource("2_3ecck")
 }
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]

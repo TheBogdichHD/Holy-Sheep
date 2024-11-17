@@ -3,8 +3,10 @@ extends Node
 @onready var timer: Timer = $CycleTimer
 @onready var timer_text: RichTextLabel = $MarginContainer/TimerLabel
 @onready var score_label: Label = $MarginContainer/ScoreLabel
-@onready var max_time: float = 60
+@onready var max_time: float = 300
 @onready var order_manager = %OrderManager
+var cycle_started: bool = false
+
 const TIME_STEP: float = 30
 
 # Called when the node enters the scene tree for the first time.
@@ -18,6 +20,7 @@ func _process(_delta: float) -> void:
 	update_timer_label()
 
 func start_cycle():
+	cycle_started = true
 	order_manager.set_give_order(true)
 	timer.start(max_time)
 	max_time += TIME_STEP
@@ -30,7 +33,6 @@ func _on_cycle_timer_timeout() -> void:
 func update_timer_label():
 	if !timer.paused and !timer.is_stopped():
 		timer_text.text = get_time_string()
-	
 
 func get_time_string() -> String:
 	var res: String = str(int(timer.time_left) / 60) + ':'
@@ -39,3 +41,6 @@ func get_time_string() -> String:
 		res += "0"
 	res += str(i)
 	return "[color=black]" + res + "[/color]"
+
+func get_cycle_started():
+	return cycle_started

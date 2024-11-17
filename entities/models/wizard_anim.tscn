@@ -574,3 +574,5 @@ libraries = {
 "wizard_animations": ExtResource("5_y3rjv")
 }
 speed_scale = 0.8
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
