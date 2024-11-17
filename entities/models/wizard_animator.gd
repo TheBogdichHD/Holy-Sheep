@@ -8,6 +8,9 @@ var anim_list = ["cast1", "shoeinator"]
 @onready var audio_stream_player_3d: AudioStreamPlayer3D = $AudioStreamPlayer3D
 var in_play = false
 
+func _ready() -> void:
+	audio_stream_player_3d.volume_db = -10
+
 func play_random():
 	var i = randi_range(0, anim_list.size()-1)
 	play_command(anim_list[i])
