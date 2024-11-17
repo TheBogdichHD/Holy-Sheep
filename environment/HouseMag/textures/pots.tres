@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://du0qom28bbceg"]
+
+[ext_resource type="Texture2D" uid="uid://dmax11s1mhu6v" path="res://environment/HouseMag/textures/pots.png" id="1_xh18v"]
+
+[resource]
+resource_name = "pots"
+cull_mode = 2
+albedo_texture = ExtResource("1_xh18v")
