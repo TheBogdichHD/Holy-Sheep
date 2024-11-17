@@ -6,8 +6,13 @@ extends CharacterBody3D
 @export var running_speed = 20.0
 @export var jump_height = 1
 @export var sheep_color = Color(0, 1, 0)
-@export var sounds: Array
 @export var max_distance = 50
+
+var sounds: Array = [
+	preload("res://audio/sheeps/green_sheep1.mp3"),
+	preload("res://audio/sheeps/green_sheep2.mp3"),
+	preload("res://audio/sheeps/green_sheep3.mp3")
+]
 
 var _destination = Vector3.ZERO
 var _is_walking = false
@@ -15,12 +20,15 @@ var _is_running_away = false
 var _vertical_velocity: float = 0.0
 var _is_falling = false
 
+@onready var bee_timer: Timer = $BeeTimer
+@onready var audiosource: AudioStreamPlayer3D = $AudioStreamPlayer3D
 @onready var timer: Timer = $Timer
 @onready var navigation_agent_3d: NavigationAgent3D = %JumpSheepAgent
 @onready var sheep_model: Node3D = $SheepModel
 
 
 func _ready() -> void:
+	audiosource.volume_db = 50
 	var cube: MeshInstance3D = sheep_model.get_child(0)
 	var surface_material: StandardMaterial3D = cube.mesh.surface_get_material(0)
 	var dup_surface_material = surface_material.duplicate(true)
@@ -89,6 +97,8 @@ func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
 	velocity = velocity.move_toward(safe_velocity, 0.3)
 	if _is_running_away and is_on_floor():
 		sheep_model.jump()
+		audiosource.stream = sounds[randi() % 3]
+		audiosource.play()
 		await get_tree().create_timer(.5).timeout
 		_vertical_velocity = sqrt(2 * -get_gravity().y * jump_height)
 		velocity.y = _vertical_velocity

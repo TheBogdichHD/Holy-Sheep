@@ -10,9 +10,9 @@ extends CharacterBody3D
 var min = 2
 var max = 10
 var sounds: Array = [
-	preload("res://audio/sheeps/cute_sheep1.mp3"),
-	preload("res://audio/sheeps/cute_sheep2.mp3"),
-	preload("res://audio/sheeps/cute_sheep3.mp3")
+	preload("res://audio/sheeps/blue_sheep1.mp3"),
+	preload("res://audio/sheeps/blue_sheep2.mp3"),
+	preload("res://audio/sheeps/blue_sheep3.mp3")
 ]
 
 var _destination = Vector3.ZERO
@@ -31,7 +31,7 @@ var is_player_crouching = false
 
 
 func _ready() -> void:
-	audiosource.volume_db = 50
+	audiosource.volume_db = 20
 	bee_timer.start(randf_range(min, max))
 	var cube: MeshInstance3D = sheep_model.get_child(0)
 	var surface_material: StandardMaterial3D = cube.mesh.surface_get_material(0)
@@ -81,6 +81,10 @@ func update_target_location(target_location) -> void:
 		warning_sign.emitting = true
 		if not _is_running_away:
 			sheep_model.fear()
+			audiosource.stream = sounds[randi() % 3]
+			audiosource.stream = sounds[randi() % 3]
+			audiosource.play()
+			bee_timer.start(randf_range(min, max))
 		_is_walking = false
 		_is_running_away = true
 		sheep_model.set_speed(2)
