@@ -25,7 +25,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0.81426)
 sorting_offset = 100.0
 billboard = 1
 alpha_cut = 1
-text = "jkjl"
 font_size = 46
 outline_size = 16
 

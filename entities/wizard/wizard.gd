@@ -8,7 +8,7 @@ var _is_player_near = false
 
 func _process(delta: float) -> void:
 	if timer.is_stopped():
-		timer.start(randf_range(5, 9))
+		timer.start(randf_range(3.5, 6.5))
 
 func _input(event: InputEvent) -> void:
 	if event is InputEvent:

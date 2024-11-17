@@ -11,8 +11,18 @@ var _max_sheep_in_order
 
 var give_order: bool = false
 
+var all_ever_requested_sheep = {
+	"белый": 1,
+	"синий": 1,
+	"красный": 1,
+	"зелёный": 1,
+	"кристальный": 0,
+	"чёрный": 0
+}
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	#reset_all_requested_sheep()
 	generate_order()
 
 
@@ -26,7 +36,8 @@ func generate_order() -> void:
 			var sheep_to_add = randi_range(0, 1)
 			_current_order[color] += min(sheep_to_add, _max_sheep_in_order - sheep_in_order)
 			sheep_in_order += _current_order[color]
-			if sheep_in_order > _max_sheep_in_order:
+			all_ever_requested_sheep[color] += _current_order[color]
+			if sheep_in_order >= _max_sheep_in_order:
 				break
 
 
@@ -82,3 +93,7 @@ func get_give_order():
 
 func get_orders_completed_count():
 	return _orders_completed
+
+func reset_all_requested_sheep():
+	for color in _sheep_colors:
+		all_ever_requested_sheep[color] = 0
