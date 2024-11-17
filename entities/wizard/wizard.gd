@@ -6,6 +6,11 @@ var _is_player_near = false
 @onready var model: Node3D = $model
 @onready var label_3d: Label3D = $Label3D
 
+@onready var warning: GPUParticles3D = $Warning.get_child(0)
+
+func _ready() -> void:
+	warning.emitting = true
+
 func _process(delta: float) -> void:
 	if timer.is_stopped():
 		timer.start(randf_range(3.5, 6.5))
@@ -17,6 +22,7 @@ func _input(event: InputEvent) -> void:
 			model.play_command("questgive")
 			game_manager.start_cycle()
 			label_3d.visible = false
+			warning.emitting = false
 
 func _on_timer_timeout() -> void:
 	if not model.is_playing():

@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://c318iwoit8ua"]
+[gd_scene load_steps=5 format=3 uid="uid://c318iwoit8ua"]
 
 [ext_resource type="PackedScene" uid="uid://cryv6bl2p8ve2" path="res://entities/models/model_shepherd_anim.tscn" id="1_7uys8"]
 [ext_resource type="Script" path="res://entities/shepherd/shepherd.gd" id="1_tpl6w"]
+[ext_resource type="PackedScene" uid="uid://opaxtpjn8pnd" path="res://particles/warning_BIG.tscn" id="3_p2fqp"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7k7d0"]
 size = Vector3(1.46417, 3.35251, 1.67731)
@@ -17,5 +18,8 @@ transform = Transform3D(-3.49691e-08, 0, 0.8, 0, 0.8, 0, -0.8, 0, -3.49691e-08, 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.049469, 1.69279, -0.0983582)
 shape = SubResource("BoxShape3D_7k7d0")
+
+[node name="Warning" parent="." instance=ExtResource("3_p2fqp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.30705, 6.21725, 0)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
