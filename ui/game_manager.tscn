@@ -1,6 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://by84k0dstw0hp"]
+[gd_scene load_steps=4 format=3 uid="uid://by84k0dstw0hp"]
 
 [ext_resource type="Script" path="res://environment/world/game_manager.gd" id="1_8aikk"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_hymfn"]
+font_size = 30
+
+[sub_resource type="LabelSettings" id="LabelSettings_4ejut"]
+font_size = 40
+font_color = Color(0, 0, 0, 1)
 
 [node name="GameManager" type="Node"]
 script = ExtResource("1_8aikk")
@@ -9,10 +16,10 @@ script = ExtResource("1_8aikk")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = -1
-anchor_right = 0.998
-anchor_bottom = 0.991
-offset_right = 0.303955
-offset_bottom = -0.16803
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
@@ -20,7 +27,7 @@ mouse_filter = 2
 [node name="TimerLabel" type="RichTextLabel" parent="MarginContainer"]
 layout_mode = 2
 mouse_filter = 2
-theme_override_font_sizes/normal_font_size = 72
+theme_override_font_sizes/normal_font_size = 40
 bbcode_enabled = true
 text = " [color=black]2:30 [/color]"
 
@@ -28,7 +35,15 @@ text = " [color=black]2:30 [/color]"
 layout_mode = 2
 text = "Time left!
 Your score: *your_score*"
+label_settings = SubResource("LabelSettings_hymfn")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="OrderLabel" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "колор "
+label_settings = SubResource("LabelSettings_4ejut")
+horizontal_alignment = 2
 
 [connection signal="timeout" from="CycleTimer" to="." method="_on_cycle_timer_timeout"]

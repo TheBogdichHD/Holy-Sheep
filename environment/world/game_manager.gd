@@ -3,6 +3,7 @@ extends Node
 @onready var timer: Timer = $CycleTimer
 @onready var timer_text: RichTextLabel = $MarginContainer/TimerLabel
 @onready var score_label: Label = $MarginContainer/ScoreLabel
+@onready var order_label: Label = $MarginContainer/OrderLabel
 @onready var max_time: float = 300
 @onready var order_manager: OrderManager = %OrderManager
 var cycle_started: bool = false
@@ -13,11 +14,16 @@ const TIME_STEP: float = 30
 func _ready() -> void:
 	timer_text.text = ""
 	score_label.text = ""
+	order_label.text = ""
 	#start_cycle()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	update_timer_label()
+	if order_manager.is_order_taken():
+		order_label.text = get_current_color()
+	else:
+		order_label.text = ""
 
 func start_cycle():
 	cycle_started = true
@@ -41,7 +47,17 @@ func get_time_string() -> String:
 	if i < 10:
 		res += "0"
 	res += str(i)
-	return "[color=black]" + res + "[/color]"
+	return " [color=black]" + res + "[/color]"
 
 func get_cycle_started():
 	return cycle_started
+
+
+func get_current_color() -> String:
+	var text = ""
+	var current_order = order_manager.get_order()
+	for color in current_order.keys():
+		if current_order[color] > 0:
+			text = color
+			break
+	return text + " "
