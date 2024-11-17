@@ -1,7 +1,43 @@
-[gd_scene load_steps=4 format=3 uid="uid://d0t1qwpsnupmf"]
+[gd_scene load_steps=17 format=3 uid="uid://d0t1qwpsnupmf"]
 
 [ext_resource type="Script" path="res://ui/button_manager.gd" id="1_8sc5e"]
+[ext_resource type="Shader" path="res://ui/main_menu.gdshader" id="2_0tck8"]
 [ext_resource type="Shader" path="res://environment/world/retro_pixel.gdshader" id="2_na5sy"]
+[ext_resource type="PackedScene" uid="uid://b7cvq3gfnkvmo" path="res://entities/sheep/sheep.blend" id="3_jjpgr"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2e5py"]
+shader = ExtResource("2_0tck8")
+shader_parameter/fireMovement = Vector2(0.01, 0.25)
+shader_parameter/distortionMovement = Vector2(-0.01, -0.3)
+shader_parameter/normalStrength = 40.0
+shader_parameter/distortionStrength = 0.1
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_cwnae"]
+
+[sub_resource type="Sky" id="Sky_uuq2w"]
+sky_material = SubResource("ProceduralSkyMaterial_cwnae")
+
+[sub_resource type="Environment" id="Environment_id1cd"]
+background_mode = 2
+sky = SubResource("Sky_uuq2w")
+
+[sub_resource type="World3D" id="World3D_o6vfy"]
+environment = SubResource("Environment_id1cd")
+
+[sub_resource type="SystemFont" id="SystemFont_2ourd"]
+font_names = PackedStringArray("Algerian", "Parchment", "Matura MT Script Capitals", "Magneto", "Jokerman", "French Script MT", "Colonna MT", "Chiller", "Rage")
+
+[sub_resource type="SystemFont" id="SystemFont_pajpp"]
+font_names = PackedStringArray("Chiller", "Colonna MT")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_egivo"]
+
+[sub_resource type="SystemFont" id="SystemFont_l6rrb"]
+font_names = PackedStringArray("Chiller")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u16df"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fry31"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8x4xo"]
 shader = ExtResource("2_na5sy")
@@ -25,36 +61,95 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ButtonManager" type="Node" parent="."]
-script = ExtResource("1_8sc5e")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="Background" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_2e5py")
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -75.0
-offset_top = -37.0
-offset_right = 75.0
-offset_bottom = 37.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.129412, 0.129412, 0.129412, 0.466667)
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PlayButton" type="Button" parent="VBoxContainer"]
-custom_minimum_size = Vector2(150, 50)
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+own_world_3d = true
+world_3d = SubResource("World3D_o6vfy")
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.37705, 9.22434)
+
+[node name="sheep" parent="SubViewportContainer/SubViewport" instance=ExtResource("3_jjpgr")]
+
+[node name="ButtonManager" type="Node" parent="."]
+script = ExtResource("1_8sc5e")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 30
+theme_override_fonts/font = SubResource("SystemFont_2ourd")
+theme_override_font_sizes/font_size = 110
+text = "Holy Sheep"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayButton" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(400, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/outline_size = 40
+theme_override_fonts/font = SubResource("SystemFont_pajpp")
+theme_override_font_sizes/font_size = 90
+theme_override_styles/normal = SubResource("StyleBoxEmpty_egivo")
 text = "Play"
 
-[node name="SoundButton" type="Button" parent="VBoxContainer"]
-custom_minimum_size = Vector2(150, 50)
+[node name="SoundButton" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(400, 50)
 layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/outline_size = 40
+theme_override_fonts/font = SubResource("SystemFont_l6rrb")
+theme_override_font_sizes/font_size = 80
+theme_override_styles/normal = SubResource("StyleBoxEmpty_u16df")
 text = "Sound on/off"
 
-[node name="QuitButton" type="Button" parent="VBoxContainer"]
-custom_minimum_size = Vector2(150, 50)
+[node name="QuitButton" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(400, 50)
 layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/outline_size = 40
+theme_override_fonts/font = SubResource("SystemFont_l6rrb")
+theme_override_font_sizes/font_size = 80
+theme_override_styles/normal = SubResource("StyleBoxEmpty_fry31")
 text = "Quit"
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -67,6 +162,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[connection signal="pressed" from="VBoxContainer/PlayButton" to="ButtonManager" method="_on_play_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/SoundButton" to="ButtonManager" method="_on_sound_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/QuitButton" to="ButtonManager" method="_on_quit_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/PlayButton" to="ButtonManager" method="_on_play_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/SoundButton" to="ButtonManager" method="_on_sound_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/QuitButton" to="ButtonManager" method="_on_quit_button_pressed"]

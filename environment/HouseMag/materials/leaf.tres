@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dikt03ljm3x1d"]
+
+[ext_resource type="Texture2D" uid="uid://1hoh81xfwmed" path="res://environment/HouseMag/textures/leaf.png" id="1_2fgcf"]
+
+[resource]
+resource_name = "leaf"
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("1_2fgcf")
+texture_repeat = false

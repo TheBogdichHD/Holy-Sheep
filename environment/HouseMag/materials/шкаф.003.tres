@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://ceavwjcm1bkln"]
+
+[ext_resource type="Texture2D" uid="uid://b2od1c7sospv6" path="res://environment/HouseMag/textures/photo_5319250025127208503_w.jpg" id="1_suqnf"]
+
+[resource]
+resource_name = "шкаф.003"
+cull_mode = 2
+albedo_texture = ExtResource("1_suqnf")

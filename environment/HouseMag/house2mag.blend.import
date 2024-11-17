@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cqgy1e0f13sbg"
+uid="uid://bdviteobmgeh4"
 path="res://.godot/imported/house2mag.blend-2e17a3a0c4cd8ca4bc451b3508d942bd.scn"
 
 [deps]
@@ -31,7 +31,30 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
-_subresources={}
+_subresources={
+"materials": {
+"Material": {
+"use_external/enabled": true,
+"use_external/path": "res://environment/HouseMag/materials/Material.tres"
+},
+"Material.001": {
+"use_external/enabled": true,
+"use_external/path": "res://environment/HouseMag/materials/Material.001.tres"
+},
+"leaf": {
+"use_external/enabled": true,
+"use_external/path": "res://environment/HouseMag/materials/leaf.tres"
+},
+"pots": {
+"use_external/enabled": true,
+"use_external/path": ""
+},
+"шкаф.003": {
+"use_external/enabled": true,
+"use_external/path": "res://environment/HouseMag/materials/шкаф.003.tres"
+}
+}
+}
 blender/nodes/visible=0
 blender/nodes/active_collection_only=false
 blender/nodes/punctual_lights=true
