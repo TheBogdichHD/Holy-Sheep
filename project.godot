@@ -30,7 +30,7 @@ window/stretch/mode="viewport"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/simplegrasstextured/plugin.cfg")
+enabled=PackedStringArray("res://addons/simplegrasstextured/plugin.cfg")
 
 [file_customization]
 
