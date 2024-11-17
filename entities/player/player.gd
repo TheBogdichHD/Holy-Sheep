@@ -48,8 +48,8 @@ var delete_sheep = false
 
 
 func _ready() -> void:
-	audiosource.volume_db = 10
 	audiosource.stream = slurp
+	audiosource.volume_db = 80
 	dark_sheep_spawn_timer.start()
 	dark_sheep = load(dark_sheep_path)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
