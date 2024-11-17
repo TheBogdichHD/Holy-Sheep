@@ -3,11 +3,11 @@
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_5mt8k"]
 [ext_resource type="PackedScene" uid="uid://croqabxpl1bsp" path="res://entities/models/sheep_anim.tscn" id="2_41wyy"]
 [ext_resource type="PackedScene" uid="uid://b7cvq3gfnkvmo" path="res://entities/sheep/sheep.blend" id="2_hfgkk"]
-[ext_resource type="ArrayMesh" path="res://entities/player/sheep.tres" id="3_c6tte"]
-[ext_resource type="ArrayMesh" uid="uid://csv67b0mb55i2" path="res://entities/player/sheep_legs.tres" id="4_rrspx"]
+[ext_resource type="ArrayMesh" uid="uid://dgq6ftgjmi1j3" path="res://entities/player/sheep.tres" id="3_c6tte"]
+[ext_resource type="ArrayMesh" uid="uid://b5wt13e7ptxre" path="res://entities/player/sheep_legs.tres" id="4_rrspx"]
 [ext_resource type="Shader" path="res://entities/player/psx_camera.gdshader" id="4_tw752"]
-[ext_resource type="ArrayMesh" uid="uid://dgl8d56mcglwu" path="res://entities/player/sheep_legs2.tres" id="5_erg71"]
-[ext_resource type="ArrayMesh" uid="uid://cbwvhhllvdiw7" path="res://entities/player/sheep_face.tres" id="6_m2y2k"]
+[ext_resource type="ArrayMesh" uid="uid://cj4celtgqxio6" path="res://entities/player/sheep_legs2.tres" id="5_erg71"]
+[ext_resource type="ArrayMesh" uid="uid://c6fgvuxon1iyk" path="res://entities/player/sheep_face.tres" id="6_m2y2k"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_et56s"]
 
