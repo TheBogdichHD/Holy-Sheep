@@ -115,6 +115,10 @@ func _interact():
 		return
 	var obj = direction_ray.get_collider()
 	if obj.is_in_group("pickable") or obj.is_in_group("sheep"):
+		if obj.name == "bottle":
+			obj.get_child(1).mesh.surface_get_material(0).albedo_color = Color(0,0,0,0)
+			return
+		
 		var cube: MeshInstance3D = sheep_model.get_child(0)
 		var surface_material: ShaderMaterial = cube.mesh.surface_get_material(0)
 		var dup_surface_material: ShaderMaterial = surface_material.duplicate(true)
