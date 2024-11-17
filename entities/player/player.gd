@@ -35,6 +35,8 @@ var additional_velocity = Vector3.ZERO
 @onready var dark_sheep_spawn_timer = $DarkSheepSpawnPoint/DarkSheepSpawnTimer
 @onready var cling_timer: Timer = $Head/ClingTimer
 
+@onready var audiosource: AudioStreamPlayer3D = $AudioStreamPlayer3D
+var slurp = preload("res://audio/slurp.mp3")
 var dark_sheep_path = "res://entities/sheep/dark_sheep.tscn"
 var dark_sheep
 
@@ -46,6 +48,8 @@ var delete_sheep = false
 
 
 func _ready() -> void:
+	audiosource.volume_db = 10
+	audiosource.stream = slurp
 	dark_sheep_spawn_timer.start()
 	dark_sheep = load(dark_sheep_path)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -121,6 +125,7 @@ func _interact():
 	var obj = direction_ray.get_collider()
 	if obj.is_in_group("pickable") or obj.is_in_group("sheep"):
 		if obj.name == "bottle":
+			audiosource.play()
 			obj.get_child(1).mesh.surface_get_material(0).albedo_color = Color(0,0,0,0)
 			return
 		

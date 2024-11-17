@@ -111,6 +111,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 3, 0)
 [node name="DarkSheepSpawnTimer" type="Timer" parent="DarkSheepSpawnPoint"]
 wait_time = 10.0
 
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+attenuation_model = 3
+bus = &"SFX"
+
 [connection signal="timeout" from="Head/ClingTimer" to="." method="_on_cling_timer_timeout"]
 [connection signal="timeout" from="DarkSheepSpawnPoint/DarkSheepSpawnTimer" to="." method="_on_dark_sheep_spawn_timer_timeout"]
 

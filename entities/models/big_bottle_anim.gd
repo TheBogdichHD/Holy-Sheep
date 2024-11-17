@@ -16,19 +16,12 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if not _is_player_near:
 		return
-		
-	#if event is InputEvent:
-		#if event.is_action_pressed("interact") and player.is_holding_object:
-			#player.delete_sheep = true
-			#start(player.current_sheep_color)
-
 
 func _on_animation_player_animation_started(anim_name: StringName) -> void:
 	sheep.visible = true
 
 func start(sheep_color: Color):
 	player.delete_sheep = true
-	#################################
 	cur_sheep_color = sheep_color
 	cube.mesh.surface_get_material(0).albedo_color = cur_sheep_color
 	animation_player.play("extract")
