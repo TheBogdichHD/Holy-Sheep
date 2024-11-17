@@ -13,9 +13,11 @@ var give_order: bool = false
 
 var all_ever_requested_sheep = {
 	"белый": 1,
+	"синий": 1,
 	"красный": 1,
 	"зелёный": 1,
-	"синий": 1
+	"кристальный": 0,
+	"чёрный": 0
 }
 
 # Called when the node enters the scene tree for the first time.
