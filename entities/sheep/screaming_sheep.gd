@@ -1,17 +1,27 @@
 class_name ScreamingSheep
 extends CharacterBody3D
 
-
 @export var sheep_distance_run = 10
 @export var walking_speed = 5.0
 @export var running_speed = 15.0
 @export var sheep_color: Color = Color(1, 0, 0)
+
+var min = 2
+var max = 10
+var scream_sound = preload("res://audio/sheeps/red_sheep_scream.mp3")
+var sounds: Array = [
+	preload("res://audio/sheeps/red_sheep_1.mp3"),
+	preload("res://audio/sheeps/red_sheep_2.mp3"),
+	preload("res://audio/sheeps/red_sheep_3.mp3")
+]
 
 var _destination = Vector3.ZERO
 var _is_walking = false
 var _is_running_away = false
 var _vertical_velocity: float = 0.0
 
+@onready var bee_timer: Timer = $BeeTimer
+@onready var audiosource: AudioStreamPlayer3D = $AudioStreamPlayer3D
 @onready var player_location = global_position
 @onready var timer: Timer = $Timer
 @onready var navigation_agent_3d: NavigationAgent3D = $NavigationAgent3D
@@ -22,6 +32,8 @@ var _vertical_velocity: float = 0.0
 
 
 func _ready() -> void:
+	audiosource.volume_db = -7
+	bee_timer.start(randf_range(min, max))
 	sound_wave_effect.emitting = false
 	var cube: MeshInstance3D = sheep_model.get_child(0)
 	var surface_material: StandardMaterial3D = cube.mesh.surface_get_material(0)
@@ -162,6 +174,10 @@ func _on_scream_range_body_entered(body: Node3D) -> void:
 		_player_to_delete_speed_bad_code_but_do_not_delete_please_skibidi = body
 		sound_wave_effect.emitting = true
 		_screaming = true
+		audiosource.stop()
+		audiosource.stream = scream_sound
+		audiosource.play()
+		bee_timer.start(randf_range(min, max))
 		sheep_model.scream()
 		dust.emitting = false
 		await get_tree().create_timer(.6).timeout
@@ -191,3 +207,9 @@ func _on_rotation_timer_timeout() -> void:
 func _on_tree_exited() -> void:
 	if _player_to_delete_speed_bad_code_but_do_not_delete_please_skibidi != null:
 		_player_to_delete_speed_bad_code_but_do_not_delete_please_skibidi.additional_velocity = Vector3(0,0,0)
+
+
+func _on_bee_timer_timeout() -> void:
+	audiosource.stream = sounds[randi() % 3]
+	audiosource.play()
+	bee_timer.start(randf_range(min, max))

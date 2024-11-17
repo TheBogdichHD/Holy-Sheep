@@ -1,22 +1,35 @@
 class_name SheepFromBox
 extends CharacterBody3D
 
-
 @export var sheep_distance_run = 15
 @export var walking_speed = 5.0
 @export var running_speed = 10.0
 @export var sheep_color = Color(0, 0, 0)
+
+var min = 2
+var max = 10
+var sounds: Array = [
+	preload("res://audio/sheeps/box_sheep1.mp3"),
+	preload("res://audio/sheeps/box_sheep2.mp3"),
+	preload("res://audio/sheeps/box_sheep3.mp3")
+]
+
 var _destination = Vector3.ZERO
 var _is_walking = false
 var _is_running_away = false
 var _vertical_velocity: float = 0.0
 
+@onready var bee_timer: Timer = $BeeTimer
+@onready var audiosource: AudioStreamPlayer3D = $AudioStreamPlayer3D
 @onready var timer: Timer = $Timer
 @onready var navigation_agent_3d: NavigationAgent3D = $NavigationAgent3D
 @onready var sheep_model: Node3D = %SheepModel
 
 
 func _ready() -> void:
+	audiosource.stream = sounds[randi() % 3]
+	audiosource.play()
+	bee_timer.start(randf_range(min, max))
 	var cube: MeshInstance3D = sheep_model.get_child(0)
 	var surface_material: StandardMaterial3D = cube.mesh.surface_get_material(0)
 	var dup_surface_material = surface_material.duplicate(true)
@@ -133,3 +146,8 @@ func _on_area_3d_area_entered(area: Area3D) -> void:
 func _on_area_3d_area_exited(area: Area3D) -> void:
 	if area.is_in_group("player"):
 		disable_outline()
+
+func _on_bee_timer_timeout() -> void:
+	audiosource.stream = sounds[randi() % 3]
+	audiosource.play()
+	bee_timer.start(randf_range(min, max))

@@ -1,12 +1,12 @@
 class_name JumpSheep
 extends CharacterBody3D
 
-
 @export var sheep_distance_run = 10
 @export var walking_speed = 5.0
 @export var running_speed = 20.0
 @export var jump_height = 1
 @export var sheep_color = Color(0, 1, 0)
+@export var sounds: Array
 
 var _destination = Vector3.ZERO
 var _is_walking = false

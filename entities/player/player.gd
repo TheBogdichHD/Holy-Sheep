@@ -62,6 +62,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		camera_3d.fov = _fov - 40
 	if Input.is_action_just_released("zoom"):
 		camera_3d.fov = _fov
+
 func _physics_process(delta: float) -> void:
 	if is_holding_object and cling_timer.is_stopped() and not sheep_model.is_playing():
 		cling_timer.start(randf_range(3, 5))

@@ -56,6 +56,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.85, 1.35, 0)
 
 [node name="Dust" parent="." instance=ExtResource("5_c62bw")]
 
+[node name="BeeTimer" type="Timer" parent="."]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+
 [connection signal="tree_exited" from="." to="." method="_on_tree_exited"]
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
@@ -65,3 +69,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.85, 1.35, 0)
 [connection signal="body_entered" from="ScreamRange" to="." method="_on_scream_range_body_entered"]
 [connection signal="body_exited" from="ScreamRange" to="." method="_on_scream_range_body_exited"]
 [connection signal="timeout" from="RotationTimer" to="." method="_on_rotation_timer_timeout"]
+[connection signal="timeout" from="BeeTimer" to="." method="_on_bee_timer_timeout"]

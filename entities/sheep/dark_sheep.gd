@@ -1,17 +1,23 @@
 class_name DarkSheep
 extends CharacterBody3D
 
-
 @export var sheep_distance_run = 0
 @export var walking_speed = 0.0
 @export var running_speed = 0.0
 @export var sheep_color: Color = Color(0, 0, 0)
+
+var sounds: Array = [
+	preload("res://audio/sheeps/black_sheep1.mp3"),
+	preload("res://audio/sheeps/black_sheep2.mp3"),
+	preload("res://audio/sheeps/black_sheep3.mp3")
+]
 
 var _destination = Vector3.ZERO
 var _is_walking = false
 var _is_running_away = false
 var _vertical_velocity: float = 0.0
 
+@onready var audiosource: AudioStreamPlayer3D = $AudioStreamPlayer3D
 @onready var player_location = global_position
 @onready var timer: Timer = $Timer
 @onready var navigation_agent_3d: NavigationAgent3D = $NavigationAgent3D
@@ -177,3 +183,8 @@ func _on_rotation_timer_timeout() -> void:
 func _on_life_timer_timeout() -> void:
 	print("Dark sheep disappeared...")
 	queue_free()
+
+
+func _on_visible_on_screen_notifier_3d_screen_entered() -> void:
+	audiosource.stream = sounds[randi() % 3]
+	audiosource.play()
