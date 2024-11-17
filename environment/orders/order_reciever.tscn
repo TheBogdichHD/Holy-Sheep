@@ -17,14 +17,16 @@ script = ExtResource("1_p4ohk")
 mesh = SubResource("TorusMesh_aanst")
 
 [node name="Area3D" type="Area3D" parent="."]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 1, 0)
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -1, 1.8, -1)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.254639, 0, 0.27121)
 shape = SubResource("BoxShape3D_o4gkk")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.07907, 0)
+process_priority = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.79977, 0)
+sorting_offset = 15.0
 texture = SubResource("ViewportTexture_8qlce")
 
 [node name="SubViewport" type="SubViewport" parent="Sprite3D"]

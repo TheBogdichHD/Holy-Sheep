@@ -24,7 +24,7 @@ shape = SubResource("SphereShape3D_e1llt")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 process_priority = 1
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.783413, 0.759623)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.783413, 1.75962)
 sorting_offset = 20.0
 texture = SubResource("ViewportTexture_ouqf8")
 
