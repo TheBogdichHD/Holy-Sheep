@@ -4,7 +4,7 @@ extends Node
 @onready var timer_text: Label = $MarginContainer/TimerLabel
 @onready var score_label: Label = $MarginContainer/VBoxContainer/ScoreLabel
 @onready var order_label: Label = $MarginContainer/OrderLabel
-@onready var max_time: float = 300
+@onready var max_time: float = 420
 @onready var order_manager: OrderManager = %OrderManager
 var cycle_started: bool = false
 
