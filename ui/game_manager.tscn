@@ -15,7 +15,7 @@ script = ExtResource("1_8aikk")
 [node name="CycleTimer" type="Timer" parent="."]
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-anchors_preset = -1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -46,4 +46,22 @@ text = "колор "
 label_settings = SubResource("LabelSettings_4ejut")
 horizontal_alignment = 2
 
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 426.0
+offset_top = 378.0
+offset_right = -426.0
+offset_bottom = -200.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(300, 70)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Играть"
+
 [connection signal="timeout" from="CycleTimer" to="." method="_on_cycle_timer_timeout"]
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]

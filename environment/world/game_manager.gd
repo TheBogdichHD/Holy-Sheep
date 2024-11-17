@@ -61,3 +61,8 @@ func get_current_color() -> String:
 			text = color
 			break
 	return text + " "
+
+
+func _on_button_pressed() -> void:
+	MusicManager.play_game_music()
+	get_tree().change_scene_to_file("res://environment/map/map.tscn")
