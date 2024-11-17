@@ -8,11 +8,12 @@ var _is_player_near = false
 
 func _process(delta: float) -> void:
 	if timer.is_stopped():
-		timer.start(randf_range(5, 9))
+		timer.start(randf_range(3.5, 6.5))
 
 func _input(event: InputEvent) -> void:
 	if event is InputEvent:
 		if event.is_action_pressed("interact") and _is_player_near and !game_manager.get_cycle_started():
+			model.clear()
 			model.play_command("questgive")
 			game_manager.start_cycle()
 			label_3d.visible = false

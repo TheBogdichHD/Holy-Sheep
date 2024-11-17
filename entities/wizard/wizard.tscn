@@ -14,9 +14,10 @@ script = ExtResource("1_ovtux")
 
 [node name="Label3D" type="Label3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 4.80225, 0)
-sorting_offset = 10.0
+sorting_offset = 100.0
 pixel_size = 0.01
 billboard = 1
+alpha_cut = 1
 outline_modulate = Color(0, 0, 1, 1)
 text = "НАЖМИ E
 ПОЖАЛУЙСТА"
