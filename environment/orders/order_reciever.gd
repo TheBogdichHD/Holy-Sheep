@@ -3,9 +3,16 @@ extends Node3D
 var _is_player_near = false
 @onready var hint = $Label3D
 @onready var hint_text = $Label3D
-@onready var order_manager = $".."
+@onready var order_manager: OrderManager = $".."
 @onready var juice_extractor = $"../../JuiceExtractor/big_bottle"
 @onready var player = $"../../Player"
+@onready var warning: GPUParticles3D = $Warning.get_child(0)
+
+func _process(delta: float) -> void:
+	if order_manager.is_order_taken():
+		warning.emitting = true
+	else:
+		warning.emitting = false
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):

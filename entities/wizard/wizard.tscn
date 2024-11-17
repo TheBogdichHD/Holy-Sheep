@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bw5l6prt57knq"]
+[gd_scene load_steps=6 format=3 uid="uid://bw5l6prt57knq"]
 
-[ext_resource type="PackedScene" path="res://entities/models/wizard_anim.tscn" id="1_5a5gi"]
+[ext_resource type="PackedScene" uid="uid://dl74vngt5tid4" path="res://entities/models/wizard_anim.tscn" id="1_5a5gi"]
 [ext_resource type="Script" path="res://entities/wizard/wizard.gd" id="1_ovtux"]
+[ext_resource type="PackedScene" uid="uid://opaxtpjn8pnd" path="res://particles/warning_BIG.tscn" id="3_32a8u"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_cvqop"]
 radius = 2.93516
@@ -38,6 +39,9 @@ shape = SubResource("SphereShape3D_cvqop")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0375977, 2.27776, -0.0230713)
 shape = SubResource("BoxShape3D_t8ons")
+
+[node name="Warning" parent="." instance=ExtResource("3_32a8u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.83197, 0)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

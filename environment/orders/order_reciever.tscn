@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://xtlfpuie10jt"]
+[gd_scene load_steps=5 format=3 uid="uid://xtlfpuie10jt"]
 
 [ext_resource type="Script" path="res://environment/orders/order_reciever.gd" id="1_p4ohk"]
+[ext_resource type="PackedScene" uid="uid://opaxtpjn8pnd" path="res://particles/warning_BIG.tscn" id="2_fgjh6"]
 
 [sub_resource type="TorusMesh" id="TorusMesh_aanst"]
 
@@ -28,6 +29,9 @@ billboard = 1
 alpha_cut = 1
 font_size = 40
 outline_size = 14
+
+[node name="Warning" parent="." instance=ExtResource("2_fgjh6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.28258, 3.06824)
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

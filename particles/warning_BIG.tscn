@@ -1,6 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://bq8ynxrb15p1t"]
+[gd_scene load_steps=7 format=3 uid="uid://opaxtpjn8pnd"]
 
-[ext_resource type="Texture2D" uid="uid://biu4p5g8dyaa2" path="res://particles/warning.png" id="1_dsjey"]
+[ext_resource type="Texture2D" uid="uid://biu4p5g8dyaa2" path="res://particles/warning.png" id="1_45xdg"]
 
 [sub_resource type="Gradient" id="Gradient_oyao1"]
 offsets = PackedFloat32Array(0, 0.393939, 0.813853, 1)
@@ -27,22 +27,22 @@ cull_mode = 2
 shading_mode = 0
 vertex_color_is_srgb = true
 albedo_color = Color(1, 0, 0, 1)
-albedo_texture = ExtResource("1_dsjey")
+albedo_texture = ExtResource("1_45xdg")
 albedo_texture_force_srgb = true
 
 [sub_resource type="QuadMesh" id="QuadMesh_ic5ha"]
 material = SubResource("StandardMaterial3D_us3i0")
-size = Vector2(2, 2)
+custom_aabb = AABB(-60, -10, -60, 60, 10, 60)
+size = Vector2(8, 8)
 
 [node name="Warning" type="Node3D"]
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 process_priority = 1
-sorting_offset = 60.0
+sorting_offset = 100.0
 emitting = false
-amount = 5
+amount = 10
 lifetime = 0.6
-one_shot = true
 explosiveness = 1.0
 fixed_fps = 60
 visibility_aabb = AABB(-4, -4, -4, 60, 8, 60)
