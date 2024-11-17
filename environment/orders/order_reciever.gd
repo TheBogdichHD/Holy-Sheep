@@ -23,8 +23,11 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 					juice_extractor.start(player.current_sheep_color)
 					hint_text.text = "ЗАКАЗ ВЫПОЛНЕН"
 					hint.visible = true
+			else:
+				hint_text.text = "НЕ ТОТ ЦВЕТ!"
+				hint.visible = true
 		else:
-			hint_text.text = "Сначала возьмите заказ!"
+			hint_text.text = "СНАЧАЛА ВОЗЬМИТЕ ЗАКАЗ!"
 			hint.visible = true
 
 

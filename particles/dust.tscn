@@ -25,6 +25,7 @@ rings = 4
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 process_priority = 1
 sorting_offset = 15.0
+emitting = false
 amount = 10
 lifetime = 0.5
 process_material = SubResource("ParticleProcessMaterial_5h2wp")
