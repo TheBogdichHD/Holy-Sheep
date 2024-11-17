@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://entities/sheep/sheep_color.gd" id="3_fitst"]
 [ext_resource type="PackedScene" uid="uid://croqabxpl1bsp" path="res://entities/models/sheep_anim.tscn" id="4_hxr2l"]
 [ext_resource type="PackedScene" uid="uid://8moakbfkwvx3" path="res://particles/sound_wave.tscn" id="4_iy2rh"]
-[ext_resource type="PackedScene" uid="uid://cf1xgv7607aam" path="res://particles/dust.tscn" id="5_c62bw"]
+[ext_resource type="PackedScene" path="res://particles/dust.tscn" id="5_c62bw"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_5w0s4"]
 radius = 1.0

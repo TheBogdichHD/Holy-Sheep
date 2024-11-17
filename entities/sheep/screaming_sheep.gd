@@ -5,6 +5,7 @@ extends CharacterBody3D
 @export var walking_speed = 5.0
 @export var running_speed = 15.0
 @export var sheep_color: Color = Color(1, 0, 0)
+@export var max_distance = 50
 
 var min = 2
 var max = 10
@@ -73,7 +74,8 @@ func update_target_location(target_location) -> void:
 	player_location = target_location
 	var distance = global_transform.origin.distance_to(target_location)
 	var new_position = global_transform.origin
-	
+	if distance > max_distance:
+		return
 	if distance * 2 >= sheep_distance_run:
 		var dir_to_player = target_location - global_transform.origin
 		

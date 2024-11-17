@@ -5,6 +5,7 @@ extends CharacterBody3D
 @export var walking_speed = 5.0
 @export var running_speed = 25.0
 @export var sheep_color: Color = Color(0, 0, 1)
+@export var max_distance = 50
 
 var min = 2
 var max = 10
@@ -72,7 +73,8 @@ func update_crouching(value):
 func update_target_location(target_location) -> void:
 	var distance = global_transform.origin.distance_to(target_location)
 	var new_position = global_transform.origin
-	
+	if distance > max_distance:
+		return
 	if distance < sheep_distance_run and !is_player_crouching:
 		var dir_to_player = global_transform.origin - target_location
 		new_position = global_transform.origin + Vector3(dir_to_player.x, 0, dir_to_player.z)

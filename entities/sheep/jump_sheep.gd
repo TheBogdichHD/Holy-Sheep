@@ -7,6 +7,7 @@ extends CharacterBody3D
 @export var jump_height = 1
 @export var sheep_color = Color(0, 1, 0)
 @export var sounds: Array
+@export var max_distance = 50
 
 var _destination = Vector3.ZERO
 var _is_walking = false
@@ -23,11 +24,11 @@ func _ready() -> void:
 	var cube: MeshInstance3D = sheep_model.get_child(0)
 	var surface_material: StandardMaterial3D = cube.mesh.surface_get_material(0)
 	var dup_surface_material = surface_material.duplicate(true)
-	
+
 	dup_surface_material.albedo_color = sheep_color
-	
+
 	cube.set_surface_override_material(0, dup_surface_material)
-	
+
 	navigation_agent_3d.target_position = global_transform.origin
 	set_physics_process(false)
 	call_deferred("dump_first_physics_frame")
@@ -56,6 +57,8 @@ func _physics_process(delta: float) -> void:
 func update_target_location(target_location) -> void:
 	var distance = (global_transform.origin - Vector3(0, global_transform.origin.y, 0)).distance_to(target_location - Vector3(0, target_location.y, 0))
 	var new_position = global_transform.origin
+	if distance > max_distance:
+		return
 	if distance < sheep_distance_run:
 		var dir_to_player = global_transform.origin - target_location
 		new_position = global_transform.origin + Vector3(dir_to_player.x, 0, dir_to_player.z)
@@ -103,19 +106,19 @@ func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
 		if is_on_floor():
 			sheep_model.stop()
 	move_and_slide()
-	
+
 # HACK: very bad, i dont know how to do better
 func enable_outline():
 	var cube: MeshInstance3D = sheep_model.get_child(0)
 	var surface_material: StandardMaterial3D = cube.mesh.surface_get_material(0)
 	var dup_surface_material = surface_material.duplicate(true)
-	
+
 	var shader: ShaderMaterial = surface_material.next_pass
 	var dup_shader = shader.duplicate(true)
-	
+
 	dup_shader.set_shader_parameter("color", sheep_color)
 	dup_shader.set_shader_parameter("size", 1.05)
-	
+
 	dup_surface_material.albedo_color = sheep_color
 	dup_surface_material.next_pass = dup_shader
 	cube.set_surface_override_material(0, dup_surface_material)
@@ -126,12 +129,12 @@ func disable_outline():
 	var cube: MeshInstance3D = sheep_model.get_child(0)
 	var surface_material: StandardMaterial3D = cube.mesh.surface_get_material(0)
 	var dup_surface_material = surface_material.duplicate(true)
-	
+
 	var shader: ShaderMaterial = surface_material.next_pass
 	var dup_shader = shader.duplicate(true)
-	
+
 	dup_shader.set_shader_parameter("size", 1.0)
-	
+
 	dup_surface_material.albedo_color = sheep_color
 	dup_surface_material.next_pass = dup_shader
 	cube.set_surface_override_material(0, dup_surface_material)

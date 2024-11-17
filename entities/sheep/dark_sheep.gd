@@ -5,6 +5,7 @@ extends CharacterBody3D
 @export var walking_speed = 0.0
 @export var running_speed = 0.0
 @export var sheep_color: Color = Color(0, 0, 0)
+@export var max_distance = 50
 
 var sounds: Array = [
 	preload("res://audio/sheeps/black_sheep1.mp3"),
@@ -67,7 +68,8 @@ func update_target_location(target_location) -> void:
 	player_location = target_location
 	var distance = global_transform.origin.distance_to(target_location)
 	var new_position = global_transform.origin
-	
+	if distance > max_distance:
+		return
 	if distance * 2 >= sheep_distance_run:
 		var dir_to_player = target_location - global_transform.origin
 		
