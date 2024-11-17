@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://ui/main_menu.gd" id="1_ur7w1"]
 [ext_resource type="Shader" path="res://ui/main_menu.gdshader" id="2_0tck8"]
 [ext_resource type="Shader" path="res://environment/world/retro_pixel.gdshader" id="2_na5sy"]
-[ext_resource type="PackedScene" uid="uid://dqdbg3el46qtv" path="res://entities/models/polish_sheep_anim.tscn" id="2_sk5qk"]
+[ext_resource type="PackedScene" path="res://entities/models/polish_sheep_anim.tscn" id="2_sk5qk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2e5py"]
 shader = ExtResource("2_0tck8")
