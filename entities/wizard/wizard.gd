@@ -13,6 +13,7 @@ func _process(delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if event is InputEvent:
 		if event.is_action_pressed("interact") and _is_player_near and !game_manager.get_cycle_started():
+			model.clear()
 			model.play_command("questgive")
 			game_manager.start_cycle()
 			label_3d.visible = false
