@@ -170,8 +170,9 @@ func _on_scream_range_body_exited(body: Node3D) -> void:
 		await get_tree().create_timer(.6).timeout
 		sheep_model.stop()
 		_screaming = false
-		_player.additional_velocity = Vector3.ZERO
-		_player = null
+		if _player != null:
+			_player.additional_velocity = Vector3.ZERO
+			_player = null
 		sound_wave_effect.emitting = false
 		dust.emitting = false
 		
