@@ -1,7 +1,7 @@
 extends AudioStreamPlayer2D
 
 @onready var listener: AudioListener2D = $AudioListener2D
-var main_menu_audio: AudioStream = preload("res://audio/music/RetroFuture-Clean.mp3")
+var main_menu_audio: AudioStream = preload("res://audio/music/XTaKeRuX - DEVIL STRONGHOLD.mp3")
 var game_audio: AudioStream  = preload("res://audio/music/Funky-Chunk.mp3")
 var volume = 0
 var music_volume = 0
