@@ -4,6 +4,8 @@ extends Node3D
 
 var _speed: float = 1.0
 
+signal finished
+
 func set_speed(_value):
 	_speed = _value
 func walk():
@@ -25,5 +27,13 @@ func fall():
 func fear():
 	animation_player.play("sheep_animations/fear")
 
+func cling():
+	animation_player.play("sheep_animations/cling")
+	wait_for_stop()
+
 func is_playing():
 	return animation_player.is_playing()
+
+func wait_for_stop():
+	await animation_player.animation_finished
+	emit_signal("finished")

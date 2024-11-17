@@ -33,6 +33,8 @@ var additional_velocity = Vector3.ZERO
 
 @onready var dark_sheep_spawn_point: Node3D = $DarkSheepSpawnPoint
 @onready var dark_sheep_spawn_timer = $DarkSheepSpawnPoint/DarkSheepSpawnTimer
+@onready var cling_timer: Timer = $Head/ClingTimer
+
 var dark_sheep_path = "res://entities/sheep/dark_sheep.tscn"
 var dark_sheep
 
@@ -61,6 +63,8 @@ func _unhandled_input(event: InputEvent) -> void:
 	if Input.is_action_just_released("zoom"):
 		camera_3d.fov = _fov
 func _physics_process(delta: float) -> void:
+	if is_holding_object and cling_timer.is_stopped() and not sheep_model.is_playing():
+		cling_timer.start(randf_range(3, 5))
 	if Input.is_action_pressed("crouch"):
 		standing_collision_shape.disabled = true
 		crouching_collision_shape.disabled = false
@@ -147,3 +151,10 @@ func _on_dark_sheep_spawn_timer_timeout() -> void:
 
 	dark_sheep_spawn_timer.wait_time = randi_range(20, 30)
 	dark_sheep_spawn_timer.start()
+
+
+func _on_cling_timer_timeout() -> void:
+	if not sheep_model.is_playing():
+		sheep_model.cling()
+		await sheep_model.finished
+		sheep_model.stop()

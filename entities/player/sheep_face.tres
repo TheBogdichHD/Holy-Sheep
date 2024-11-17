@@ -1,0 +1,44 @@
+[gd_resource type="ArrayMesh" load_steps=5 format=4 uid="uid://cbwvhhllvdiw7"]
+
+[ext_resource type="Shader" path="res://entities/player/sheep_in_hands.gdshader" id="1_kb6ja"]
+[ext_resource type="Texture2D" uid="uid://di4v8q182ht2f" path="res://entities/sheep/textures/sheep_texture.png" id="2_m03wt"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4f5k1"]
+resource_name = "Material.001"
+render_priority = 0
+shader = ExtResource("1_kb6ja")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/FOV = 75.0
+shader_parameter/texture_albedo = ExtResource("2_m03wt")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_uunhh"]
+_surfaces = [{
+"aabb": AABB(2.94708, 0.48456, -0.405387, 0.669333, 0.796741, 0.810775),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AwACAAAAAwAFAAIABgAEAAEABgAHAAQAAgAHAAYAAgAFAAcAAwAKAAUAAwAIAAoACwAEAAcACwAJAAQACgAHAAUACgALAAcA"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("AAAAACA2AACwIg2/OEEAAAwkHiz0FAAAJHzcKv9/AABaQ////38AAFfsSlL/fwAAAxfacQAAAAD//3J//38AAAAAAADeyQAAsCINv8a+AAAMJB4sCusAAAMX2nH//wAA")
+}]
+blend_shape_mode = 0
+
+[resource]
+resource_name = "sheep_Cube_001"
+_surfaces = [{
+"aabb": AABB(2.94708, 0.48456, -0.405387, 0.669333, 0.796741, 0.810775),
+"attribute_data": PackedByteArray("t+EtPj3W+BTY4+E21eMGNm/6hD9v+oQ/T95qDE/eagzu/Kk67vypOrn88T25/PE9ZN6YJCHVZh777PYZ++z2GWf+pjFn/qYxt+EtPj3W+BTY4+E21eMGNmTemCQh1WYe"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("BQACAAAABQAJAAIADAAHAAEADAAPAAcAAwARAA0AAwALABEABAAUAAgABAASABQAFgAGAA4AFgATAAYAFQAQAAoAFQAXABAA"),
+"material": SubResource("ShaderMaterial_4f5k1"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AAAAACA2NiuwIg2/OEF8GAwkHiz0FGArDCQeLPQUrgokfNwq/3+HsiR83Cr/f8UrWkP///9/X59aQ////38HGFfsSlL/f4qyV+xKUv9/5CtX7EpS/3+Hm1fsSlL/f6gKAxfacQAA2BgDF9pxAACuCv//cn//f1uf//9yf/9/bhj//3J//3+Jm///cn//f6oKAAAAAN7JgbKwIg2/xr5cnwwkHiwK64KyDCQeLArrjZsDF9px//9unwMX2nH//46bEwBPobLlBn+CAKJezAu2WdEri1HqAT1ewMfNRMzkWoFKK3lRWgIdXvtCXh+4C8RZr+Qsfc0LtVnhxmpI2OVMf+9CXh+/C79ZRi7UUbrG10iGLcRR1kJfH6vFtUvSQl8f")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_uunhh")
