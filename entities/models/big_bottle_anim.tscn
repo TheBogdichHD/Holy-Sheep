@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=4 uid="uid://dlhbav6fqiojr"]
+[gd_scene load_steps=66 format=4 uid="uid://dlhbav6fqiojr"]
 
 [ext_resource type="Material" path="res://environment/juice_extractor/materials/Металл нормальный.tres" id="1_cj8xw"]
 [ext_resource type="Script" path="res://entities/models/big_bottle_anim.gd" id="1_sox2r"]
@@ -14,6 +14,7 @@
 [ext_resource type="Material" uid="uid://b7ycsv8iuf4wq" path="res://entities/sheep/Material.001.tres" id="12_467uk"]
 [ext_resource type="Material" uid="uid://boatps7r378wv" path="res://entities/models/Material_anim.tres" id="12_xok1j"]
 [ext_resource type="AnimationLibrary" uid="uid://dx6pv13ocraf0" path="res://entities/models/animations/sheep_animations.res" id="13_ie8y7"]
+[ext_resource type="AudioStream" uid="uid://qhb0ftxaivo7" path="res://audio/factory2.ogg" id="15_cex53"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_0upjq"]
 _surfaces = [{
@@ -1082,6 +1083,21 @@ tracks/6/keys = {
 "update": 1,
 "values": [true, false]
 }
+tracks/7/type = "audio"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("AudioStreamPlayer3D")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("15_cex53")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/7/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kl2c5"]
 _data = {
@@ -1257,5 +1273,7 @@ libraries = {
 "": SubResource("AnimationLibrary_kl2c5")
 }
 speed_scale = 0.8
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 
 [connection signal="animation_started" from="AnimationPlayer" to="." method="_on_animation_player_animation_started"]
