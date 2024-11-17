@@ -7,13 +7,14 @@ extends Node3D
 
 var _is_player_near = false
 
-func _unhandled_input(event: InputEvent) -> void:
+func _input(event: InputEvent) -> void:
 	if not _is_player_near:
 		return
 		
 	if event is InputEvent:
-		if event.is_action_pressed("interact") and player.held_object!=null:
+		if event.is_action_pressed("interact") and player.is_holding_object:
 			player.delete_sheep = true
+			print(true)
 			start(player.current_sheep_color)
 
 

@@ -10,7 +10,11 @@ size = Vector3(8.39764, 5.87805, 8.30322)
 [node name="big_bottle" parent="." instance=ExtResource("1_ec87b")]
 
 [node name="sheep" parent="big_bottle" index="14"]
+transform = Transform3D(-0.4, 0, -1.01407e-06, 0, 0.4, 0, 1.01407e-06, 0, -0.4, 8.16193, 0.150452, 0.168457)
 visible = false
+
+[node name="Цилиндр_001" parent="big_bottle/sheep" index="1"]
+transform = Transform3D(0.148731, -0.0541337, 0, 0.0541337, 0.148731, 0, 0, 0, 0.158276, 1.39552, 0.890886, 0.498487)
 
 [node name="Area3D" type="Area3D" parent="."]
 
