@@ -1,7 +1,7 @@
 extends Node3D
 const SHEPHERD = preload("res://audio/shepherd.ogg")
 const SHEPHERD_REVERSE = preload("res://audio/shepherd_reverse.ogg")
-var anim_list = ["squash"]
+var anim_list = ["squash", "sneeze"]
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var audio_stream_player_3d: AudioStreamPlayer3D = $AudioStreamPlayer3D
 

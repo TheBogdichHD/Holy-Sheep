@@ -105,6 +105,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_noca0")
 
 [sub_resource type="Animation" id="Animation_c7yu8"]
+resource_name = "RESET"
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false

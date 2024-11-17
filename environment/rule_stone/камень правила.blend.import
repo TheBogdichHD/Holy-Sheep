@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://deqbs3qgec4jd"
+uid="uid://ccgpeje1u74us"
 path="res://.godot/imported/камень правила.blend-c62ae0e305628103209289e1d1237bb5.scn"
 
 [deps]
@@ -31,7 +31,18 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
-_subresources={}
+_subresources={
+"materials": {
+"Material": {
+"use_external/enabled": true,
+"use_external/path": "res://environment/rule_stone/materials/Material.tres"
+},
+"text": {
+"use_external/enabled": true,
+"use_external/path": "res://environment/rule_stone/materials/text.tres"
+}
+}
+}
 blender/nodes/visible=0
 blender/nodes/active_collection_only=false
 blender/nodes/punctual_lights=true

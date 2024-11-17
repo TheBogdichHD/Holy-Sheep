@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dea15rulpbs0m"]
+
+[ext_resource type="Texture2D" uid="uid://bwelltm3h55ys" path="res://environment/barn/textures/тёмные доски.png" id="1_bnm32"]
+
+[resource]
+resource_name = "тёмнеы доски"
+cull_mode = 2
+albedo_texture = ExtResource("1_bnm32")
