@@ -1,3 +1,4 @@
+class_name OrderManager
 extends Node
 
 var _sheep_colors = ["белый", "синий", "красный", "зелёный", "кристальный", "чёрный"]
@@ -78,3 +79,6 @@ func set_give_order(b: bool):
 
 func get_give_order():
 	return give_order
+
+func get_orders_completed_count():
+	return _orders_completed

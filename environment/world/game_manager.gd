@@ -4,7 +4,7 @@ extends Node
 @onready var timer_text: RichTextLabel = $MarginContainer/TimerLabel
 @onready var score_label: Label = $MarginContainer/ScoreLabel
 @onready var max_time: float = 300
-@onready var order_manager = %OrderManager
+@onready var order_manager: OrderManager = %OrderManager
 var cycle_started: bool = false
 
 const TIME_STEP: float = 30
@@ -29,7 +29,7 @@ func start_cycle():
 func _on_cycle_timer_timeout() -> void:
 	timer.stop()
 	order_manager.reset_order()
-	score_label.text = "Time left!\nYour score: *your_score*"
+	score_label.text = "Время вышло!\nЗаказов выполнено: " + str(order_manager.get_orders_completed_count())
 
 func update_timer_label():
 	if !timer.paused and !timer.is_stopped():
