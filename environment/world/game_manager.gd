@@ -22,6 +22,7 @@ func _process(_delta: float) -> void:
 func start_cycle():
 	cycle_started = true
 	order_manager.set_give_order(true)
+	order_manager.generate_order()
 	timer.start(max_time)
 	max_time += TIME_STEP
 

@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://entities/sheep/sheep.gd" id="1_ku847"]
 [ext_resource type="Script" path="res://entities/sheep/sheep_color.gd" id="3_wvbfr"]
 [ext_resource type="PackedScene" uid="uid://croqabxpl1bsp" path="res://entities/models/sheep_anim.tscn" id="4_76jmj"]
-[ext_resource type="PackedScene" path="res://particles/dust.tscn" id="4_yjwvd"]
+[ext_resource type="PackedScene" uid="uid://cf1xgv7607aam" path="res://particles/dust.tscn" id="4_yjwvd"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_5w0s4"]
 radius = 1.0

@@ -117,21 +117,17 @@ shape = SubResource("BoxShape3D_fg836")
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -0.0126897, 0.0972729, 3.231)
 
 [node name="Bottle" type="MeshInstance3D" parent="bottle"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("ArrayMesh_fmvab")
 skeleton = NodePath("")
 
 [node name="Water" type="MeshInstance3D" parent="bottle"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("ArrayMesh_yrc8l")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="bottle"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("SphereShape3D_ow4bg")
 
 [node name="Area3D" type="Area3D" parent="bottle"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="bottle/Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.068512, 0.101715, 0.288513)

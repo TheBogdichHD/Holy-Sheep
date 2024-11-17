@@ -5,6 +5,7 @@
 [sub_resource type="TorusMesh" id="TorusMesh_aanst"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o4gkk"]
+size = Vector3(1.50928, 1, 1.54242)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_8qlce"]
 viewport_path = NodePath("Sprite3D/SubViewport")
@@ -19,11 +20,11 @@ mesh = SubResource("TorusMesh_aanst")
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 1, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.254639, 0, 0.27121)
 shape = SubResource("BoxShape3D_o4gkk")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.07907, 0)
-visible = false
 texture = SubResource("ViewportTexture_8qlce")
 
 [node name="SubViewport" type="SubViewport" parent="Sprite3D"]

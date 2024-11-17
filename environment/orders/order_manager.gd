@@ -39,7 +39,6 @@ func is_order_completed() -> bool:
 
 ## Сбросить состояние заказа
 func reset_order() -> void:
-	give_order = false
 	_order_taken = false
 	for color in _sheep_colors:
 		_current_order[color] = 0

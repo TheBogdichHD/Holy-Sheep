@@ -5,6 +5,7 @@
 [sub_resource type="BoxMesh" id="BoxMesh_samb0"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_e1llt"]
+radius = 0.752903
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_ouqf8"]
 viewport_path = NodePath("Sprite3D/SubViewport")
@@ -22,8 +23,9 @@ transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 shape = SubResource("SphereShape3D_e1llt")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.783413, 0)
-visible = false
+process_priority = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.783413, 0.759623)
+sorting_offset = 20.0
 texture = SubResource("ViewportTexture_ouqf8")
 
 [node name="SubViewport" type="SubViewport" parent="Sprite3D"]
@@ -32,7 +34,7 @@ size = Vector2i(250, 50)
 [node name="Label" type="Label" parent="Sprite3D/SubViewport"]
 offset_right = 40.0
 offset_bottom = 23.0
-text = "хачю кол-во цвет барашэк"
+text = "хачю кол-во цвет барашэкa"
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
