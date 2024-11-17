@@ -25,6 +25,7 @@ autostart = true
 
 [node name="SheepColor" type="Node3D" parent="."]
 script = ExtResource("2_0j6g2")
+color = "чёрный"
 
 [node name="Area3D" type="Area3D" parent="."]
 

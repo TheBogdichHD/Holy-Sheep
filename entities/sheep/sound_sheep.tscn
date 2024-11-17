@@ -31,6 +31,7 @@ autostart = true
 
 [node name="SheepColor" type="Node3D" parent="."]
 script = ExtResource("3_tldyy")
+color = "синий"
 
 [node name="SheepModel" parent="." instance=ExtResource("4_hua3k")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)

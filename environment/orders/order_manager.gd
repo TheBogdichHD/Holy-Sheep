@@ -1,6 +1,6 @@
 extends Node
 
-var _sheep_colors = ["белый"]
+var _sheep_colors = ["белый", "синий", "красный", "зелёный", "кристальный", "чёрный"]
 var _current_order = {}
 var _collected_sheep = {}
 
