@@ -26,14 +26,21 @@ func play_command(command):
 			audio_stream_player_3d.stream = WIZARD_SHOE
 			audio_stream_player_3d.play()
 			await audio_stream_player_3d.finished
-			await get_tree().create_timer(randf_range(0, 3)).timeout
+			'''await get_tree().create_timer(randf_range(0, 3)).timeout
 			animation_player.play_backwards("wizard_animations/" + command)
 			audio_stream_player_3d.stream = WIZARD_SHOE_REVERSE
 			audio_stream_player_3d.play()
-			await audio_stream_player_3d.finished
+			await audio_stream_player_3d.finished'''
 	in_play = false
 func clear():
 	animation_player.play("RESET")
 
 func is_playing():
-	return animation_player.is_playing() or in_play
+	return in_play or animation_player.is_playing()
+
+func wait():
+	if in_play:
+		await animation_player.animation_finished
+	in_play = true
+	await get_tree().create_timer(.5).timeout
+	in_play = false
