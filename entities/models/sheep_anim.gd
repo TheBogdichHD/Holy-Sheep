@@ -31,6 +31,9 @@ func cling():
 	animation_player.play("sheep_animations/cling")
 	wait_for_stop()
 
+func dance():
+	animation_player.play("dance")
+
 func is_playing():
 	return animation_player.is_playing()
 
