@@ -33,6 +33,7 @@ shape = SubResource("SphereShape3D_dgrik")
 [node name="SheepColor" type="Node3D" parent="Sheep"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -1, 0)
 script = ExtResource("3_a70xa")
+color = "зелёный"
 
 [node name="SheepModel" parent="Sheep" instance=ExtResource("4_2sjk5")]
 
