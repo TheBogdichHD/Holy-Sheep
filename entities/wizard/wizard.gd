@@ -1,12 +1,27 @@
 extends Node3D
 @onready var timer: Timer = $Timer
 @onready var wizard: Node3D = $wizard
+@onready var game_manager = $"../../GameManager"
+
+var _is_player_near = false
 
 func _process(delta: float) -> void:
 	if timer.is_stopped():
 		timer.start(randf_range(0, 2))
-		
+
+func _input(event: InputEvent) -> void:
+	if event is InputEvent:
+		if event.is_action_pressed("interact") and _is_player_near and !game_manager.get_cycle_started():
+			game_manager.start_cycle()
 
 func _on_timer_timeout() -> void:
 	if not wizard.is_playing():
 		wizard.play_random()
+
+func _on_area_3d_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		_is_player_near = true
+
+func _on_area_3d_body_exited(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		_is_player_near = false

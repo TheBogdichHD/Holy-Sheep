@@ -13,6 +13,7 @@ func _input(event: InputEvent) -> void:
 		
 	if event is InputEvent:
 		if event.is_action_pressed("interact") and player.is_holding_object:
+			#условие, что овца соответсвует заказу
 			player.delete_sheep = true
 			print(true)
 			start(player.current_sheep_color)
