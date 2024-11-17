@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://blilxa3dl3knf"]
+
+[resource]
+resource_name = "PawBase"
+cull_mode = 2
+albedo_color = Color(0.43, 0.0946, 0.0946, 1)
+roughness = 0.0
