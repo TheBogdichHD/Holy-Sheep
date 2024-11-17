@@ -1,9 +1,9 @@
 extends Node3D
 @onready var timer: Timer = $Timer
-@onready var wizard: Node3D = $wizard
 @onready var game_manager = $"../../GameManager"
 
 var _is_player_near = false
+@onready var model: Node3D = $model
 
 func _process(delta: float) -> void:
 	if timer.is_stopped():
@@ -15,8 +15,8 @@ func _input(event: InputEvent) -> void:
 			game_manager.start_cycle()
 
 func _on_timer_timeout() -> void:
-	if not wizard.is_playing():
-		wizard.play_random()
+	if not model.is_playing():
+		model.play_random()
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):

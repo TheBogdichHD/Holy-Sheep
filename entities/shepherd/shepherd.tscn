@@ -1,8 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://c318iwoit8ua"]
+[gd_scene load_steps=3 format=3 uid="uid://c318iwoit8ua"]
 
-[ext_resource type="PackedScene" uid="uid://ckngaeol1atoy" path="res://entities/shepherd/model_shepherd.blend" id="1_a8756"]
+[ext_resource type="PackedScene" uid="uid://cryv6bl2p8ve2" path="res://entities/models/model_shepherd_anim.tscn" id="1_7uys8"]
+[ext_resource type="Script" path="res://entities/shepherd/shepherd.gd" id="1_tpl6w"]
 
 [node name="Shepherd" type="Node3D"]
+script = ExtResource("1_tpl6w")
 
-[node name="model" parent="." instance=ExtResource("1_a8756")]
+[node name="model" parent="." instance=ExtResource("1_7uys8")]
 transform = Transform3D(-3.49691e-08, 0, 0.8, 0, 0.8, 0, -0.8, 0, -3.49691e-08, 0, 0, 0)
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
