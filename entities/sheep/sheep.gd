@@ -26,7 +26,7 @@ var _vertical_velocity: float = 0.0
 @onready var dust: GPUParticles3D = $Dust.get_child(0)
 
 func _ready() -> void:
-	audiosource.volume_db = 50
+	audiosource.volume_db = 20
 	bee_timer.start(randf_range(3, 5))
 	navigation_agent_3d.target_position = global_transform.origin
 	set_physics_process(false)

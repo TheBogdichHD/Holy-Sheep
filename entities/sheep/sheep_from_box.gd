@@ -27,6 +27,7 @@ var _vertical_velocity: float = 0.0
 
 
 func _ready() -> void:
+	audiosource.volume_db = -10
 	audiosource.stream = sounds[randi() % 3]
 	audiosource.play()
 	bee_timer.start(randf_range(min, max))
