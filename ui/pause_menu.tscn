@@ -21,10 +21,15 @@ layout_mode = 2
 text = "Resume
 "
 
-[node name="SoundButton" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="MusicButton" type="Button" parent="CenterContainer/VBoxContainer"]
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
-text = "Sound on/off"
+text = "Music on/off"
+
+[node name="SFXButton" type="Button" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+text = "SFX on/off"
 
 [node name="MenuButton" type="Button" parent="CenterContainer/VBoxContainer"]
 custom_minimum_size = Vector2(150, 50)
@@ -32,5 +37,6 @@ layout_mode = 2
 text = "Main menu"
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/SoundButton" to="." method="_on_sound_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/MusicButton" to="." method="_on_music_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/SFXButton" to="." method="_on_sfx_button_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/MenuButton" to="." method="_on_menu_button_pressed"]

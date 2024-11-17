@@ -12,9 +12,10 @@
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_et56s"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_phvda"]
+height = 2.32967
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oxr6w"]
-height = 1.2
+height = 1.60156
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mowpu"]
 render_priority = 0
@@ -50,15 +51,16 @@ visible = false
 mesh = SubResource("CapsuleMesh_et56s")
 
 [node name="StandingCollisionShape" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.168686, 0)
 shape = SubResource("CapsuleShape3D_phvda")
 
 [node name="CrouchingCollisionShape" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1926, 0)
 shape = SubResource("CapsuleShape3D_oxr6w")
 disabled = true
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.871297, 0)
 target_position = Vector3(0, 2, 0)
 
 [node name="Head" type="Node3D" parent="."]
@@ -105,6 +107,7 @@ mesh = ExtResource("6_m2y2k")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Head/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+visible = false
 mesh = SubResource("QuadMesh_wq5wl")
 
 [node name="Area3D" type="Area3D" parent="Head" groups=["player"]]

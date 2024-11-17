@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://xtlfpuie10jt"]
 
 [ext_resource type="Script" path="res://environment/orders/order_reciever.gd" id="1_p4ohk"]
-[ext_resource type="PackedScene" uid="uid://opaxtpjn8pnd" path="res://particles/warning_BIG.tscn" id="2_fgjh6"]
+[ext_resource type="PackedScene" path="res://particles/warning_BIG.tscn" id="2_fgjh6"]
 
 [sub_resource type="TorusMesh" id="TorusMesh_aanst"]
 

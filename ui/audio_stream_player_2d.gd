@@ -4,6 +4,8 @@ extends AudioStreamPlayer2D
 var main_menu_audio: AudioStream = preload("res://audio/music/RetroFuture-Clean.mp3")
 var game_audio: AudioStream  = preload("res://audio/music/Funky-Chunk.mp3")
 var volume = 0
+var music_volume = 0
+var sfx_volume = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
