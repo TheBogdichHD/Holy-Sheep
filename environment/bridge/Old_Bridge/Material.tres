@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dwrcje5meu5rp"]
+
+[ext_resource type="Texture2D" uid="uid://c3wev4cq1v4nt" path="res://environment/bridge/Old_Bridge/Wood_02_UV_H_CM_1.jpg" id="1_cy82h"]
+
+[resource]
+resource_name = "Material"
+cull_mode = 2
+albedo_color = Color(0.906332, 0.906332, 0.906332, 1)
+albedo_texture = ExtResource("1_cy82h")
+roughness = 0.5

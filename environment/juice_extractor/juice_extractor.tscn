@@ -1,7 +1,43 @@
-[gd_scene load_steps=2 format=3 uid="uid://xsyntxurh6u4"]
+[gd_scene load_steps=4 format=3 uid="uid://xsyntxurh6u4"]
 
-[ext_resource type="PackedScene" uid="uid://dk33tm03otx54" path="res://environment/juice_extractor/big_bottle.blend" id="1_pu0jr"]
+[ext_resource type="PackedScene" uid="uid://dlhbav6fqiojr" path="res://entities/models/big_bottle_anim.tscn" id="1_ec87b"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0lr2x"]
+size = Vector3(2.41666, 2.26001, 4.28217)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fg836"]
+size = Vector3(8.39764, 5.87805, 8.30322)
 
 [node name="JuiceExtractor" type="Node3D"]
 
-[node name="big_bottle" parent="." instance=ExtResource("1_pu0jr")]
+[node name="big_bottle" parent="." instance=ExtResource("1_ec87b")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="big_bottle/заборинки" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="big_bottle/заборинки/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.147003, 0.551392, -1.98335)
+shape = SubResource("BoxShape3D_0lr2x")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="big_bottle/заборинки_001" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="big_bottle/заборинки_001/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19014, 0.551392, -1.98335)
+shape = SubResource("BoxShape3D_0lr2x")
+
+[node name="sheep" parent="big_bottle" index="14"]
+transform = Transform3D(-0.4, 0, -1.01407e-06, 0, 0.4, 0, 1.01407e-06, 0, -0.4, 8.16193, 0.150452, 0.168457)
+visible = false
+
+[node name="Цилиндр_001" parent="big_bottle/sheep" index="1"]
+transform = Transform3D(0.148731, -0.0541337, 0, 0.0541337, 0.148731, 0, 0, 0, 0.158276, 1.39552, 0.890886, 0.498487)
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.83563, 2.43903, 0.149761)
+shape = SubResource("BoxShape3D_fg836")
+
+[connection signal="body_entered" from="Area3D" to="big_bottle" method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="big_bottle" method="_on_area_3d_body_exited"]
+
+[editable path="big_bottle"]

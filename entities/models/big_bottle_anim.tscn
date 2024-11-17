@@ -1,18 +1,18 @@
-[gd_scene load_steps=65 format=4 uid="uid://cd3wtwhegeab1"]
+[gd_scene load_steps=65 format=4 uid="uid://dlhbav6fqiojr"]
 
-[ext_resource type="Material" path="res://environment/juice_extractor/materials/Металл нормальный.tres" id="1_cj8xw"]
+[ext_resource type="Material" uid="uid://c3t5mpgcrqh2r" path="res://environment/juice_extractor/materials/Металл нормальный.tres" id="1_cj8xw"]
 [ext_resource type="Script" path="res://entities/models/big_bottle_anim.gd" id="1_sox2r"]
-[ext_resource type="Material" path="res://environment/juice_extractor/materials/Ржавый металл.tres" id="2_vf5gc"]
-[ext_resource type="Material" path="res://environment/juice_extractor/materials/Material.010.tres" id="3_u3t6g"]
-[ext_resource type="Material" path="res://environment/juice_extractor/materials/Стекло бутылки.tres" id="4_piuxu"]
-[ext_resource type="Material" uid="uid://bixqk7qnlcx5e" path="res://environment/juice_extractor/materials/Material.004.tres" id="5_6gfu6"]
-[ext_resource type="Material" path="res://environment/juice_extractor/materials/Деревяшка.tres" id="6_wvj4y"]
-[ext_resource type="Material" path="res://environment/juice_extractor/materials/Black_ass_hole.tres" id="7_482jp"]
-[ext_resource type="Material" path="res://environment/juice_extractor/materials/сено солома.tres" id="8_ry67t"]
-[ext_resource type="Material" uid="uid://ywx5ri60ayr2" path="res://environment/juice_extractor/materials/Material.007.tres" id="9_k4ah1"]
+[ext_resource type="Material" uid="uid://k384aelk7gxo" path="res://environment/juice_extractor/materials/Ржавый металл.tres" id="2_vf5gc"]
+[ext_resource type="Material" uid="uid://cb2sfj63nouai" path="res://environment/juice_extractor/materials/Material.010.tres" id="3_u3t6g"]
+[ext_resource type="Material" uid="uid://ckhlo5sbdhpp7" path="res://environment/juice_extractor/materials/Стекло бутылки.tres" id="4_piuxu"]
+[ext_resource type="Material" uid="uid://c4ttgmjlef1hc" path="res://environment/juice_extractor/materials/Material.004.tres" id="5_6gfu6"]
+[ext_resource type="Material" uid="uid://dt6lm3nndcul0" path="res://environment/juice_extractor/materials/Деревяшка.tres" id="6_wvj4y"]
+[ext_resource type="Material" uid="uid://bxrb515c3numu" path="res://environment/juice_extractor/materials/Black_ass_hole.tres" id="7_482jp"]
+[ext_resource type="Material" uid="uid://qnxchvo7ch4v" path="res://environment/juice_extractor/materials/сено солома.tres" id="8_ry67t"]
+[ext_resource type="Material" uid="uid://ldx8xj0q2scg" path="res://environment/juice_extractor/materials/Material.007.tres" id="9_k4ah1"]
 [ext_resource type="Script" path="res://entities/models/sheep_anim.gd" id="11_01fgj"]
 [ext_resource type="Material" uid="uid://b7ycsv8iuf4wq" path="res://entities/sheep/Material.001.tres" id="12_467uk"]
-[ext_resource type="Material" uid="uid://cfwuhgpvjjtqy" path="res://entities/models/Material_anim.tres" id="12_xok1j"]
+[ext_resource type="Material" uid="uid://boatps7r378wv" path="res://entities/models/Material_anim.tres" id="12_xok1j"]
 [ext_resource type="AnimationLibrary" uid="uid://dx6pv13ocraf0" path="res://entities/models/animations/sheep_animations.res" id="13_ie8y7"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_0upjq"]
@@ -991,18 +991,6 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(0.4, 0.4, 0.4)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("sheep:visible")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_h8lc5"]

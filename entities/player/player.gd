@@ -39,6 +39,9 @@ var dark_sheep
 var held_object = null
 var is_holding_object: bool = false
 var is_crouching = false
+var current_sheep_color = Color(0,0,0)
+var delete_sheep = false
+
 
 func _ready() -> void:
 	dark_sheep_spawn_timer.start()
@@ -52,6 +55,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		head.rotation.x = clamp(head.rotation.x, deg_to_rad(-89), deg_to_rad(89))
 	if event.is_action_pressed("interact"):
 		_interact()
+		delete_sheep = false
 	if Input.is_action_pressed("zoom"):
 		camera_3d.fov = _fov - 40
 	if Input.is_action_just_released("zoom"):
@@ -95,6 +99,11 @@ func _physics_process(delta: float) -> void:
 
 func _interact():
 	if is_holding_object:
+		if delete_sheep:
+			held_object = null
+			is_holding_object = false
+			sheep_model.visible = false
+			return
 		held_object.global_transform = spawn_point.global_transform
 		held_object.rotation = Vector3.ZERO
 		get_tree().get_root().add_child(held_object)
@@ -111,6 +120,7 @@ func _interact():
 		var dup_surface_material: ShaderMaterial = surface_material.duplicate(true)
 		
 		dup_surface_material.set_shader_parameter("albedo", obj.sheep_color)
+		current_sheep_color = obj.sheep_color
 		
 		cube.set_surface_override_material(0, dup_surface_material)
 		
