@@ -4,6 +4,7 @@ extends Node3D
 
 var _is_player_near = false
 @onready var model: Node3D = $model
+@onready var label_3d: Label3D = $Label3D
 
 func _process(delta: float) -> void:
 	if timer.is_stopped():
@@ -14,6 +15,7 @@ func _input(event: InputEvent) -> void:
 		if event.is_action_pressed("interact") and _is_player_near and !game_manager.get_cycle_started():
 			model.play_command("questgive")
 			game_manager.start_cycle()
+			label_3d.visible = false
 
 func _on_timer_timeout() -> void:
 	if not model.is_playing():
