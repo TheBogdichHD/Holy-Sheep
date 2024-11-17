@@ -56,6 +56,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.85, 1.35, 0)
 
 [node name="Dust" parent="." instance=ExtResource("5_c62bw")]
 
+[connection signal="tree_exited" from="." to="." method="_on_tree_exited"]
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]

@@ -136,6 +136,7 @@ func disable_outline():
 
 
 var _player
+var _player_to_delete_speed_bad_code_but_do_not_delete_please_skibidi
 
 func _on_area_3d_area_entered(area: Area3D) -> void:
 	if area.is_in_group("player"):
@@ -158,6 +159,7 @@ func scream(player):
 func _on_scream_range_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		_player = body
+		_player_to_delete_speed_bad_code_but_do_not_delete_please_skibidi = body
 		sound_wave_effect.emitting = true
 		_screaming = true
 		sheep_model.scream()
@@ -184,3 +186,8 @@ func _on_rotation_timer_timeout() -> void:
 	var target_rotation_y = atan2(-direction.x, -direction.z) + deg_to_rad(90)
 	rotation.y = lerp_angle(rotation.y, target_rotation_y, 0.5)
 	move_and_slide()'''
+
+
+func _on_tree_exited() -> void:
+	if _player_to_delete_speed_bad_code_but_do_not_delete_please_skibidi != null:
+		_player_to_delete_speed_bad_code_but_do_not_delete_please_skibidi.additional_velocity = Vector3(0,0,0)
