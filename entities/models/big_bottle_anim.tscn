@@ -1235,7 +1235,7 @@ mesh = SubResource("ArrayMesh_rgjig")
 skeleton = NodePath("")
 
 [node name="sheep" type="Node3D" parent="."]
-transform = Transform3D(-0.4, 0, -6.03983e-08, 0, 0.4, 0, 6.03983e-08, 0, -0.4, 8.16193, 0.150452, 0.168457)
+transform = Transform3D(-0.4, 0, -1.01407e-06, 0, 0.4, 0, 1.01407e-06, 0, -0.4, 8.16193, 0.150452, 0.168457)
 script = ExtResource("11_01fgj")
 
 [node name="Cube" type="MeshInstance3D" parent="sheep"]
