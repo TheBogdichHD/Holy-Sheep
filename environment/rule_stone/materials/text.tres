@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://kwrt6fmvignh"]
+
+[ext_resource type="Texture2D" uid="uid://b5srv5de1t4fs" path="res://environment/juice_extractor/textures/металл.jpg" id="1_iy4vh"]
+
+[resource]
+resource_name = "text"
+albedo_color = Color(0, 0, 0, 1)
+albedo_texture = ExtResource("1_iy4vh")
+metallic_specular = 1.0
+roughness = 0.0

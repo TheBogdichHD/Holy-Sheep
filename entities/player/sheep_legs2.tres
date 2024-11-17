@@ -1,4 +1,4 @@
-[gd_resource type="ArrayMesh" load_steps=5 format=4 uid="uid://dl0oby3lbuyvh"]
+[gd_resource type="ArrayMesh" load_steps=5 format=4 uid="uid://cj4celtgqxio6"]
 
 [ext_resource type="Shader" path="res://entities/player/sheep_in_hands.gdshader" id="1_yemyn"]
 [ext_resource type="Texture2D" uid="uid://di4v8q182ht2f" path="res://entities/sheep/textures/sheep_texture.png" id="2_s0xyq"]

@@ -177,3 +177,7 @@ func _on_rotation_timer_timeout() -> void:
 func _on_life_timer_timeout() -> void:
 	print("Dark sheep disappeared...")
 	queue_free()
+
+
+func _on_visible_on_screen_notifier_3d_screen_entered() -> void:
+	print("It sees you")
