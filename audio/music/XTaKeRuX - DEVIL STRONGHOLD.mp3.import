@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://d2rjfpcpwg0pv"
+path="res://.godot/imported/XTaKeRuX - DEVIL STRONGHOLD.mp3-9d79ce419895e0415df1f3e7d30464d6.mp3str"
+
+[deps]
+
+source_file="res://audio/music/XTaKeRuX - DEVIL STRONGHOLD.mp3"
+dest_files=["res://.godot/imported/XTaKeRuX - DEVIL STRONGHOLD.mp3-9d79ce419895e0415df1f3e7d30464d6.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
