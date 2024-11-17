@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cryv6bl2p8ve2" path="res://entities/models/model_shepherd_anim.tscn" id="1_7uys8"]
 [ext_resource type="Script" path="res://entities/shepherd/shepherd.gd" id="1_tpl6w"]
-[ext_resource type="PackedScene" uid="uid://opaxtpjn8pnd" path="res://particles/warning_BIG.tscn" id="3_p2fqp"]
+[ext_resource type="PackedScene" path="res://particles/warning_BIG.tscn" id="3_p2fqp"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7k7d0"]
 size = Vector3(1.46417, 3.35251, 1.67731)
