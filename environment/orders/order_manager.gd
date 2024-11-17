@@ -97,4 +97,3 @@ func get_orders_completed_count():
 func reset_all_requested_sheep():
 	for color in _sheep_colors:
 		all_ever_requested_sheep[color] = 0
-	print(all_ever_requested_sheep)

@@ -31,7 +31,7 @@ func _ready() -> void:
 
 
 func spawn_sheep() -> void:
-	if not order_manager.is_order_taken():
+	if sheep_spawned > 0 and not order_manager.is_order_taken():
 		return
 	randomize()
 	#sheep_collection.shuffle()
