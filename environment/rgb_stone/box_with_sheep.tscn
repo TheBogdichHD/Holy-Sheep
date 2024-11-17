@@ -61,9 +61,10 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_en52f")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gcvi4"]
+size = Vector3(1, 2.34265, 0.731079)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wp3ux"]
-size = Vector3(1.57239, 1.81689, 1.31152)
+size = Vector3(1.67877, 1.81689, 2.17725)
 
 [node name="BoxWithSheep" type="StaticBody3D"]
 script = ExtResource("1_jumqg")
@@ -74,13 +75,13 @@ mesh = SubResource("ArrayMesh_ger8w")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 3, 0, 0, 0)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 3, 0, 1.34265, -0.003479)
 shape = SubResource("BoxShape3D_gcvi4")
 
 [node name="Area3D" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.364355, 1.12435, -0.311523)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.257972, 1.12435, -1.17725)
 shape = SubResource("BoxShape3D_wp3ux")
 
 [node name="Control" type="Control" parent="."]
