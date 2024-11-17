@@ -1,8 +1,8 @@
 extends Node
 
 @onready var timer: Timer = $CycleTimer
-@onready var timer_text: RichTextLabel = $MarginContainer/TimerLabel
-@onready var score_label: Label = $MarginContainer/ScoreLabel
+@onready var timer_text: Label = $MarginContainer/TimerLabel
+@onready var score_label: Label = $MarginContainer/VBoxContainer/ScoreLabel
 @onready var order_label: Label = $MarginContainer/OrderLabel
 @onready var max_time: float = 300
 @onready var order_manager: OrderManager = %OrderManager
@@ -35,6 +35,9 @@ func start_cycle():
 func _on_cycle_timer_timeout() -> void:
 	timer.stop()
 	order_manager.reset_order()
+	$MarginContainer/VBoxContainer.visible = true
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	Engine.time_scale = 0
 	score_label.text = "Время вышло!\nЗаказов выполнено: " + str(order_manager.get_orders_completed_count())
 
 func update_timer_label():
@@ -47,7 +50,7 @@ func get_time_string() -> String:
 	if i < 10:
 		res += "0"
 	res += str(i)
-	return " [color=black]" + res + "[/color]"
+	return res
 
 func get_cycle_started():
 	return cycle_started
@@ -64,5 +67,6 @@ func get_current_color() -> String:
 
 
 func _on_button_pressed() -> void:
+	Engine.time_scale = 1
 	MusicManager.play_game_music()
-	get_tree().change_scene_to_file("res://environment/map/map.tscn")
+	get_tree().reload_current_scene()

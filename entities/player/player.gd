@@ -125,7 +125,9 @@ func _interact():
 	var obj = direction_ray.get_collider()
 	if obj.is_in_group("pickable") or obj.is_in_group("sheep"):
 		if obj.name == "bottle":
-			audiosource.play()
+			if obj.get_child(1).mesh.surface_get_material(0).albedo_color != Color(0,0,0,0):
+				audiosource.play()
+			
 			obj.get_child(1).mesh.surface_get_material(0).albedo_color = Color(0,0,0,0)
 			return
 		

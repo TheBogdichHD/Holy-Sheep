@@ -33,7 +33,7 @@ func generate_order() -> void:
 	while sheep_in_order == 0:
 		for color in _sheep_colors:
 			#var sheep_to_add = randi_range(0, _orders_completed + 2)
-			var sheep_to_add = randi_range(0, 1)
+			var sheep_to_add = 1
 			_current_order[color] += min(sheep_to_add, _max_sheep_in_order - sheep_in_order)
 			sheep_in_order += _current_order[color]
 			all_ever_requested_sheep[color] += _current_order[color]
