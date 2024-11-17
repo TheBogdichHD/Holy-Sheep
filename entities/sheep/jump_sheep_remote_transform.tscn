@@ -39,6 +39,7 @@ color = "зелёный"
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Sheep"]
 attenuation_model = 1
+bus = &"SFX"
 
 [node name="BeeTimer" type="Timer" parent="Sheep"]
 
