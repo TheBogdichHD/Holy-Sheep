@@ -23,7 +23,9 @@ func _on_resume_button_pressed() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _on_sound_button_pressed() -> void:
-	MusicManager.stream_paused = not MusicManager.stream_paused
+	MusicManager.volume += 100
+	MusicManager.volume %= 200
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), -MusicManager.volume)
 
 
 func _on_menu_button_pressed() -> void:
