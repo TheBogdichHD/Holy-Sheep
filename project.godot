@@ -13,11 +13,11 @@ config_version=5
 config/name="MMCS-Game-Jam-2024"
 run/main_scene="res://ui/main_menu.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
+boot_splash/show_image=false
 config/icon="res://sheep_icon.png"
 
 [autoload]
 
-PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 MusicManager="*res://ui/music_manager.tscn"
 SimpleGrass="*res://addons/simplegrasstextured/singleton.tscn"
 
