@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://opaxtpjn8pnd"]
+[gd_scene load_steps=7 format=3 uid="uid://bstfhogyeav53"]
 
 [ext_resource type="Texture2D" uid="uid://biu4p5g8dyaa2" path="res://particles/warning.png" id="1_45xdg"]
 
@@ -33,7 +33,7 @@ albedo_texture_force_srgb = true
 [sub_resource type="QuadMesh" id="QuadMesh_ic5ha"]
 material = SubResource("StandardMaterial3D_us3i0")
 custom_aabb = AABB(-60, -10, -60, 60, 10, 60)
-size = Vector2(8, 8)
+size = Vector2(14, 14)
 
 [node name="Warning" type="Node3D"]
 

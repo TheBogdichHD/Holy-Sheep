@@ -21,7 +21,9 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	update_timer_label()
 	if order_manager.is_order_taken():
-		order_label.text = get_current_color()
+		order_label.text = tr("juice") + "\n" + get_current_color()
+	elif cycle_started:
+		order_label.text = tr("Иди к пастуху!")
 	else:
 		order_label.text = ""
 
@@ -38,7 +40,7 @@ func _on_cycle_timer_timeout() -> void:
 	$MarginContainer/VBoxContainer.visible = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	Engine.time_scale = 0
-	score_label.text = "Время вышло!\nЗаказов выполнено: " + str(order_manager.get_orders_completed_count())
+	score_label.text = tr("Время вышло!") + "\n" + tr("Заказов выполнено: ") + str(order_manager.get_orders_completed_count())
 
 func update_timer_label():
 	if !timer.paused and !timer.is_stopped():
@@ -63,7 +65,7 @@ func get_current_color() -> String:
 		if current_order[color] > 0:
 			text = color
 			break
-	return text + " "
+	return tr(text) + " "
 
 
 func _on_button_pressed() -> void:

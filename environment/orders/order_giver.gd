@@ -11,12 +11,12 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 	elif body.is_in_group("player"):
 		if not order_manager.is_order_taken():
 			order_manager.take_order()
-			hint_text.text = "Хачю "
+			hint_text.text = tr("Выжми ")
 			var order = order_manager.get_order()
 			for color in order.keys():
 				if order[color] > 0:
-					hint_text.text += str(order[color]) + " " + color + " "
-			hint_text.text += "барашэк"
+					hint_text.text += " "+str(order[color]) + " " + tr(color) + " "
+			hint_text.text += tr("барашэк")
 		hint.visible = true
 
 

@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dl74vngt5tid4" path="res://entities/models/wizard_anim.tscn" id="1_5a5gi"]
 [ext_resource type="Script" path="res://entities/wizard/wizard.gd" id="1_ovtux"]
-[ext_resource type="PackedScene" path="res://particles/warning_BIG.tscn" id="3_32a8u"]
+[ext_resource type="PackedScene" uid="uid://bstfhogyeav53" path="res://particles/warning_BIG.tscn" id="3_32a8u"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_cvqop"]
 radius = 2.93516
@@ -20,10 +20,11 @@ pixel_size = 0.01
 billboard = 1
 alpha_cut = 1
 outline_modulate = Color(0, 0, 1, 1)
-text = "НАЖМИ E
-ПОЖАЛУЙСТА"
+text = "НАЖМИ E ПОЖАЛУЙСТА"
 font_size = 40
 outline_size = 15
+autowrap_mode = 2
+width = 300.0
 
 [node name="model" parent="." instance=ExtResource("1_5a5gi")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)

@@ -21,7 +21,8 @@ func _input(event: InputEvent) -> void:
 			model.clear()
 			model.play_command("questgive")
 			game_manager.start_cycle()
-			label_3d.visible = false
+			label_3d.visible = true
+			label_3d.text = tr("Иди к пастуху!")
 			warning.emitting = false
 
 func _on_timer_timeout() -> void:

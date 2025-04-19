@@ -135,6 +135,16 @@ theme_override_font_sizes/font_size = 90
 theme_override_styles/normal = SubResource("StyleBoxEmpty_egivo")
 text = "Play"
 
+[node name="LanguageButton" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(400, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/outline_size = 40
+theme_override_fonts/font = SubResource("SystemFont_pajpp")
+theme_override_font_sizes/font_size = 90
+theme_override_styles/normal = SubResource("StyleBoxEmpty_egivo")
+text = "Language: English"
+
 [node name="SoundButton" type="Button" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(400, 50)
 layout_mode = 2
@@ -166,6 +176,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/PlayButton" to="ButtonManager" method="_on_play_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/LanguageButton" to="ButtonManager" method="_on_language_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/SoundButton" to="ButtonManager" method="_on_sound_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/QuitButton" to="ButtonManager" method="_on_quit_button_pressed"]
 

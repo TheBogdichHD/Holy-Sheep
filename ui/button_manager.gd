@@ -11,3 +11,10 @@ func _on_sound_button_pressed() -> void:
 
 func _on_quit_button_pressed() -> void:
 	get_tree().quit()
+
+
+func _on_language_button_pressed() -> void:
+	if TranslationServer.get_locale() == "en":
+		TranslationServer.set_locale("ru")
+	else:
+		TranslationServer.set_locale("en")

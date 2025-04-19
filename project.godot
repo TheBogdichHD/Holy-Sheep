@@ -98,6 +98,10 @@ Pause={
 ]
 }
 
+[internationalization]
+
+locale/translations=PackedStringArray("res://loc/localization.en.translation", "res://loc/localization.ru.translation")
+
 [rendering]
 
 camera/depth_of_field/depth_of_field_bokeh_quality=2

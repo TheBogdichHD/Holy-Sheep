@@ -5,6 +5,7 @@ extends Control
 var speed = 1
 
 func _ready() -> void:
+	TranslationServer.set_locale("en")
 	polish_sheep.get_child(6).play("dance")
 
 func _process(delta: float) -> void:
